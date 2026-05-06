@@ -1,0 +1,21 @@
+P6 Analyzer for SEC / National Grid SA
+Copyright (c) 2026 Hani Taysseer
+
+INTERNAL USE LICENSE
+
+Permission is hereby granted, free of charge, to authorized employees and 
+contractors of Saudi Electricity Company (SEC) and its affiliates, to use, 
+modify, and distribute internally this software ("the Software") for the 
+exclusive purpose of analyzing Primavera P6 schedules within SEC / National 
+Grid SA projects.
+
+RESTRICTIONS:
+1. This software may NOT be used for commercial purposes outside SEC.
+2. This software may NOT be redistributed to external third parties without
+   explicit written permission from the author.
+3. Any modifications must preserve this license notice.
+4. Reverse engineering for competitive purposes is prohibited.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
