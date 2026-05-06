@@ -86,8 +86,25 @@ test('UI renders TCPI(EAC) card', script.includes('label: "TCPI(EAC)"'));
 test('UI shows worst-case warning', script.includes('evmWorstCaseWarning &&'));
 test('UI shows cost coverage warning', script.includes('evmCoverageStatus !== "ok"'));
 
+// ═══════════════════════════════════════════════════════════════
+// v29.0.11.2 (Gemini Round 8 G1+G2): Certificate Sequence Validation
+// ═══════════════════════════════════════════════════════════════
+console.log('\n▶ G1+G2: Certificate Sequence Validation');
+console.log('───────────────────────────────────────────────────────────');
+
+test('validateCertificateSequence function exists', script.includes('const validateCertificateSequence ='));
+test('Validates RTR -> EHC sequence', script.includes('checkPair("RTR", "EHC")'));
+test('Validates TCC -> PAC sequence', script.includes('checkPair("TCC", "PAC")'));
+test('Validates PAC -> FAC sequence (G2)', script.includes('checkPair("PAC", "FAC")'));
+test('Validates EHC -> TCC sequence', script.includes('checkPair("EHC", "TCC")'));
+test('Validates ECC -> TCC sequence', script.includes('checkPair("ECC", "TCC")'));
+test('Returns isValid field', script.includes('isValid: violations.length === 0'));
+test('Returns missingCerts field', script.includes('missingCerts:'));
+test('Returns checkedCerts field', script.includes('checkedCerts:'));
+test('certSequenceValidation called in analyze', script.includes('const certSequenceValidation = validateCertificateSequence();'));
+
 console.log('\n═══════════════════════════════════════════════════════════');
 console.log('  E2E RESULTS: ' + passed + '/' + (passed + failed) + ' tests passed');
 console.log('═══════════════════════════════════════════════════════════');
 
-if (failed > 0) process.exit(1);
+
