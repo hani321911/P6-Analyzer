@@ -318,4 +318,54 @@ gh release create v29.0.12 \
 
 ---
 
+
+
+---
+
+## 🔒 Push Policy (v29.0.11+)
+
+> Added per ChatGPT Round 6 review. Important for calculation-heavy project integrity.
+
+### ✅ Direct push to `main` is acceptable for:
+- Documentation-only changes (`*.md`)
+- Test files (`tests/`)
+- Workflows (`.github/`)
+- Issue templates
+
+### ⚠️ Branch + PR is REQUIRED for:
+- Any change to `p6-analyzer.html` (the main code)
+- Changes to `code-split/*.js` files
+- Changes to `releases/`
+- Architectural changes
+- New features
+
+### 🔍 Reasoning:
+This is a **calculation-heavy project** producing outputs used in:
+- Internal SEC planning
+- Management reports
+- Claim-grade reports (when validated)
+- DCMA submissions
+
+Code changes need:
+1. Syntax validation (acorn parse)
+2. Functional tests (60+ tests pass)
+3. Multi-AI review (Claude + ChatGPT recommended)
+4. Independent QA before claim-grade use
+
+### 📋 Branch naming convention:
+- `feature/<phase>-<id>` — new features (e.g., `feature/phase-3-1`)
+- `fix/<scope>` — bug fixes (e.g., `fix/loe-detection`)
+- `docs/<scope>` — docs-only (rarely needs branch)
+- `refactor/<scope>` — internal refactoring
+- `test/<scope>` — new test additions
+
+### 🤖 For Claude.ai (auto-uploads):
+When Claude.ai auto-uploads via PAT, follow same policy:
+- Docs-only commits → main
+- Code changes → branch + PR
+- Always include `60/60 tests pass` evidence in commit message
+
+
+---
+
 **مهم**: هذا الملف يُقرأ تلقائياً من Claude Code. أي تعديل عليه يؤثر على سلوك Claude Code في كل المحادثات المستقبلية.

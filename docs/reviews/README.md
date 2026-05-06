@@ -1,6 +1,6 @@
 # 🔍 Code Reviews History
 
-> سجل كامل لجولات المراجعة الـ 5 التي مرّ بها المشروع.
+> سجل كامل لجولات المراجعة الـ 6 التي مرّ بها المشروع.
 
 ---
 
@@ -13,40 +13,18 @@
 | **3** | ChatGPT | 2026-05-06 | 85% | 17 | اكتشاف EHC/ECC ⭐ |
 | **4** | Claude (review of CG) | 2026-05-06 | 96% | تصحيح أولويات | meta-review |
 | **5** | ChatGPT (response) | 2026-05-06 | 94% | counter-points | إجماع |
+| **6** | ChatGPT (post-Phase 2) | 2026-05-06 | 88% | 8 | code-split + tests ⭐ |
 
 ---
 
 ## 🎯 المنهجية
 
-### Multi-AI Review Process:
-
 ```
-┌──────────────┐
-│   Claude     │  Round 1: Initial code review
-│   (Round 1)  │  → Verifies with grep
-└──────┬───────┘
-       ↓
-┌──────────────┐
-│   Gemini     │  Round 2: Secondary opinion
-│   (Round 2)  │  ⚠️ Most suggestions wrong
-└──────┬───────┘
-       ↓
-┌──────────────┐
-│   ChatGPT    │  Round 3: Domain-deep review
-│   (Round 3)  │  ⭐ Discovers EHC/ECC missing
-└──────┬───────┘
-       ↓
-┌──────────────┐
-│   Claude     │  Round 4: Meta-review
-│   (Round 4)  │  → Reclassifies priorities
-└──────┬───────┘
-       ↓
-┌──────────────┐
-│   ChatGPT    │  Round 5: Counter-points
-│   (Round 5)  │  → Final consensus
-└──────────────┘
-       ↓
-   v29.0.10
+v29.0.11 → ChatGPT (Round 6) → Claude (this response) → Issue #1 closed
+                                       ↓
+                              All 8 issues addressed
+                                       ↓
+                              v29.0.11.1 commit
 ```
 
 ---
@@ -56,35 +34,33 @@
 ### [Round 1 — Claude Initial Review](round-1-claude/)
 - مراجعة عامة للكود
 - اكتشاف 6 قضايا (5 صحيحة)
-- **Files**: `01_VERIFIED_FACTS.md`
 
-### [Round 2 — Gemini Review](round-2-gemini/)
-- ⚠️ **WARNING**: 5/8 اقتراحات خاطئة
-- Lessons:
-  - لا يميّز React vendor من app code
-  - يقترح approximations خطيرة (Hijri 11-day)
-  - لا يقرأ الكود الفعلي قبل الادعاء
-- **مرجع للأخطاء**: لا تكرر هذه الاقتراحات
+### [Round 2 — Gemini Review](round-2-gemini/) — ⚠️ تحذير
+- 5/8 اقتراحات خاطئة
+- مرجع للأخطاء، لا يُتّبع
 
 ### [Round 3 — ChatGPT Initial Review](round-3-chatgpt/)
 - 17 قضية: 5 Critical + 8 Major + 4 Minor
-- ⭐ **اكتشاف رئيسي**: EHC + ECC missing entirely
-- نقاط قوة: 9 strengths موثّقة
-- **Files**: `01_CLAUDE_REVIEW_OF_CHATGPT.md`
+- ⭐ اكتشاف EHC + ECC missing
 
 ### [Round 4 — Claude Meta-Review](round-3-chatgpt/)
-- Verified ChatGPT's claims with grep
-- Reclassified priorities:
-  - M7 (EHC/ECC) → Critical (was Major)
-  - C4 (blended) → Minor (was Critical)
-  - C3 (EVM official fields) → Major (was Critical)
-- Added missing points: N1, N2, N3, N4
+- تصحيح ترتيب الأولويات
+- إضافة N1, N2, N3, N4
 
 ### [Round 5 — ChatGPT Final Response](round-5-chatgpt-final/)
-- Acknowledged all 4 reclassifications
-- Added 3 counter-points (intelligent ones)
-- Final implementation order
-- **Files**: `ChatGPT_Response_to_Claude_Review_Round2.md`
+- قبول 6 من 7 إعادة تصنيفات
+- 3 counter-points ذكية
+
+### [Round 6 — ChatGPT Post-Phase 2 Review](round-6-chatgpt/) ⭐ **الجديد**
+- بعد رفع v29.0.11
+- اكتشاف نقاط مهمة:
+  - **C1**: code-split/ stale ⭐
+  - **M2**: tests not committed ⭐
+  - **C2**: claim-grade wording too strong ⭐
+- **Files**:
+  - `REVIEW.md` — التقرير الأصلي
+  - `GREP_EVIDENCE.md` — رد Claude بالـ grep
+  - `CLAUDE_RESPONSE.md` — رد Claude الكامل
 
 ---
 
@@ -98,29 +74,27 @@
 | **ChatGPT** | deep domain knowledge, counter-points | يحتاج توجيه لتجنب confusion |
 | **Gemini** | سريع | ⚠️ دقة منخفضة، tokens ضائعة |
 
-### Best Practices:
+### Best Practices المستخلصة:
 
 1. **استخدم 2+ مراجعين** بالتوازي
 2. **Verify everything with grep** قبل الإصلاح
 3. **Maintain a "rejected suggestions" list** لتجنب التكرار
 4. **Document context heavily** (NG SA, Saudi calendar, etc.)
 5. **Test functional cases** بعد كل إصلاح
-
-### اقرأ التفاصيل في:
-- 📚 [`docs/implementation/LESSONS_LEARNED.md`](../implementation/LESSONS_LEARNED.md)
-- 📋 [`docs/implementation/CHECKLIST.md`](../implementation/CHECKLIST.md)
-- 🇸🇦 [`docs/architecture/NG_SA_CONTEXT.md`](../architecture/NG_SA_CONTEXT.md)
+6. **Commit tests as files** — لا تكتفِ بـ "tests pass" claims (Round 6 lesson)
+7. **Update code-split with each release** — keep in sync (Round 6 lesson)
+8. **Use diplomatic wording** — distinguish "implemented" from "validated" (Round 6 lesson)
 
 ---
 
 ## 📝 قالب طلب مراجعة جديدة
 
-عند إصدار v29.0.11 أو أحدث:
+عند إصدار v29.0.12 أو أحدث:
 
 ```markdown
 # Review Request: P6 Analyzer vXX.X.X
 
-## Context (link to docs)
+## Context (links to docs)
 - Architecture: `docs/architecture/README.md`
 - NG SA Context: `docs/architecture/NG_SA_CONTEXT.md`
 - Implementation Status: `docs/implementation/STATUS.md`
@@ -136,11 +110,30 @@
 5. Project Type Detection
 6. EVM Calculations
 
+## Verification artifacts to expect
+- Commit reference
+- Tests output
+- Grep evidence (if requested)
+
 ## Don't suggest (verified facts)
-[List from VERIFIED_FACTS.md]
+[List from VERIFIED_FACTS.md and CLAUDE.md]
 ```
 
 استخدم: `prompts/PROMPT_C_future_reviews.md` من حزمة `claude-response-to-chatgpt`.
+
+---
+
+## 🔄 Round Tracker
+
+| Round | Date | Reviewer | Trigger | Outcome |
+|-------|------|----------|---------|---------|
+| 1 | 2026-05-04 | Claude | Initial code | 6 issues found |
+| 2 | 2026-05-05 | Gemini | Cross-check | ⚠️ rejected |
+| 3 | 2026-05-06 | ChatGPT | Multi-AI review | EHC/ECC discovered |
+| 4 | 2026-05-06 | Claude | Meta-review | Priorities fixed |
+| 5 | 2026-05-06 | ChatGPT | Counter-points | Round 5 closure |
+| 6 | 2026-05-06 | ChatGPT | Post-Phase 2 | code-split + tests |
+| 7 | TBD | TBD | Phase 3 release | TBD |
 
 ---
 
@@ -149,3 +142,4 @@
 تريد إضافة مراجعة جديدة؟
 - افتح Issue: [Review Request Template](../../.github/ISSUE_TEMPLATE/review_request.md)
 - اتبع: [`CONTRIBUTING.md`](../../CONTRIBUTING.md)
+- Multi-AI workflow: Claude + ChatGPT

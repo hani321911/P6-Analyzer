@@ -116,4 +116,31 @@
 | **Claim-grade reports** | 🟡 CAUTION | ✅ **READY** |
 | **DCMA submission** | 🟡 CAUTION | ✅ **READY** |
 
-🎉 **v29.0.11 reached claim-grade quality!**
+🎯 **v29.0.11: Candidate for claim-grade quality** — pending real-schedule validation
+
+
+---
+
+## 📌 About "Candidate" Status (per Round 6 review)
+
+The status **🟡 Candidate** for claim-grade and DCMA-ready use cases reflects:
+
+✅ **What is verified**:
+- All Phase 1 + 2 fixes implemented correctly
+- 60/60 functional tests pass
+- Multi-AI reviewed (Claude Round 1, 4 + ChatGPT Round 3, 5, 6)
+- Code follows PMI/DCMA standards for EVM, longest path, EAC formulas
+- Syntax validation passes on every commit
+
+🟡 **What needs validation**:
+- Testing on real SEC cost-loaded schedules (variable resource curves, WBS structures)
+- Independent QA review for claim packages
+- Cross-check with manual P6 reports for sanity
+- Phase 3 items: official EVM fields parser, Resource Assignments rollup
+
+### Recommendation:
+1. **Use freely for**: internal planning, management reports
+2. **Validate before**: claim submissions, DCMA filings
+3. **Wait for Phase 3** if: you need EVM official P6 fields parser support
+
+This is best-practice transparency — not a defect indicator.

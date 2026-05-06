@@ -1,9 +1,34 @@
-// ═══════════════════════════════════════════════════════════════════
-// 05_audit_DCMA_PMI_GAO_AACE.js — v29.0.10
-// Lines 6131 - 6700 (of 19822 total)
-// DCMA + findLongestPathDuration v29.0.10 (network DP)
-// ═══════════════════════════════════════════════════════════════════
+// ════════════════════════════════════════════════════════════════════
+// 05_audit_DCMA_PMI_GAO_AACE.js — v29.0.11 (Phase 1 + 2 implemented)
+// Lines 6131 - 6720 of 19935 total
+// DCMA + findLongestPathDuration + _calculateNetworkLongestPath (v29.0.10 network DP)
+// 
+// ⚠️ This file is a slice for code review purposes.
+// The source of truth is p6-analyzer.html.
+// Auto-generated on update of p6-analyzer.html.
+// ════════════════════════════════════════════════════════════════════
 
+    detail: `${missed} tasks should have started but haven't`,
+    detailAr: `${missed} مهمة كان يجب بدؤها`,
+    affected: missed,
+    recommendation: missedPct > 5 ? "Investigate delayed activities. Update progress or reforecast." : null,
+    recommendationAr: missedPct > 5 ? "افحص الأنشطة المتأخرة. حدّث التقدم أو أعد التوقع." : null
+  });
+
+  // 12. CRITICAL PATH TEST
+  const critical = acts.filter(a => Number(a.totalFloat || 0) <= 0 && _bqaIsActiveOrFuture(a)).length;
+  const criticalPct = totalIncomplete > 0 ? (critical / totalIncomplete) * 100 : 0;
+  results.push({
+    id: "DCMA-12", name: "Critical Path Test", nameAr: "اختبار المسار الحرج",
+    description: "Healthy schedule has 5-15% critical activities. Too few = no real CP. Too many = over-constrained.",
+    descriptionAr: "الجدول السليم به 5-15% أنشطة حرجة. القليل = لا مسار حرج فعلي. الكثير = مفرط التقييد.",
+    threshold: "5-15%", value: criticalPct, unit: "%",
+    pass: criticalPct >= 5 && criticalPct <= 15,
+    severity: (criticalPct >= 5 && criticalPct <= 15) ? "pass" : (criticalPct >= 3 && criticalPct <= 25 ? "warn" : "fail"),
+    detail: `${critical} critical activities (${criticalPct.toFixed(1)}%)`,
+    detailAr: `${critical} نشاط حرج (${criticalPct.toFixed(1)}%)`,
+    affected: critical,
+    recommendation: criticalPct < 5 ? "Too few critical activities. Logic may be incomplete." : (criticalPct > 15 ? "Too many critical activities. Schedule is over-constrained." : null),
     recommendationAr: criticalPct < 5 ? "أنشطة حرجة قليلة جداً. المنطق قد يكون ناقصاً." : (criticalPct > 15 ? "أنشطة حرجة كثيرة جداً. الجدول مفرط التقييد." : null)
   });
 
@@ -573,4 +598,3 @@ function bqaDetectProjectInfo(baseline) {
       };
     }
   } catch (e) {
-    projectType = null;

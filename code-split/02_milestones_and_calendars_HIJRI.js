@@ -1,8 +1,12 @@
-// ═══════════════════════════════════════════════════════════════════
-// 02_milestones_and_calendars_HIJRI.js — v29.0.10
-// Lines 2797 - 3299 (of 19822 total)
-// Saudi holidays + auditCalendarSAHolidays
-// ═══════════════════════════════════════════════════════════════════
+// ════════════════════════════════════════════════════════════════════
+// 02_milestones_and_calendars_HIJRI.js — v29.0.11 (Phase 1 + 2 implemented)
+// Lines 2797 - 3300 of 19935 total
+// Saudi holidays + auditCalendarSAHolidays (v29.0.11 multi-day coverage)
+// 
+// ⚠️ This file is a slice for code review purposes.
+// The source of truth is p6-analyzer.html.
+// Auto-generated on update of p6-analyzer.html.
+// ════════════════════════════════════════════════════════════════════
 
   }
   return filtered;
@@ -10,32 +14,53 @@
 
 // Check which expected SA holidays are configured in the calendar's holidays list
 function auditCalendarSAHolidays(calendar, projectStart, projectFinish) {
-  if (!calendar) return { audit: [], missing: [], present: [], coveragePct: 0, hijriWarning: null };
+  if (!calendar) return { audit: [], missing: [], present: [], partial: [], coveragePct: 0, daysCoveragePct: 0, hijriWarning: null };
   const expected = buildExpectedSAHolidays(projectStart, projectFinish);
   const calendarDates = new Set(calendar.holidays || []);
+  // v29.0.10 (Phase 2.1): Count ALL days within multi-day holiday ranges, not just first match
+  // Previously: break after first matched day → false "configured=true" for partial coverage
+  // Now: count covered/total, classify as complete/partial/missing
   const audit = expected.map((exp) => {
-    let isConfigured = calendarDates.has(exp.date);
-    // For multi-day holidays, check if any day in the range is configured
-    if (!isConfigured && exp.endDate) {
-      const start = new Date(exp.date);
-      const end = new Date(exp.endDate);
-      for (let d = new Date(start); d <= end; d.setDate(d.getDate() + 1)) {
-        const ds = d.toISOString().slice(0, 10);
-        if (calendarDates.has(ds)) {
-          isConfigured = true;
-          break;
-        }
-      }
+    let coveredDays = 0;
+    let totalDays = 0;
+    const start = new Date(exp.date);
+    const end = exp.endDate ? new Date(exp.endDate) : start;
+    for (let d = new Date(start); d <= end; d.setDate(d.getDate() + 1)) {
+      const ds = d.toISOString().slice(0, 10);
+      totalDays++;
+      if (calendarDates.has(ds)) coveredDays++;
     }
-    return { ...exp, configured: isConfigured };
+    let configStatus;
+    if (coveredDays === 0) {
+      configStatus = "missing";
+    } else if (coveredDays === totalDays) {
+      configStatus = "complete";
+    } else {
+      configStatus = "partial";
+    }
+    return {
+      ...exp,
+      configured: configStatus === "complete",  // backward compat
+      configStatus,
+      coveredDays,
+      totalDays
+    };
   });
-  const present = audit.filter((a) => a.configured);
-  const missing = audit.filter((a) => !a.configured);
+  const present = audit.filter((a) => a.configStatus === "complete");
+  const partial = audit.filter((a) => a.configStatus === "partial");
+  const missing = audit.filter((a) => a.configStatus === "missing");
+  // Two coverage metrics:
+  // 1. coveragePct: % of holidays fully configured (strict)
+  // 2. daysCoveragePct: % of total holiday days covered (granular)
+  const totalExpectedDays = audit.reduce((s, a) => s + a.totalDays, 0);
+  const totalCoveredDays = audit.reduce((s, a) => s + a.coveredDays, 0);
   return {
     audit,
     present,
+    partial,
     missing,
     coveragePct: audit.length > 0 ? +(present.length / audit.length * 100).toFixed(1) : 0,
+    daysCoveragePct: totalExpectedDays > 0 ? +(totalCoveredDays / totalExpectedDays * 100).toFixed(1) : 0,
     // v29.0.9.2: Surface Hijri-table-outdated warning to UI
     hijriWarning: expected._warning || null
   };
@@ -487,23 +512,3 @@ const PROJECT_TYPE_RULES = [
     palette: { from: "#0d9488", to: "#0891b2", accent: "#a7f3d0", glow: "#0d948840" },
     patterns: [
       /\bmetering\s+(?:system|station)\b/i,
-      /\bAMI\b/i,
-      /\bsmart\s+meter\b/i,
-      /\brevenue\s+meter\b/i
-    ]
-  },
-  {
-    key: "fuel_conversion",
-    icon: "\u{1F504}",
-    name_en: "Fuel Conversion Project",
-    name_ar: "\u062A\u062D\u0648\u064A\u0644 \u0648\u0642\u0648\u062F",
-    palette: { from: "#ea580c", to: "#9333ea", accent: "#fbbf24", glow: "#ea580c40" },
-    patterns: [
-      /\bfuel\s+conversion\b/i,
-      /\boil[\s-]to[\s-]gas\b/i,
-      /\bfuel\s+switch\b/i,
-      /\bdual[\s-]fuel\b/i
-    ]
-  },
-  // ── INFRASTRUCTURE BY MEDIUM (water before power because "WATER TREATMENT PLANT
-  //    AT JEDDAH SOUTH POWER PLANT" should be water_treatment, not power_plant) ──

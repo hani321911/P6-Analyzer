@@ -1,9 +1,26 @@
-// ═══════════════════════════════════════════════════════════════════
-// 13_executive_dashboard.js — v29.0.10
-// Lines 16401 - 17500 (of 19822 total)
-// ExecutiveDashboard with EHC/ECC display
-// ═══════════════════════════════════════════════════════════════════
+// ════════════════════════════════════════════════════════════════════
+// 13_executive_dashboard.js — v29.0.11 (Phase 1 + 2 implemented)
+// Lines 16501 - 17500 of 19935 total
+// ExecutiveDashboard with EHC/ECC + EVM cards (v29.0.11)
+// 
+// ⚠️ This file is a slice for code review purposes.
+// The source of truth is p6-analyzer.html.
+// Auto-generated on update of p6-analyzer.html.
+// ════════════════════════════════════════════════════════════════════
 
+    /\u0634\u0647\u0627\u062f\u0629\s+\u0627\u0644\u062a\u0634\u063a\u064a\u0644\s+\u0627\u0644\u062a\u062c\u0627\u0631\u064a(?:\s+\u0644\u0644\u0645\u0639\u062f\u0627\u062a)?/,
+    /\u0634\u0647\u0627\u062f\u0629\s+\u0627\u0644\u0627\u0633\u062a\u0644\u0627\u0645\s+\u0627\u0644\u062a\u062c\u0627\u0631\u064a/
+  ]);
+  // Project duration computed from blProj
+  // v28.12: Robust project Start/Finish extraction with fallback to activities
+  const computeProjectDates = () => {
+    let startDate = null, finishDate = null;
+    // Priority 1: from blProj
+    if (blProj.start) {
+      const d = new Date(blProj.start);
+      if (!isNaN(d)) startDate = d;
+    }
+    if (blProj.finish) {
       const d = new Date(blProj.finish);
       if (!isNaN(d)) finishDate = d;
     }
@@ -991,116 +1008,3 @@
               "Schedule Density",
               "Activity Codes",
               "\u0628\u0646\u064A\u0629 \u0627\u0644\u0645\u0634\u0631\u0648\u0639 (WBS)",
-              "\u0627\u0644\u0645\u062F\u0629 \u0627\u0644\u0625\u062C\u0645\u0627\u0644\u064A\u0629",
-              "\u062A\u0648\u0627\u0631\u064A\u062E \u0627\u0644\u0628\u062F\u0621 / \u0627\u0644\u0627\u0646\u062A\u0647\u0627\u0621"
-            ] : [
-              "DCMA 14 Tests (schedule quality)",
-              "Planned S-Curve",
-              "Critical Path",
-              "Key Milestones",
-              "Open Ends & Loops",
-              "Negative Float",
-              "Schedule Density",
-              "Activity Codes",
-              "Project structure (WBS)",
-              "Total Duration",
-              "Start / Finish dates"
-            ]).map((item, i) => /* @__PURE__ */ React.createElement("li", { key: i }, item))
-          )
-        ),
-        // Unavailable column
-        /* @__PURE__ */ React.createElement("div", {
-          style: { background: "rgba(239,68,68,0.05)", border: "1px solid rgba(239,68,68,0.2)", borderRadius: 10, padding: "14px 16px" }
-        },
-          /* @__PURE__ */ React.createElement("div", { style: { color: "#fca5a5", fontWeight: 700, fontSize: 12, marginBottom: 10, display: "flex", alignItems: "center", gap: 6 } },
-            "\u274C ", lang === "ar" ? "\u063A\u064A\u0631 \u0645\u062A\u0648\u0641\u0651\u0631 (\u064A\u062D\u062A\u0627\u062C Progress)" : "Not available (needs Progress)"
-          ),
-          /* @__PURE__ */ React.createElement("ul", { style: { margin: 0, paddingInlineStart: 18, color: "var(--textDim)", fontSize: 11, lineHeight: 1.9 } },
-            (lang === "ar" ? [
-              "\u0646\u0633\u0628\u0629 \u0627\u0644\u0625\u0646\u062C\u0627\u0632 \u0627\u0644\u0641\u0639\u0644\u064A (% complete)",
-              "Schedule Variance",
-              "EVM (PV / EV / AC)",
-              "SPI / CPI",
-              "Lookahead Window",
-              "Forecast vs Plan \u0645\u0642\u0627\u0631\u0646\u0629",
-              "\u0627\u0644\u0623\u0646\u0634\u0637\u0629 \u0627\u0644\u0645\u062A\u0623\u062E\u0631\u0629",
-              "\u0627\u0644\u062A\u0648\u0627\u0631\u064A\u062E \u0627\u0644\u0641\u0639\u0644\u064A\u0629",
-              "Data Date \u062D\u062F\u064A\u062B"
-            ] : [
-              "Actual % Complete",
-              "Schedule Variance",
-              "EVM (PV / EV / AC)",
-              "SPI / CPI",
-              "Lookahead Window",
-              "Forecast vs Plan comparison",
-              "Behind-Schedule activities",
-              "Actual dates",
-              "Recent Data Date"
-            ]).map((item, i) => /* @__PURE__ */ React.createElement("li", { key: i }, item))
-          )
-        )
-      )
-    ),
-    /* @__PURE__ */ React.createElement("div", { style: {
-    textAlign: "center",
-    marginBottom: 20,
-    padding: "8px 0",
-    width: "100%",
-    boxSizing: "border-box"
-  } }, /* @__PURE__ */ React.createElement("div", { style: {
-    color: "var(--textFaint)",
-    fontSize: 10,
-    fontFamily: "'JetBrains Mono',monospace",
-    letterSpacing: "0.18em",
-    marginBottom: 10,
-    textTransform: "uppercase"
-  } }, lang === "ar" ? "\u0645\u0634\u0631\u0648\u0639" : "Project"),
-  // v29: Project name box — premium card with gradient border, accent corners, shadow
-  /* @__PURE__ */ React.createElement("div", { style: {
-    position: "relative",
-    display: hasMultipleNames ? "block" : "inline-block",
-    width: hasMultipleNames ? "100%" : "auto",
-    maxWidth: hasMultipleNames ? "100%" : "92%",
-    margin: "0 auto",
-    padding: hasMultipleNames ? "18px 24px" : "18px 32px",
-    background: "linear-gradient(135deg, rgba(56,189,248,0.08) 0%, rgba(167,139,250,0.08) 50%, rgba(56,189,248,0.08) 100%)",
-    border: `2px solid ${status.c}`,
-    borderRadius: 14,
-    boxShadow: `0 0 24px ${status.c}33, 0 4px 16px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.05)`
-  } },
-    // Top-left accent corner
-    /* @__PURE__ */ React.createElement("div", { style: {
-      position: "absolute", top: -1, left: -1, width: 18, height: 18,
-      borderTop: `3px solid ${status.c}`, borderLeft: `3px solid ${status.c}`,
-      borderTopLeftRadius: 14
-    } }),
-    // Top-right accent corner
-    /* @__PURE__ */ React.createElement("div", { style: {
-      position: "absolute", top: -1, right: -1, width: 18, height: 18,
-      borderTop: `3px solid ${status.c}`, borderRight: `3px solid ${status.c}`,
-      borderTopRightRadius: 14
-    } }),
-    // Bottom-left accent corner
-    /* @__PURE__ */ React.createElement("div", { style: {
-      position: "absolute", bottom: -1, left: -1, width: 18, height: 18,
-      borderBottom: `3px solid ${status.c}`, borderLeft: `3px solid ${status.c}`,
-      borderBottomLeftRadius: 14
-    } }),
-    // Bottom-right accent corner
-    /* @__PURE__ */ React.createElement("div", { style: {
-      position: "absolute", bottom: -1, right: -1, width: 18, height: 18,
-      borderBottom: `3px solid ${status.c}`, borderRight: `3px solid ${status.c}`,
-      borderBottomRightRadius: 14
-    } }),
-    // The project name itself — DROPDOWN if multiple sources, else plain h1
-    hasMultipleNames
-      ? /* @__PURE__ */ React.createElement("div", { style: { position: "relative", width: "100%", padding: "0 4px" } },
-          /* @__PURE__ */ React.createElement("select", {
-            value: selectedProjectName,
-            onChange: (e) => setSelectedProjectName(e.target.value),
-            title: lang === "ar" ? "اختر اسم المشروع من المصادر المتاحة" : "Pick project name from available sources",
-            style: {
-              appearance: "none",
-              WebkitAppearance: "none",
-              MozAppearance: "none",
-              background: "linear-gradient(135deg, rgba(56,189,248,0.06), rgba(167,139,250,0.06))",
