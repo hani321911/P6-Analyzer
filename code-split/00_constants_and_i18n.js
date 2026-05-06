@@ -1,8 +1,12 @@
-// ═══════════════════════════════════════════════════════════════════
-// 00_constants_and_i18n.js — v29.0.10
-// Lines 1 - 2030 (of 19822 total)
-// i18n strings + theme
-// ═══════════════════════════════════════════════════════════════════
+// ════════════════════════════════════════════════════════════════════
+// 00_constants_and_i18n.js — v29.0.11 (Phase 1 + 2 implemented)
+// Lines 1 - 2030 of 19935 total
+// i18n strings + theme + constants
+// 
+// ⚠️ This file is a slice for code review purposes.
+// The source of truth is p6-analyzer.html.
+// Auto-generated on update of p6-analyzer.html.
+// ════════════════════════════════════════════════════════════════════
 
 
 const { useState, useRef, useEffect, createContext, useContext, Fragment } = React;

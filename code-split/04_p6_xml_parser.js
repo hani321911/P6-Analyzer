@@ -1,9 +1,34 @@
-// ═══════════════════════════════════════════════════════════════════
-// 04_p6_xml_parser.js — v29.0.10
-// Lines 3501 - 6130 (of 19822 total)
-// parseP6XML + HoursPerDay
-// ═══════════════════════════════════════════════════════════════════
+// ════════════════════════════════════════════════════════════════════
+// 04_p6_xml_parser.js — v29.0.11 (Phase 1 + 2 implemented)
+// Lines 3501 - 6130 of 19935 total
+// parseP6XML + HoursPerDay logic
+// 
+// ⚠️ This file is a slice for code review purposes.
+// The source of truth is p6-analyzer.html.
+// Auto-generated on update of p6-analyzer.html.
+// ════════════════════════════════════════════════════════════════════
 
+    palette: { from: "#1e40af", to: "#1e3a8a", accent: "#60a5fa", glow: "#1e40af40" },
+    patterns: [
+      /\bcyber[\s-]?security\b/i,
+      /\bIT\s+security\s+(?:project|upgrade|implementation)/i,
+      /\bOT\s+security\b/i,
+      /\bSCADA\s+security\b/i,
+      /\bICS\s+security\b/i,
+      /\bsecurity\s+(?:hardening|infrastructure|architecture)\b/i,
+      /\bIEC\s+62443\b/i,
+      /\bNERC\s+CIP\b/i,
+      /\bfirewall\s+(?:upgrade|deployment)\b/i,
+      /\bcyber\s+(?:defense|protection)\b/i
+    ]
+  },
+  {
+    key: "asset_replacement",
+    icon: "\u{1F504}",
+    name_en: "Asset Replacement (SS/UG/TL)",
+    name_ar: "\u0625\u062D\u0644\u0627\u0644 \u0627\u0644\u0623\u0635\u0648\u0644",
+    palette: { from: "#ea580c", to: "#f59e0b", accent: "#fef3c7", glow: "#ea580c40" },
+    patterns: [
       /\basset\s+replacement\b/i,
       /\b(?:transformer|breaker|switchgear)\s+replacement\b/i,
       /\bequipment\s+replacement\s+(?:project|program)/i,
@@ -2613,24 +2638,3 @@ function bqaDCMA14(baseline) {
     threshold: "≤ 5%", value: missedPct, unit: "%",
     pass: missedPct <= 5,
     severity: missedPct <= 5 ? "pass" : (missedPct <= 10 ? "warn" : "fail"),
-    detail: `${missed} tasks should have started but haven't`,
-    detailAr: `${missed} مهمة كان يجب بدؤها`,
-    affected: missed,
-    recommendation: missedPct > 5 ? "Investigate delayed activities. Update progress or reforecast." : null,
-    recommendationAr: missedPct > 5 ? "افحص الأنشطة المتأخرة. حدّث التقدم أو أعد التوقع." : null
-  });
-
-  // 12. CRITICAL PATH TEST
-  const critical = acts.filter(a => Number(a.totalFloat || 0) <= 0 && _bqaIsActiveOrFuture(a)).length;
-  const criticalPct = totalIncomplete > 0 ? (critical / totalIncomplete) * 100 : 0;
-  results.push({
-    id: "DCMA-12", name: "Critical Path Test", nameAr: "اختبار المسار الحرج",
-    description: "Healthy schedule has 5-15% critical activities. Too few = no real CP. Too many = over-constrained.",
-    descriptionAr: "الجدول السليم به 5-15% أنشطة حرجة. القليل = لا مسار حرج فعلي. الكثير = مفرط التقييد.",
-    threshold: "5-15%", value: criticalPct, unit: "%",
-    pass: criticalPct >= 5 && criticalPct <= 15,
-    severity: (criticalPct >= 5 && criticalPct <= 15) ? "pass" : (criticalPct >= 3 && criticalPct <= 25 ? "warn" : "fail"),
-    detail: `${critical} critical activities (${criticalPct.toFixed(1)}%)`,
-    detailAr: `${critical} نشاط حرج (${criticalPct.toFixed(1)}%)`,
-    affected: critical,
-    recommendation: criticalPct < 5 ? "Too few critical activities. Logic may be incomplete." : (criticalPct > 15 ? "Too many critical activities. Schedule is over-constrained." : null),

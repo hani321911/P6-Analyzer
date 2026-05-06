@@ -1,8 +1,99 @@
-// ═══════════════════════════════════════════════════════════════════
-// 12_phases_milestones_calendars_panels.js — v29.0.10
-// Lines 14765 - 16400 (of 19822 total)
-// findCertByRegex v29.0.10 (Layer 4 + EHC/ECC)
-// ═══════════════════════════════════════════════════════════════════
+// ════════════════════════════════════════════════════════════════════
+// 12_phases_milestones_calendars_panels.js — v29.0.11 (Phase 1 + 2 implemented)
+// Lines 14765 - 16500 of 19935 total
+// findCertByRegex + EHC/ECC + Layer 4 negative context (v29.0.10)
+// 
+// ⚠️ This file is a slice for code review purposes.
+// The source of truth is p6-analyzer.html.
+// Auto-generated on update of p6-analyzer.html.
+// ════════════════════════════════════════════════════════════════════
+
+    borderRadius: 14, padding: "14px 18px", marginBottom: 16
+  } },
+    /* @__PURE__ */ React.createElement("div", { style: {
+      display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 10, flexWrap: "wrap", gap: 8
+    } },
+      /* @__PURE__ */ React.createElement("div", null,
+        /* @__PURE__ */ React.createElement("div", { style: {
+          color: allValid ? "#22c55e" : "#f59e0b", fontWeight: 700, fontSize: 12,
+          fontFamily: "'JetBrains Mono',monospace", letterSpacing: "0.1em",
+          textTransform: "uppercase", marginBottom: 2
+        } }, isAr ? "\u062A\u0633\u0645\u064A\u0629 \u0627\u0644\u0645\u0644\u0641\u0627\u062A (NG SA)" : "FILENAME CONVENTION (NG SA)"),
+        /* @__PURE__ */ React.createElement("div", { style: { color: "var(--textMuted)", fontSize: 10 } },
+          isAr ? "\u0627\u0644\u0635\u064A\u063A\u0629 \u0627\u0644\u0645\u0639\u062A\u0645\u062F\u0629: " : "Expected: ",
+          /* @__PURE__ */ React.createElement("code", { style: {
+            color: "#a78bfa", background: "rgba(167,139,250,0.1)", padding: "1px 6px", borderRadius: 3,
+            fontFamily: "'JetBrains Mono',monospace", fontSize: 10
+          } }, "####-{V}{TYPE}{N}"),
+          /* @__PURE__ */ React.createElement("span", { style: { marginInlineStart: 8 } },
+            isAr ? "\u0645\u062B\u0627\u0644: " : "e.g.: ",
+            /* @__PURE__ */ React.createElement("code", { style: {
+              color: "var(--textMuted)", fontFamily: "'JetBrains Mono',monospace", fontSize: 10
+            } }, "1234-1MP1, 1234-2BPS, 1234-1TIA1")
+          )
+        )
+      ),
+      /* @__PURE__ */ React.createElement("div", { style: {
+        background: allValid ? "rgba(34,197,94,0.15)" : "rgba(245,158,11,0.15)",
+        color: allValid ? "#22c55e" : "#f59e0b",
+        border: `1px solid ${allValid ? "rgba(34,197,94,0.4)" : "rgba(245,158,11,0.4)"}`,
+        borderRadius: 6, padding: "4px 10px", fontSize: 11, fontWeight: 700,
+        fontFamily: "'JetBrains Mono',monospace"
+      } }, `${validCount}/${entries.length} ${isAr ? "\u0635\u062D\u064A\u062D" : "valid"}`)
+    ),
+    /* @__PURE__ */ React.createElement("div", { style: {
+      display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(280px, 1fr))", gap: 8
+    } },
+      entries.map((e) => {
+        const v = e.v;
+        const ok = v.valid;
+        const bg = ok ? "rgba(34,197,94,0.06)" : "rgba(245,158,11,0.06)";
+        const borderC = ok ? "rgba(34,197,94,0.25)" : "rgba(245,158,11,0.3)";
+        const dotC = ok ? "#22c55e" : "#f59e0b";
+        return /* @__PURE__ */ React.createElement("div", {
+          key: e.key,
+          style: { background: bg, border: `1px solid ${borderC}`, borderRadius: 8, padding: "8px 12px", display: "flex", gap: 10, alignItems: "stretch" }
+        },
+          /* @__PURE__ */ React.createElement("div", {
+            style: {
+              width: 22, height: 22, borderRadius: 5, background: dotC,
+              display: "flex", alignItems: "center", justifyContent: "center",
+              color: "#fff", fontWeight: 800, fontSize: 11, flexShrink: 0, alignSelf: "flex-start"
+            }
+          }, ok ? "\u2713" : "\u26A0"),
+          /* @__PURE__ */ React.createElement("div", { style: { flex: 1, minWidth: 0, display: "flex", flexDirection: "column", gap: 2 } },
+            /* @__PURE__ */ React.createElement("div", { style: { display: "flex", alignItems: "center", gap: 6 } },
+              /* @__PURE__ */ React.createElement("span", { style: {
+                color: dotC, fontWeight: 700, fontSize: 10, fontFamily: "'JetBrains Mono',monospace",
+                textTransform: "uppercase", letterSpacing: "0.04em"
+              } }, isAr ? e.label_ar : e.label_en),
+              ok && /* @__PURE__ */ React.createElement("span", { style: {
+                color: "var(--textDim)", fontSize: 9, fontFamily: "'JetBrains Mono',monospace"
+              } }, `\u00B7 ${isAr ? v.typeName_ar : v.typeName_en}`)
+            ),
+            /* @__PURE__ */ React.createElement("div", {
+              style: {
+                color: "var(--textPrimary)", fontSize: 11, fontWeight: 600,
+                fontFamily: "'JetBrains Mono',monospace",
+                overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap"
+              },
+              title: v.filename || ""
+            }, v.filename || (isAr ? "\u063A\u064A\u0631 \u0645\u0639\u0631\u0648\u0641" : "Unknown")),
+            ok && /* @__PURE__ */ React.createElement("div", {
+              style: { fontSize: 9, color: "var(--textMuted)", fontFamily: "'JetBrains Mono',monospace" }
+            },
+              `\u2116 ${v.projectNumber} \u00B7 v${v.version}`,
+              v.sequence ? ` \u00B7 #${v.sequence}` : ""
+            ),
+            !ok && /* @__PURE__ */ React.createElement("div", {
+              style: { fontSize: 10, color: "#f59e0b", fontStyle: "italic" }
+            }, isAr ? "\u0644\u0627 \u064A\u062A\u0628\u0639 \u0635\u064A\u063A\u0629 NG \u0627\u0644\u0631\u0633\u0645\u064A\u0629" : "Doesn't match NG official convention")
+          )
+        );
+      })
+    )
+  );
+}
 
 // ═══════════════════════════════════════════════════════════════════════════
 // v29.0.9 — PRE-COMMISSIONING COMPLIANCE PANEL
@@ -402,40 +493,59 @@ function CalendarsPanel({ calendars, calendarTypeCounts, saHolidayAudit, lang, t
         )
       ),
       // List of holidays with status
+      // v29.0.10 (Phase 2.1): Show 3 status colors: green=complete, amber=partial, red=missing
       /* @__PURE__ */ React.createElement("div", { style: { display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(280px, 1fr))", gap: 8 } },
-        saHolidayAudit.audit.map((h, idx) => /* @__PURE__ */ React.createElement("div", {
-          key: idx,
-          style: {
-            display: "flex", alignItems: "center", gap: 10,
-            padding: "8px 10px",
-            background: h.configured ? "rgba(34,197,94,0.06)" : "rgba(239,68,68,0.06)",
-            border: `1px solid ${h.configured ? "rgba(34,197,94,0.2)" : "rgba(239,68,68,0.2)"}`,
-            borderRadius: 6
+        saHolidayAudit.audit.map((h, idx) => {
+          // Determine colors based on configStatus (new in v29.0.10)
+          const status = h.configStatus || (h.configured ? "complete" : "missing");
+          let bgColor, borderColor, iconBg, iconColor, iconChar;
+          if (status === "complete") {
+            bgColor = "rgba(34,197,94,0.06)"; borderColor = "rgba(34,197,94,0.2)";
+            iconBg = "rgba(34,197,94,0.2)"; iconColor = "#22c55e"; iconChar = "✓";
+          } else if (status === "partial") {
+            bgColor = "rgba(245,158,11,0.06)"; borderColor = "rgba(245,158,11,0.3)";
+            iconBg = "rgba(245,158,11,0.2)"; iconColor = "#f59e0b"; iconChar = "◐";
+          } else {
+            bgColor = "rgba(239,68,68,0.06)"; borderColor = "rgba(239,68,68,0.2)";
+            iconBg = "rgba(239,68,68,0.2)"; iconColor = "#ef4444"; iconChar = "✗";
           }
-        },
-          /* @__PURE__ */ React.createElement("div", {
+          return /* @__PURE__ */ React.createElement("div", {
+            key: idx,
             style: {
-              width: 26, height: 26, borderRadius: "50%", flexShrink: 0,
-              background: h.configured ? "rgba(34,197,94,0.2)" : "rgba(239,68,68,0.2)",
-              color: h.configured ? "#22c55e" : "#ef4444",
-              display: "flex", alignItems: "center", justifyContent: "center",
-              fontSize: 14, fontWeight: 700
+              display: "flex", alignItems: "center", gap: 10,
+              padding: "8px 10px",
+              background: bgColor,
+              border: `1px solid ${borderColor}`,
+              borderRadius: 6
             }
-          }, h.configured ? "✓" : "✗"),
-          /* @__PURE__ */ React.createElement("div", { style: { flex: 1, minWidth: 0 } },
-            /* @__PURE__ */ React.createElement("div", { style: { fontSize: 12, color: "var(--textPrimary)", fontWeight: 600, whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" } },
-              isAr ? h.ar : h.en
-            ),
-            /* @__PURE__ */ React.createElement("div", { style: { fontSize: 10, color: "var(--textDim)", fontFamily: "'JetBrains Mono',monospace", marginTop: 2 } },
-              fmtDate(h.date),
-              h.endDate && ` → ${fmtDate(h.endDate)}`,
-              h.duration > 1 && ` (${h.duration}d)`,
-              h.type === "religious" && /* @__PURE__ */ React.createElement("span", { style: { marginInlineStart: 6, color: "#a78bfa" } }, isAr ? "· ديني" : "· Religious"),
-              h.type === "national" && /* @__PURE__ */ React.createElement("span", { style: { marginInlineStart: 6, color: "#22c55e" } }, isAr ? "· وطني" : "· National"),
-              h.type === "observance" && /* @__PURE__ */ React.createElement("span", { style: { marginInlineStart: 6, color: "#f59e0b" } }, isAr ? "· شعيرة" : "· Observance")
+          },
+            /* @__PURE__ */ React.createElement("div", {
+              style: {
+                width: 26, height: 26, borderRadius: "50%", flexShrink: 0,
+                background: iconBg, color: iconColor,
+                display: "flex", alignItems: "center", justifyContent: "center",
+                fontSize: 14, fontWeight: 700
+              }
+            }, iconChar),
+            /* @__PURE__ */ React.createElement("div", { style: { flex: 1, minWidth: 0 } },
+              /* @__PURE__ */ React.createElement("div", { style: { fontSize: 12, color: "var(--textPrimary)", fontWeight: 600, whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" } },
+                isAr ? h.ar : h.en
+              ),
+              /* @__PURE__ */ React.createElement("div", { style: { fontSize: 10, color: "var(--textDim)", fontFamily: "'JetBrains Mono',monospace", marginTop: 2 } },
+                fmtDate(h.date),
+                h.endDate && ` → ${fmtDate(h.endDate)}`,
+                h.duration > 1 && ` (${h.duration}d)`,
+                // v29.0.10: Show coverage detail for multi-day holidays
+                h.totalDays > 1 && h.coveredDays !== undefined && /* @__PURE__ */ React.createElement("span", {
+                  style: { marginInlineStart: 6, color: status === "partial" ? "#f59e0b" : (status === "complete" ? "#22c55e" : "#ef4444"), fontWeight: 700 }
+                }, ` · ${h.coveredDays}/${h.totalDays}d`),
+                h.type === "religious" && /* @__PURE__ */ React.createElement("span", { style: { marginInlineStart: 6, color: "#a78bfa" } }, isAr ? "· ديني" : "· Religious"),
+                h.type === "national" && /* @__PURE__ */ React.createElement("span", { style: { marginInlineStart: 6, color: "#22c55e" } }, isAr ? "· وطني" : "· National"),
+                h.type === "observance" && /* @__PURE__ */ React.createElement("span", { style: { marginInlineStart: 6, color: "#f59e0b" } }, isAr ? "· شعيرة" : "· Observance")
+              )
             )
-          )
-        ))
+          );
+        })
       ),
       // Summary recommendation
       saHolidayAudit.missing.length > 0 && /* @__PURE__ */ React.createElement("div", {
@@ -1485,7 +1595,14 @@ function ExecutiveDashboard({ result, activeMethod, setActiveMethod, onAuditBase
       const w = wbsMap[a.wbsId];
       return w ? (w.name || w.code || null) : null;
     };
-    const evmFiltered = _rawRows.filter((r2) => !r2.isMilestone && !r2.isSummary);
+    // v29.0.10 (Phase 2.2): Inline LOE detection (helper from analyze() not in scope here)
+    const _isLOE = (a) => {
+      if (!a) return false;
+      const t = (a.type || a.activityType || "").toString().toLowerCase();
+      return t === "level of effort" || t === "loe" || t === "tt_loe" ||
+             t.includes("level of effort") || t.includes("level_of_effort");
+    };
+    const evmFiltered = _rawRows.filter((r2) => !r2.isMilestone && !r2.isSummary && !_isLOE(r2._raw));
     const wfn = (a) => getNGMatrixWeight((a && (a.name || a.actName)) || "", effectiveNGCol, _getWbsName(a));
     const valid = evmFiltered.filter((r2) => wfn(r2._raw) > 0);
     const tw = valid.reduce((s2, r2) => s2 + wfn(r2._raw), 0);
@@ -1627,16 +1744,3 @@ function ExecutiveDashboard({ result, activeMethod, setActiveMethod, onAuditBase
     /\bECC\b/i,
     /\bEquipment\s+Commercial\s+Commissioning\b/i,
     /\bCommercial\s+Commissioning\s+(?:Certificate|Completion)\b/i,
-    /\u0634\u0647\u0627\u062f\u0629\s+\u0627\u0644\u062a\u0634\u063a\u064a\u0644\s+\u0627\u0644\u062a\u062c\u0627\u0631\u064a(?:\s+\u0644\u0644\u0645\u0639\u062f\u0627\u062a)?/,
-    /\u0634\u0647\u0627\u062f\u0629\s+\u0627\u0644\u0627\u0633\u062a\u0644\u0627\u0645\s+\u0627\u0644\u062a\u062c\u0627\u0631\u064a/
-  ]);
-  // Project duration computed from blProj
-  // v28.12: Robust project Start/Finish extraction with fallback to activities
-  const computeProjectDates = () => {
-    let startDate = null, finishDate = null;
-    // Priority 1: from blProj
-    if (blProj.start) {
-      const d = new Date(blProj.start);
-      if (!isNaN(d)) startDate = d;
-    }
-    if (blProj.finish) {

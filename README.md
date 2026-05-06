@@ -6,6 +6,7 @@
 [![License](https://img.shields.io/badge/license-Internal-orange.svg)]()
 [![Status](https://img.shields.io/badge/status-Active-success.svg)]()
 [![Reviews](https://img.shields.io/badge/multi--AI%20reviewed-Claude%20%2B%20ChatGPT%20%2B%20Gemini-purple.svg)](docs/reviews/)
+[![Tests](https://img.shields.io/badge/tests-60%2F60%20pass-success.svg)](tests/)
 
 ---
 
@@ -14,10 +15,10 @@
 أداة تحليل احترافية لجداول **Primavera P6** خاصة بمشاريع SEC / NG SA:
 
 - 🇸🇦 **مخصصة لمشاريع السعودية**: تقويم هجري + إجازات رسمية + 10 أنواع مشاريع NG SA
-- 📊 **6 طرق حساب نسبة الإنجاز**: Cost, Duration, Units, Count, NG Matrix, Blended
+- 📊 **5 طرق حساب نسبة الإنجاز**: Cost, Duration, Units, Count, NG Matrix
 - ✅ **6 شهادات إلزامية**: TCC, PAC, FAC, RTR, EHC, ECC
 - 🎯 **معايير دولية**: DCMA 14-Point, PMI, GAO, AACE 38R-06
-- 💰 **EVM كامل**: SPI, CPI, EAC, ETC, VAC, TCPI
+- 💰 **EVM كامل**: SPI, CPI, EAC₁/EAC₂/EAC₃, VAC, TCPI
 - 🌐 **ثنائي اللغة**: عربي ⇄ إنجليزي مع RTL/LTR كامل
 - 📁 **Single-file HTML**: لا build، لا dependencies، يعمل offline
 
@@ -43,23 +44,38 @@ python3 -m http.server 8000
 
 ## 📦 الإصدار الحالي: v29.0.11
 
-### 🆕 ما الجديد في v29.0.10 (Phase 1 — Critical Fixes)
+### 🆕 ما الجديد في v29.0.11 (Phase 2 — Major Fixes) ⭐
 
 | # | الإصلاح | التأثير |
 |---|---------|---------|
-| 1.1 | إضافة **EHC + ECC** للشهادات | اكتمال الـ 6 شهادات الإلزامية (33% missing → 0%) |
-| 1.2 | احترام **pctType** في حساب actualPct | دقة كل الـ 5 طرق حساب |
-| 1.3 | **Network-based Longest Path** بـ topological DP | DCMA-04 / CPLI accuracy |
-| 1.4 | **Negative context filter** للشهادات | إزالة false positives |
+| 2.1 | **Multi-day holidays full coverage** | تتبع دقيق لإجازات سعودية متعددة الأيام (3-state: complete/partial/missing) |
+| 2.2 | **LOE activity exclusion** | استبعاد أنشطة Level of Effort من progress/EVM |
+| 2.3 | **EAC₁/EAC₂/EAC₃ + VAC + TCPI** | صيغ EVM كاملة وفقاً لـ PMI standard |
+| 2.4 | **Cost coverage warning** | تحذير عند ضعف cost loading (alert/warning/ok) |
 
-### 🔬 22/22 اختبار وظيفي ناجح
+### 📊 ما تم في v29.0.10 (Phase 1 — Critical Fixes)
+
+| # | الإصلاح |
+|---|---------|
+| 1.1 | إضافة EHC + ECC للشهادات الإلزامية |
+| 1.2 | احترام pctType في حساب actualPct |
+| 1.3 | Network-based Longest Path (topological DP) |
+| 1.4 | Negative context filter للشهادات |
+
+### 🔬 60/60 اختبار وظيفي ناجح
 
 ```
-✓ Parallel critical paths (50d + 60d) → returns 60 (was 110 — bug)
-✓ pctType="Manual" + pctComplete=0 → returns 0 (was 0.5 — bug)
-✓ "PAC Walkdown" → rejected as cert
-✓ "PAC Issuance" → accepted as cert
+✓ Parallel critical paths (50d + 60d) → 60 (was 110 — bug)
+✓ pctType="Manual" + pctComplete=0 → 0 (was 0.5 — bug)
+✓ Eid Al-Adha 1/5 days configured → "partial" (was "complete" — bug)
+✓ EAC₁/EAC₂/EAC₃ formulas verified with realistic scenarios
 ✓ EHC/ECC patterns match 10/10 cases correctly
+```
+
+تشغيل الـ tests:
+```bash
+node tests/phase1/test_v29_0_10.cjs
+node tests/phase2/test_phase2.cjs
 ```
 
 ---
@@ -67,21 +83,24 @@ python3 -m http.server 8000
 ## 📚 التوثيق
 
 - 📖 [**Architecture Overview**](docs/architecture/README.md) — معمارية النظام الكاملة
-- 🔍 [**Code Reviews**](docs/reviews/README.md) — تاريخ المراجعات (5 جولات)
+- 🇸🇦 [**NG SA Context**](docs/architecture/NG_SA_CONTEXT.md) — السياق الإلزامي
+- 🔍 [**Code Reviews**](docs/reviews/README.md) — تاريخ المراجعات (6 جولات)
 - ✅ [**Implementation Status**](docs/implementation/STATUS.md) — تقدم Phases 1/2/3
 - 📝 [**Changelog**](CHANGELOG.md) — سجل التغييرات
 - 🤝 [**Contributing**](CONTRIBUTING.md) — كيف تساهم/تراجع
+- 🤖 [**CLAUDE.md**](CLAUDE.md) — تعليمات Claude Code
+- 🧪 [**Tests**](tests/README.md) — كيفية تشغيل الاختبارات
 
 ---
 
 ## 🎯 النقاط الـ 6 الحرجة في الكود
 
-1. **التقويم الهجري** — Saudi calendar with Hijri 2024-2028
-2. **طرق حساب نسب الإنجاز** — 6 calculation methods
-3. **شهادات الإنجاز** — 6 mandatory certs detection
-4. **المسار الحرج** — Network-based longest path
+1. **التقويم الهجري** — Saudi calendar with Hijri 2024-2028 + multi-day coverage
+2. **طرق حساب نسب الإنجاز** — 5 calculation methods + LOE exclusion
+3. **شهادات الإنجاز** — 6 mandatory certs detection (TCC/PAC/FAC/RTR/EHC/ECC)
+4. **المسار الحرج** — Network-based topological DP longest path
 5. **Project Type Detection** — 10 NG SA project types
-6. **EVM Calculations** — SPI/CPI/EAC/ETC/VAC/TCPI
+6. **EVM Calculations** — SPI/CPI/EAC₁/EAC₂/EAC₃/VAC/TCPI
 
 ---
 
@@ -91,9 +110,22 @@ python3 -m http.server 8000
 |---------|---------|
 | **NG SA Project Manual** (Feb 2016) | ✅ |
 | **DCMA 14-Point Schedule Assessment** | ✅ |
-| **PMI Practice Standard for EVM** | ✅ Phase 2 |
+| **PMI Practice Standard for EVM** | ✅ (Phase 2) |
 | **GAO Schedule Assessment Guide** | ✅ |
 | **AACE 38R-06** | ✅ |
+
+---
+
+## 🚦 Production Readiness
+
+| Use Case | الحالة |
+|----------|:------:|
+| Internal use (Planning team) | ✅ READY |
+| Management reports | ✅ READY |
+| **Claim-grade reports** | 🟡 **Candidate** — needs validation on real SEC schedules |
+| **DCMA submission** | 🟡 **Candidate** — requires independent QA review |
+
+> 💡 **Note**: Phase 2 implements all PMI/DCMA-standard formulas with 60/60 functional tests. The "Candidate" status reflects best practice — independent validation on real cost-loaded schedules is recommended before formal claim submissions.
 
 ---
 
@@ -115,15 +147,16 @@ python3 -m http.server 8000
 
 ## 🤖 Multi-AI Review Process
 
-تم مراجعة الكود عبر 5 جولات بمشاركة 3 نماذج AI:
+تم مراجعة الكود عبر 6 جولات بمشاركة 3 نماذج AI:
 
 | الجولة | المراجع | الدقة | الملاحظات |
-|-------|---------|------|-----------|
+|-------|---------|:----:|-----------|
 | 1 | Claude | 88% | اكتشاف عام شامل |
-| 2 | Gemini | 25% | معظم الاقتراحات خاطئة |
+| 2 | Gemini | 25% | معظم الاقتراحات خاطئة ⚠️ |
 | 3 | ChatGPT | 85% | اكتشاف EHC/ECC missing ⭐ |
-| 4 | Claude | 96% | تصحيح أولويات |
+| 4 | Claude | 96% | تصحيح الأولويات |
 | 5 | ChatGPT | 94% | counter-points ذكية |
+| 6 | ChatGPT | 88% | code-split sync + test evidence |
 
 **الدرس**: التكامل بين Claude + ChatGPT أعلى جودة من أي مراجع منفرد.
 

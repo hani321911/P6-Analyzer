@@ -1,9 +1,33 @@
-// ═══════════════════════════════════════════════════════════════════
-// 03_ng_compliance_and_recovery.js — v29.0.10
-// Lines 3300 - 3500 (of 19822 total)
-// NG SA compliance rules
-// ═══════════════════════════════════════════════════════════════════
+// ════════════════════════════════════════════════════════════════════
+// 03_ng_compliance_and_recovery.js — v29.0.11 (Phase 1 + 2 implemented)
+// Lines 3301 - 3500 of 19935 total
+// NG SA compliance + recovery trigger
+// 
+// ⚠️ This file is a slice for code review purposes.
+// The source of truth is p6-analyzer.html.
+// Auto-generated on update of p6-analyzer.html.
+// ════════════════════════════════════════════════════════════════════
 
+      /\bAMI\b/i,
+      /\bsmart\s+meter\b/i,
+      /\brevenue\s+meter\b/i
+    ]
+  },
+  {
+    key: "fuel_conversion",
+    icon: "\u{1F504}",
+    name_en: "Fuel Conversion Project",
+    name_ar: "\u062A\u062D\u0648\u064A\u0644 \u0648\u0642\u0648\u062F",
+    palette: { from: "#ea580c", to: "#9333ea", accent: "#fbbf24", glow: "#ea580c40" },
+    patterns: [
+      /\bfuel\s+conversion\b/i,
+      /\boil[\s-]to[\s-]gas\b/i,
+      /\bfuel\s+switch\b/i,
+      /\bdual[\s-]fuel\b/i
+    ]
+  },
+  // ── INFRASTRUCTURE BY MEDIUM (water before power because "WATER TREATMENT PLANT
+  //    AT JEDDAH SOUTH POWER PLANT" should be water_treatment, not power_plant) ──
   {
     key: "desalination",
     icon: "\u{1F4A7}",
@@ -184,24 +208,3 @@
     icon: "\u{1F512}",
     name_en: "Cyber Security Project",
     name_ar: "\u0645\u0634\u0631\u0648\u0639 \u0627\u0644\u0623\u0645\u0646 \u0627\u0644\u0633\u064A\u0628\u0631\u0627\u0646\u064A",
-    palette: { from: "#1e40af", to: "#1e3a8a", accent: "#60a5fa", glow: "#1e40af40" },
-    patterns: [
-      /\bcyber[\s-]?security\b/i,
-      /\bIT\s+security\s+(?:project|upgrade|implementation)/i,
-      /\bOT\s+security\b/i,
-      /\bSCADA\s+security\b/i,
-      /\bICS\s+security\b/i,
-      /\bsecurity\s+(?:hardening|infrastructure|architecture)\b/i,
-      /\bIEC\s+62443\b/i,
-      /\bNERC\s+CIP\b/i,
-      /\bfirewall\s+(?:upgrade|deployment)\b/i,
-      /\bcyber\s+(?:defense|protection)\b/i
-    ]
-  },
-  {
-    key: "asset_replacement",
-    icon: "\u{1F504}",
-    name_en: "Asset Replacement (SS/UG/TL)",
-    name_ar: "\u0625\u062D\u0644\u0627\u0644 \u0627\u0644\u0623\u0635\u0648\u0644",
-    palette: { from: "#ea580c", to: "#f59e0b", accent: "#fef3c7", glow: "#ea580c40" },
-    patterns: [
