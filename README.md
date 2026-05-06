@@ -10,28 +10,6 @@
 
 ---
 
-
-## 🤖 AI-Assisted Quality Reviews
-
-This repository uses **multi-AI continuous review**:
-
-| AI | Role | Status |
-|----|------|:------:|
-| **Claude.ai** | Strategic planning + execution | ✅ Active |
-| **ChatGPT** (Round 7+) | Code review + verification | ✅ Active |
-| **Gemini Code Assist** | PR-level reviews | 🆕 Active |
-
-### How it works:
-1. Pull Request opened → Gemini auto-reviews in 5 minutes
-2. Use `/gemini review` to request manual review
-3. Use `/gemini summary` to get PR summary
-4. All AI reviews documented in `docs/reviews/`
-
-### Review configuration:
-- See `.gemini/config.yaml` for focus areas
-- See `.gemini/styleguide.md` for project-specific rules
-- See `docs/implementation/LESSONS_LEARNED.md` for rejected suggestions
-
 ## 📋 ما هذه الأداة؟
 
 أداة تحليل احترافية لجداول **Primavera P6** خاصة بمشاريع SEC / NG SA:
