@@ -25,12 +25,12 @@ This repository uses **multi-AI continuous review**:
 1. Pull Request opened → Gemini auto-reviews in 5 minutes
 2. Use `/gemini review` to request manual review
 3. Use `/gemini summary` to get PR summary
-4. All AI reviews documented in `docs/reviews/`
+4. All AI reviews documented in [`docs/reviews/`](docs/reviews/)
 
 ### Review configuration:
-- See `.gemini/config.yaml` for focus areas
-- See `.gemini/styleguide.md` for project-specific rules
-- See `docs/implementation/LESSONS_LEARNED.md` for rejected suggestions
+- See [`.gemini/config.yaml`](.gemini/config.yaml) for focus areas
+- See [`.gemini/styleguide.md`](.gemini/styleguide.md) for project-specific rules
+- See [`docs/implementation/LESSONS_LEARNED.md`](docs/implementation/LESSONS_LEARNED.md) for rejected suggestions
 
 ## 📋 ما هذه الأداة؟
 
