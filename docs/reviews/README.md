@@ -14,7 +14,8 @@
 | **4** | Claude (review of CG) | 2026-05-06 | 96% | تصحيح أولويات | meta-review |
 | **5** | ChatGPT (response) | 2026-05-06 | 94% | counter-points | إجماع |
 | **6** | ChatGPT (post-Phase 2) | 2026-05-06 | 88% | 8 | code-split + tests ⭐ |
-
+| **7** | ChatGPT (R7 follow-up) | 2026-05-06 | **100%** | 4 | اكتشاف R1+R2 real bugs ⭐⭐ |
+| **8** | Gemini (GitHub Connector) | 2026-05-06 | **100%** | 4 | clickable links + policy enforcement ⭐⭐ |
 ---
 
 ## 🎯 المنهجية

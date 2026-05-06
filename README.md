@@ -106,7 +106,7 @@ node tests/phase2/test_phase2.cjs
 
 - 📖 [**Architecture Overview**](docs/architecture/README.md) — معمارية النظام الكاملة
 - 🇸🇦 [**NG SA Context**](docs/architecture/NG_SA_CONTEXT.md) — السياق الإلزامي
-- 🔍 [**Code Reviews**](docs/reviews/README.md) — تاريخ المراجعات (6 جولات)
+- 🔍 [**Code Reviews**](docs/reviews/README.md) — تاريخ المراجعات (8 جولات)
 - ✅ [**Implementation Status**](docs/implementation/STATUS.md) — تقدم Phases 1/2/3
 - 📝 [**Changelog**](CHANGELOG.md) — سجل التغييرات
 - 🤝 [**Contributing**](CONTRIBUTING.md) — كيف تساهم/تراجع
@@ -169,18 +169,20 @@ node tests/phase2/test_phase2.cjs
 
 ## 🤖 Multi-AI Review Process
 
-تم مراجعة الكود عبر 6 جولات بمشاركة 3 نماذج AI:
+تم مراجعة الكود عبر 8 جولات بمشاركة 3 نماذج AI:
 
 | الجولة | المراجع | الدقة | الملاحظات |
 |-------|---------|:----:|-----------|
 | 1 | Claude | 88% | اكتشاف عام شامل |
-| 2 | Gemini | 25% | معظم الاقتراحات خاطئة ⚠️ |
+| 2 | Gemini (نسخ ولصق) | 25% | معظم الاقتراحات خاطئة ⚠️ |
 | 3 | ChatGPT | 85% | اكتشاف EHC/ECC missing ⭐ |
 | 4 | Claude | 96% | تصحيح الأولويات |
 | 5 | ChatGPT | 94% | counter-points ذكية |
 | 6 | ChatGPT | 88% | code-split sync + test evidence |
+| 7 | ChatGPT | 100% | اكتشاف bugs R1+R2 (real bugs) ⭐ |
+| 8 | Gemini (GitHub Connector) | 100% | clickable links + policy enforcement ⭐ |
 
-**الدرس**: التكامل بين Claude + ChatGPT أعلى جودة من أي مراجع منفرد.
+**الدرس**: التكامل بين Claude + ChatGPT + Gemini مع GitHub Connector أعلى جودة من أي مراجع منفرد. (Gemini تحوّل من 25% إلى 100% بعد إعطاء السياق الصحيح).
 
 ---
 
