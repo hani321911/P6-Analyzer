@@ -2,7 +2,7 @@
 
 > A single-file HTML application for analyzing **Primavera P6 schedules** (XML/XER) tailored for Saudi Electricity Company (SEC) / National Grid SA projects.
 
-[![Version](https://img.shields.io/badge/version-29.0.10-blue.svg)](releases/)
+[![Version](https://img.shields.io/badge/version-29.0.11-blue.svg)](releases/)
 [![License](https://img.shields.io/badge/license-Internal-orange.svg)]()
 [![Status](https://img.shields.io/badge/status-Active-success.svg)]()
 [![Reviews](https://img.shields.io/badge/multi--AI%20reviewed-Claude%20%2B%20ChatGPT%20%2B%20Gemini-purple.svg)](docs/reviews/)
@@ -41,7 +41,7 @@ python3 -m http.server 8000
 
 ---
 
-## 📦 الإصدار الحالي: v29.0.10
+## 📦 الإصدار الحالي: v29.0.11
 
 ### 🆕 ما الجديد في v29.0.10 (Phase 1 — Critical Fixes)
 
