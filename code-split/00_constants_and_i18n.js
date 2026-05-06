@@ -1,9 +1,8 @@
 // ════════════════════════════════════════════════════════════════════
-// 00_constants_and_i18n.js — v29.0.11 (Phase 1 + 2 implemented)
-// Lines 1 - 2030 of 19935 total
-// i18n strings + theme + constants
+// 00_constants_and_i18n.js — v29.0.11.1 (R1+R2 fixes from ChatGPT Round 7)
+// Lines 1 - 2030 (of 19957 total)
+// i18n strings + theme
 // 
-// ⚠️ This file is a slice for code review purposes.
 // The source of truth is p6-analyzer.html.
 // Auto-generated on update of p6-analyzer.html.
 // ════════════════════════════════════════════════════════════════════

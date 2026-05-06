@@ -1,13 +1,84 @@
 // ════════════════════════════════════════════════════════════════════
-// 13_executive_dashboard.js — v29.0.11 (Phase 1 + 2 implemented)
-// Lines 16501 - 17500 of 19935 total
-// ExecutiveDashboard with EHC/ECC + EVM cards (v29.0.11)
+// 13_executive_dashboard.js — v29.0.11.1 (R1+R2 fixes from ChatGPT Round 7)
+// Lines 16451 - 17500 (of 19957 total)
+// ExecutiveDashboard (Phase 1.1 EHC/ECC display)
 // 
-// ⚠️ This file is a slice for code review purposes.
 // The source of truth is p6-analyzer.html.
 // Auto-generated on update of p6-analyzer.html.
 // ════════════════════════════════════════════════════════════════════
 
+      const hasNegative = negativeContext.test(name) || negativeContextAr.test(name);
+      if (hasNegative && !hasCertKeyword) continue;
+
+      // STRICT: Require milestone OR (reasonable length AND cert keyword)
+      // This filters out 137 internal "TCC test" activities while keeping real "TCC Unit 1" milestones
+      if (!isMilestone && !hasCertKeyword) continue;
+      if (!isReasonableLength) continue;
+
+      const date = row.plannedFinish || row.plannedStart || row.forecastFinish;
+      if (date) {
+        allMatches.push({
+          actId: row.actId,
+          name: row.name,
+          date: date,
+          dateMs: new Date(date).getTime(),
+          isMilestone: isMilestone,
+          hasCertKeyword: hasCertKeyword
+        });
+      }
+    }
+    if (allMatches.length === 0) return null;
+    // Sort by date ascending
+    allMatches.sort((a, b) => a.dateMs - b.dateMs);
+    // Pick LATEST match (last unit's certificate = full project completion)
+    const latest = allMatches[allMatches.length - 1];
+    return {
+      actId: latest.actId,
+      name: latest.name,
+      date: latest.date,
+      count: allMatches.length,
+      allMatches: allMatches
+    };
+  };
+  // Word-boundary regex avoids false positives like "fac" inside "Facility"
+  const certPAC = findCertByRegex([
+    /\bPAC\b/i,
+    /\bPreliminary\s+Acceptance/i,
+    /\bProvisional\s+Acceptance/i
+  ]);
+  const certTCC = findCertByRegex([
+    /\bTCC\b/i,
+    /\bTechnical\s+Completion/i,
+    /\bTests?\s+on\s+Completion/i,
+    /\bMechanical\s+Completion/i
+  ]);
+  const certFAC = findCertByRegex([
+    /\bFAC\b/i,
+    /\bFinal\s+Acceptance/i
+  ]);
+  // v28.11: RTR (Reliability Test Run)
+  const certRTR = findCertByRegex([
+    /\bRTR\b/i,
+    /\bReliability\s+Test\s+Run\b/i,
+    /\bReliability\s+Run\b/i,
+    /\bReliability\s+Test\b/i,
+    /\bPerformance\s+Test\s+Run\b/i,
+    /\u0627\u062e\u062a\u0628\u0627\u0631 \u0627\u0644\u0645\u0648\u062b\u0648\u0642\u064a\u0629/,
+    /\u062a\u0634\u063a\u064a\u0644 \u062a\u062c\u0631\u064a\u0628\u064a/
+  ]);
+  // v29.0.10: EHC — Energization & Holding Commissioning (mandatory NG SA cert)
+  const certEHC = findCertByRegex([
+    /\bEHC\b/i,
+    /\bEnergi[sz]ation\s*(?:&|and)?\s*Holding\s*Commissioning\b/i,
+    /\bHolding\s*Commissioning\s*(?:Certificate|Completion)?\b/i,
+    /\u0634\u0647\u0627\u062f\u0629\s+(?:\u0625\u062f\u062e\u0627\u0644\s+\u0627\u0644\u0637\u0627\u0642\u0629|\u0627\u0644\u0625\u062d\u0645\u0627\u0621|\u0627\u0644\u062a\u0634\u063a\u064a\u0644\s+\u0627\u0644\u062a\u062d\u0636\u064a\u0631\u064a)/,
+    /\u0634\u0647\u0627\u062f\u0629\s+\u0627\u0644\u0637\u0627\u0642\u0629\s+\u0648(?:\u0627\u0644)?\u062a\u0634\u063a\u064a\u0644\s+\u0627\u0644\u062a\u062d\u0636\u064a\u0631\u064a/
+  ]);
+  // v29.0.10: ECC — Equipment Commercial Commissioning (mandatory NG SA cert)
+  const certECC = findCertByRegex([
+    /\bECC\b/i,
+    /\bEquipment\s+Commercial\s+Commissioning\b/i,
+    /\bCommercial\s+Commissioning\s+(?:Certificate|Completion)\b/i,
     /\u0634\u0647\u0627\u062f\u0629\s+\u0627\u0644\u062a\u0634\u063a\u064a\u0644\s+\u0627\u0644\u062a\u062c\u0627\u0631\u064a(?:\s+\u0644\u0644\u0645\u0639\u062f\u0627\u062a)?/,
     /\u0634\u0647\u0627\u062f\u0629\s+\u0627\u0644\u0627\u0633\u062a\u0644\u0627\u0645\s+\u0627\u0644\u062a\u062c\u0627\u0631\u064a/
   ]);
@@ -986,25 +1057,3 @@
         /* @__PURE__ */ React.createElement("div", { style: { color: "var(--textMuted)", fontSize: 13, lineHeight: 1.6, maxWidth: 600, margin: "0 auto" } },
           lang === "ar"
             ? "\u064A\u0639\u0631\u0636 \u0647\u0630\u0627 \u0627\u0644\u062A\u062D\u0644\u064A\u0644 \u0627\u0644\u062E\u0637\u0629 \u0627\u0644\u0645\u062E\u0637\u0651\u0637\u0629 \u0648\u062C\u0648\u062F\u062A\u0647\u0627. \u0644\u0639\u0631\u0636 \u0646\u0633\u0628\u0629 \u0627\u0644\u0625\u0646\u062C\u0627\u0632 \u0627\u0644\u0641\u0639\u0644\u064A\u0651\u060C \u064A\u064F\u0641\u0636\u0651\u0644 \u0631\u0641\u0639 \u0645\u0644\u0641 Progress \u0623\u064A\u0636\u0627\u064B."
-            : "This analysis shows the planned schedule and its quality. For actual progress and performance metrics, please also upload a Progress file."
-        )
-      ),
-      /* @__PURE__ */ React.createElement("div", { style: { display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16, marginTop: 20 } },
-        // Available column
-        /* @__PURE__ */ React.createElement("div", {
-          style: { background: "rgba(34,197,94,0.06)", border: "1px solid rgba(34,197,94,0.25)", borderRadius: 10, padding: "14px 16px" }
-        },
-          /* @__PURE__ */ React.createElement("div", { style: { color: "#22c55e", fontWeight: 700, fontSize: 12, marginBottom: 10, display: "flex", alignItems: "center", gap: 6 } },
-            "\u2705 ", lang === "ar" ? "\u0645\u062A\u0627\u062D \u0641\u064A \u0647\u0630\u0627 \u0627\u0644\u0648\u0636\u0639" : "Available in this mode"
-          ),
-          /* @__PURE__ */ React.createElement("ul", { style: { margin: 0, paddingInlineStart: 18, color: "var(--textSecondary)", fontSize: 11, lineHeight: 1.9 } },
-            (lang === "ar" ? [
-              "DCMA 14 Tests (\u0641\u062D\u0635 \u062C\u0648\u062F\u0629 \u0627\u0644\u062E\u0637\u0629)",
-              "S-Curve \u0627\u0644\u0645\u062E\u0637\u0651\u0637\u0629",
-              "Critical Path",
-              "Key Milestones (\u0627\u0644\u0645\u0639\u0627\u0644\u0645)",
-              "Open Ends \u0648 Loops",
-              "Negative Float",
-              "Schedule Density",
-              "Activity Codes",
-              "\u0628\u0646\u064A\u0629 \u0627\u0644\u0645\u0634\u0631\u0648\u0639 (WBS)",

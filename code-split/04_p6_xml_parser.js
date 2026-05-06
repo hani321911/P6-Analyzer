@@ -1,9 +1,8 @@
 // ════════════════════════════════════════════════════════════════════
-// 04_p6_xml_parser.js — v29.0.11 (Phase 1 + 2 implemented)
-// Lines 3501 - 6130 of 19935 total
-// parseP6XML + HoursPerDay logic
+// 04_p6_xml_parser.js — v29.0.11.1 (R1+R2 fixes from ChatGPT Round 7)
+// Lines 3501 - 6130 (of 19957 total)
+// parseP6XML + HoursPerDay
 // 
-// ⚠️ This file is a slice for code review purposes.
 // The source of truth is p6-analyzer.html.
 // Auto-generated on update of p6-analyzer.html.
 // ════════════════════════════════════════════════════════════════════

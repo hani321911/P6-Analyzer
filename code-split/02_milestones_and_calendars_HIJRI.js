@@ -1,9 +1,8 @@
 // ════════════════════════════════════════════════════════════════════
-// 02_milestones_and_calendars_HIJRI.js — v29.0.11 (Phase 1 + 2 implemented)
-// Lines 2797 - 3300 of 19935 total
-// Saudi holidays + auditCalendarSAHolidays (v29.0.11 multi-day coverage)
+// 02_milestones_and_calendars_HIJRI.js — v29.0.11.1 (R1+R2 fixes from ChatGPT Round 7)
+// Lines 2797 - 3299 (of 19957 total)
+// Saudi holidays + auditCalendarSAHolidays
 // 
-// ⚠️ This file is a slice for code review purposes.
 // The source of truth is p6-analyzer.html.
 // Auto-generated on update of p6-analyzer.html.
 // ════════════════════════════════════════════════════════════════════
@@ -511,4 +510,3 @@ const PROJECT_TYPE_RULES = [
     name_ar: "\u0646\u0638\u0627\u0645 \u0627\u0644\u0642\u064A\u0627\u0633",
     palette: { from: "#0d9488", to: "#0891b2", accent: "#a7f3d0", glow: "#0d948840" },
     patterns: [
-      /\bmetering\s+(?:system|station)\b/i,

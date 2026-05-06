@@ -1,13 +1,39 @@
 // ════════════════════════════════════════════════════════════════════
-// 06_analyze_main_RECOMMENDED.js — v29.0.11 (Phase 1 + 2 implemented)
-// Lines 6721 - 7980 of 19935 total
-// analyze() + getActualPctRatio + isLOEActivity + EAC1/2/3 + VAC + TCPI + cost coverage (v29.0.10/v29.0.11)
+// 06_analyze_main_RECOMMENDED.js — v29.0.11.1 (R1+R2 fixes from ChatGPT Round 7)
+// Lines 6711 - 7820 (of 19957 total)
+// analyze() + getActualPctRatio (R1 fix) + EVM
 // 
-// ⚠️ This file is a slice for code review purposes.
 // The source of truth is p6-analyzer.html.
 // Auto-generated on update of p6-analyzer.html.
 // ════════════════════════════════════════════════════════════════════
 
+  const acts = baseline.activities || [];
+  const wbsList = baseline.wbs || [];
+  const projectName = (baseline.project && (baseline.project.name || baseline.project.id)) || "";
+
+  // Build inputs for detectProjectType
+  const wbsNames = wbsList.map(w => w.name || w.code || "").filter(Boolean);
+  const topActivityNames = acts.slice(0, Math.min(50, acts.length))
+    .map(a => a.name || a.actName || "")
+    .filter(Boolean);
+
+  // Use existing detectProjectType
+  let projectType = null;
+  try {
+    const detected = detectProjectType(projectName, wbsNames, topActivityNames);
+    if (detected) {
+      projectType = {
+        key: detected.rule.key,
+        icon: detected.rule.icon,
+        name_en: detected.rule.name_en,
+        name_ar: detected.rule.name_ar,
+        palette: detected.rule.palette,
+        score: detected.score,
+        nameHit: detected.nameHit,
+        confidence: Math.min(100, Math.round(detected.score * 5))
+      };
+    }
+  } catch (e) {
     projectType = null;
   }
 
@@ -217,18 +243,23 @@ function analyze(baseline, progress = null, revisedBL = null) {
   // Issue 1: || treats 0 as falsy → jumps to next field even when 0 is the correct value
   // Issue 2: Doesn't respect pctType — Manual activity with auto-calculated durationPct gives wrong result
   // Fix: Switch on pctType, use ?? (nullish coalescing) for proper fallback
+  // v29.0.10 (Phase 2.2): Detect Level of Effort (LOE) activities
   const getActualPctRatio = (p) => {
     if (!p) return 0;
     const type = (p.pctType || "").toLowerCase();
     let raw;
+    // v29.0.11.1 (R1 fix per ChatGPT Round 7): Each pctType branch falls back
+    // to other available fields if the primary field is null/undefined.
+    // Previously, if pctType="Physical" but physicalPct=undefined, returned 0.
+    // Now: prefers primary, but falls back gracefully.
     if (type === "physical") {
-      raw = p.physicalPct;
+      raw = p.physicalPct ?? p.pctComplete ?? p.durationPct ?? p.unitsPct ?? 0;
     } else if (type === "duration") {
-      raw = p.durationPct;
+      raw = p.durationPct ?? p.pctComplete ?? p.physicalPct ?? p.unitsPct ?? 0;
     } else if (type === "units") {
-      raw = p.unitsPct;
+      raw = p.unitsPct ?? p.pctComplete ?? p.physicalPct ?? p.durationPct ?? 0;
     } else if (type === "manual") {
-      raw = p.pctComplete;
+      raw = p.pctComplete ?? p.physicalPct ?? p.durationPct ?? p.unitsPct ?? 0;
     } else {
       // Unknown/missing pctType: fall back to first available, preserve 0 with ??
       raw = p.pctComplete ?? p.durationPct ?? p.physicalPct ?? p.unitsPct ?? 0;
@@ -1086,185 +1117,3 @@ function HelpBanner({ title, body, onDismiss, lang }) {
       }
     },
     "\u2715"
-  ));
-}
-// ═══════════════════════════════════════════════════════════════════
-// v28.1: EduBanner — Educational expandable explanation component
-// ═══════════════════════════════════════════════════════════════════
-function EduBanner({ eduKey, lang, color = "#0ea5e9" }) {
-  const [open, setOpen] = useState(false);
-  const data = EDU_DATA[eduKey];
-  if (!data) return null;
-  const d = data[lang] || data.en;
-  return /* @__PURE__ */ React.createElement("div", {
-    style: {
-      background: "var(--bgCard)",
-      border: "1px solid var(--border)",
-      borderInlineStart: "3px solid " + color,
-      borderRadius: 10,
-      marginBottom: 12,
-      overflow: "hidden",
-      transition: "all .2s"
-    }
-  },
-    // Header (always visible)
-    /* @__PURE__ */ React.createElement("div", {
-      onClick: () => setOpen(!open),
-      style: {
-        padding: "10px 14px",
-        display: "flex",
-        gap: 10,
-        alignItems: "center",
-        cursor: "pointer",
-        userSelect: "none"
-      }
-    },
-      /* @__PURE__ */ React.createElement("div", { style: { fontSize: 18 } }, data.icon || "\u{1F4DA}"),
-      /* @__PURE__ */ React.createElement("div", { style: { flex: 1, minWidth: 0 } },
-        /* @__PURE__ */ React.createElement("div", {
-          style: { fontSize: 12, fontWeight: 700, color, marginBottom: 2, fontFamily: "'JetBrains Mono',monospace" }
-        }, d.title),
-        /* @__PURE__ */ React.createElement("div", {
-          style: { fontSize: 11, color: "var(--textSecondary)", lineHeight: 1.5 }
-        }, d.brief)
-      ),
-      /* @__PURE__ */ React.createElement("button", {
-        style: {
-          background: open ? color : "transparent",
-          color: open ? "#fff" : color,
-          border: "1px solid " + color,
-          borderRadius: 6,
-          padding: "5px 12px",
-          fontSize: 11,
-          fontWeight: 600,
-          cursor: "pointer",
-          fontFamily: "'JetBrains Mono',monospace",
-          whiteSpace: "nowrap"
-        }
-      }, (open ? "\u25BC " : "\u25B6 ") + (lang === "ar" ? (open ? "\u0625\u062e\u0641\u0627\u0621" : "\u0634\u0631\u062d \u0623\u0643\u062b\u0631") : (open ? "Hide" : "Learn More")))
-    ),
-    // Expanded content
-    open && /* @__PURE__ */ React.createElement("div", {
-      style: {
-        padding: "14px 18px 16px 18px",
-        borderTop: "1px solid var(--border)",
-        background: color + "08",
-        fontSize: 11.5,
-        color: "var(--textSecondary)",
-        lineHeight: 1.7
-      }
-    },
-      d.whatIs && /* @__PURE__ */ React.createElement("div", { style: { marginBottom: 12 } },
-        /* @__PURE__ */ React.createElement("div", { style: { color, fontWeight: 700, marginBottom: 4, fontSize: 12 } },
-          (lang === "ar" ? "\u{1F4D6} \u0645\u0627 \u0647\u064a\u061f" : "\u{1F4D6} What is it?")
-        ),
-        /* @__PURE__ */ React.createElement("div", null, d.whatIs)
-      ),
-      d.howWorks && /* @__PURE__ */ React.createElement("div", { style: { marginBottom: 12 } },
-        /* @__PURE__ */ React.createElement("div", { style: { color, fontWeight: 700, marginBottom: 4, fontSize: 12 } },
-          (lang === "ar" ? "\u2699\uFE0F \u0643\u064a\u0641 \u062a\u064f\u062d\u0633\u0628\u061f" : "\u2699\uFE0F How is it calculated?")
-        ),
-        /* @__PURE__ */ React.createElement("div", null, d.howWorks)
-      ),
-      d.formula && /* @__PURE__ */ React.createElement("div", { style: { marginBottom: 12 } },
-        /* @__PURE__ */ React.createElement("div", { style: { color, fontWeight: 700, marginBottom: 4, fontSize: 12 } },
-          (lang === "ar" ? "\u{1F4D0} \u0627\u0644\u0635\u064a\u063a\u0629" : "\u{1F4D0} Formula")
-        ),
-        /* @__PURE__ */ React.createElement("div", {
-          style: { background: "#0f172a", color: "#a5f3fc", padding: "8px 12px", borderRadius: 6, fontFamily: "'JetBrains Mono',monospace", fontSize: 11, whiteSpace: "pre-wrap" }
-        }, d.formula)
-      ),
-      d.howRead && /* @__PURE__ */ React.createElement("div", { style: { marginBottom: 12 } },
-        /* @__PURE__ */ React.createElement("div", { style: { color, fontWeight: 700, marginBottom: 4, fontSize: 12 } },
-          (lang === "ar" ? "\u{1F50D} \u0643\u064a\u0641 \u062a\u0641\u0633\u0651\u0631 \u0627\u0644\u0646\u062a\u0627\u0626\u062c\u061f" : "\u{1F50D} How to interpret?")
-        ),
-        /* @__PURE__ */ React.createElement("div", { style: { whiteSpace: "pre-wrap" } }, d.howRead)
-      ),
-      d.whenUse && /* @__PURE__ */ React.createElement("div", { style: { marginBottom: 12 } },
-        /* @__PURE__ */ React.createElement("div", { style: { color, fontWeight: 700, marginBottom: 4, fontSize: 12 } },
-          (lang === "ar" ? "\u{1F3D7}\uFE0F \u0623\u0646\u0648\u0627\u0639 \u0627\u0644\u0645\u0634\u0627\u0631\u064a\u0639 \u0627\u0644\u0645\u0633\u062a\u062e\u062f\u0645\u0629 \u0641\u064a\u0647\u0627" : "\u{1F3D7}\uFE0F Where is it used?")
-        ),
-        /* @__PURE__ */ React.createElement("div", { style: { whiteSpace: "pre-wrap" } }, d.whenUse)
-      ),
-      d.tip && /* @__PURE__ */ React.createElement("div", {
-        style: {
-          background: "#fbbf2415",
-          border: "1px solid #fbbf2444",
-          borderRadius: 6,
-          padding: "8px 12px",
-          marginTop: 6
-        }
-      },
-        /* @__PURE__ */ React.createElement("strong", { style: { color: "#fbbf24" } }, "\u{1F4A1} " + (lang === "ar" ? "\u0646\u0635\u064a\u062d\u0629\u061a " : "Tip: ")),
-        d.tip
-      )
-    )
-  );
-}
-// ═══════════════════════════════════════════════════════════════════
-// v28.1: Educational data for all features
-// ═══════════════════════════════════════════════════════════════════
-const EDU_DATA = {
-  // ── Tabs ──
-  exec: {
-    icon: "\u{1F3AF}",
-    en: {
-      title: "Executive Summary",
-      brief: "High-level KPIs of the project: progress, variance, and forecast finish.",
-      whatIs: "A consolidated dashboard showing the most important schedule indicators in one view: planned vs actual progress, schedule variance, and forecast completion.",
-      howWorks: "Compares your Baseline (or Revised) plan against the latest Progress update at the data date. Computes overall %complete using your selected method (cost/units/duration/count).",
-      howRead: "\u2022 SPI \u2265 1.0: project on or ahead of schedule\n\u2022 SPI 0.95-1.0: minor delay (acceptable)\n\u2022 SPI 0.85-0.95: warning, recovery action needed\n\u2022 SPI < 0.85: critical, escalate to management",
-      whenUse: "Every project, every update cycle. Used by:\n\u2022 Project Managers for monthly steering committee\n\u2022 Owners/Clients for status meetings\n\u2022 Contractors for self-monitoring",
-      tip: "If forecast finish exceeds baseline finish by >5%, prepare a recovery plan immediately."
-    },
-    ar: {
-      title: "\u0627\u0644\u0645\u0644\u062e\u0651\u0635 \u0627\u0644\u062a\u0646\u0641\u064a\u0630\u064a",
-      brief: "\u0645\u0624\u0634\u0631\u0627\u062a \u0627\u0644\u0623\u062f\u0627\u0621 \u0639\u0627\u0644\u064a\u0629 \u0627\u0644\u0645\u0633\u062a\u0648\u0649: \u0627\u0644\u062a\u0642\u062f\u0651\u0645\u060c \u0627\u0644\u0627\u0646\u062d\u0631\u0627\u0641\u060c \u0648\u062a\u0648\u0642\u0651\u0639 \u0627\u0644\u0625\u0646\u062c\u0627\u0632.",
-      whatIs: "\u0644\u0648\u062d\u0629 \u0645\u062c\u0645\u0651\u0639\u0629 \u062a\u0639\u0631\u0636 \u0623\u0647\u0645 \u0645\u0624\u0634\u0631\u0627\u062a \u0627\u0644\u062c\u062f\u0648\u0644 \u0641\u064a \u0645\u0643\u0627\u0646 \u0648\u0627\u062d\u062f: \u0627\u0644\u062a\u0642\u062f\u0651\u0645 \u0627\u0644\u0645\u062e\u0637\u0637 \u0645\u0642\u0627\u0628\u0644 \u0627\u0644\u0641\u0639\u0644\u064a\u060c \u0648\u0627\u0644\u0627\u0646\u062d\u0631\u0627\u0641 \u0627\u0644\u0632\u0645\u0646\u064a\u060c \u0648\u062a\u0627\u0631\u064a\u062e \u0627\u0644\u0625\u0646\u062c\u0627\u0632 \u0627\u0644\u0645\u062a\u0648\u0642\u0639.",
-      howWorks: "\u064a\u0642\u0627\u0631\u0646 \u062e\u0637\u0629 Baseline (\u0623\u0648 Revised) \u0645\u0639 \u0622\u062e\u0631 \u062a\u062d\u062f\u064a\u062b Progress \u0639\u0646\u062f \u062a\u0627\u0631\u064a\u062e \u0627\u0644\u0628\u064a\u0627\u0646\u0627\u062a. \u064a\u062d\u0633\u0628 \u0625\u062c\u0645\u0627\u0644\u064a \u0627\u0644\u062a\u0642\u062f\u0651\u0645 % \u0628\u0637\u0631\u064a\u0642\u062a\u0643 \u0627\u0644\u0645\u062e\u062a\u0627\u0631\u0629 (\u062a\u0643\u0644\u0641\u0629/\u0648\u062d\u062f\u0627\u062a/\u0645\u062f\u0651\u0629/\u0639\u062f\u062f).",
-      howRead: "\u2022 SPI \u2265 1.0: \u0627\u0644\u0645\u0634\u0631\u0648\u0639 \u0641\u064a \u0627\u0644\u0645\u0648\u0639\u062f \u0623\u0648 \u0645\u062a\u0642\u062f\u0645\n\u2022 SPI 0.95-1.0: \u062a\u0623\u062e\u0651\u0631 \u0628\u0633\u064a\u0637 (\u0645\u0642\u0628\u0648\u0644)\n\u2022 SPI 0.85-0.95: \u062a\u062d\u0630\u064a\u0631\u060c \u064a\u0644\u0632\u0645 \u062e\u0637\u0629 \u0627\u0633\u062a\u0631\u062f\u0627\u062f\n\u2022 SPI < 0.85: \u062d\u0631\u062c\u060c \u062a\u0635\u0639\u064a\u062f \u0644\u0644\u0625\u062f\u0627\u0631\u0629",
-      whenUse: "\u0643\u0644 \u0645\u0634\u0631\u0648\u0639\u060c \u0643\u0644 \u062f\u0648\u0631\u0629 \u062a\u062d\u062f\u064a\u062b. \u064a\u0633\u062a\u062e\u062f\u0645\u0647:\n\u2022 \u0645\u062f\u064a\u0631\u0648 \u0627\u0644\u0645\u0634\u0627\u0631\u064a\u0639 \u0644\u0627\u062c\u062a\u0645\u0627\u0639\u0627\u062a \u0627\u0644\u0644\u062c\u0646\u0629 \u0627\u0644\u062a\u0648\u062c\u064a\u0647\u064a\u0629\n\u2022 \u0627\u0644\u0645\u0644\u0627\u0643/\u0627\u0644\u0639\u0645\u0644\u0627\u0621 \u0644\u0627\u062c\u062a\u0645\u0627\u0639\u0627\u062a \u0627\u0644\u062d\u0627\u0644\u0629\n\u2022 \u0627\u0644\u0645\u0642\u0627\u0648\u0644\u0648\u0646 \u0644\u0644\u0645\u062a\u0627\u0628\u0639\u0629 \u0627\u0644\u0630\u0627\u062a\u064a\u0629",
-      tip: "\u0625\u0630\u0627 \u062a\u062c\u0627\u0648\u0632 \u062a\u0627\u0631\u064a\u062e \u0627\u0644\u0625\u0646\u062c\u0627\u0632 \u0627\u0644\u0645\u062a\u0648\u0642\u0651\u0639 \u062a\u0627\u0631\u064a\u062e Baseline \u0628\u0623\u0643\u062b\u0631 \u0645\u0646 5%\u060c \u062c\u0647\u0651\u0632 \u062e\u0637\u0629 \u0627\u0633\u062a\u0631\u062f\u0627\u062f \u0641\u0648\u0631\u0627\u064b."
-    }
-  },
-  methods: {
-    icon: "\u{1F52C}",
-    en: {
-      title: "Multi-Method Analysis (Cost/Units/Duration/Count)",
-      brief: "Compare progress measured by 4 different methods to expose distortions.",
-      whatIs: "Calculates project %complete using FOUR different weighting methods simultaneously, revealing inconsistencies between schedule and physical progress.",
-      howWorks: "Each activity contributes to total progress weighted by:\n\u2022 Cost: \u03a3(actual cost) / \u03a3(BAC)\n\u2022 Units: \u03a3(actual units) / \u03a3(planned units)\n\u2022 Duration: \u03a3(elapsed days) / \u03a3(total days)\n\u2022 Count: completed activities / total activities",
-      howRead: "Wide gap between methods (>10%) indicates risk:\n\u2022 Count > Cost: front-loaded easy work, expensive items pending\n\u2022 Cost > Count: heavy spending on few activities (overruns?)\n\u2022 Duration > Units: time burnt without physical output\n\u2022 All 4 close: healthy schedule",
-      whenUse: "\u2022 Construction projects (verify physical vs financial progress)\n\u2022 EPC contracts (catch front-loaded billing)\n\u2022 Owner/Consultant verification (independent vs contractor claim)\n\u2022 Disputed claims and forensic schedule analysis",
-      tip: "If 'Cost' progress is much higher than 'Count' progress, the contractor may be billing for stockpiled materials before installation \u2014 verify physically."
-    },
-    ar: {
-      title: "\u062a\u062d\u0644\u064a\u0644 \u0645\u062a\u0639\u062f\u062f \u0627\u0644\u0637\u0631\u0642 (\u062a\u0643\u0644\u0641\u0629/\u0648\u062d\u062f\u0627\u062a/\u0645\u062f\u0651\u0629/\u0639\u062f\u062f)",
-      brief: "\u0645\u0642\u0627\u0631\u0646\u0629 \u0627\u0644\u062a\u0642\u062f\u0651\u0645 \u0628\u0623\u0631\u0628\u0639 \u0637\u0631\u0642 \u0645\u062e\u062a\u0644\u0641\u0629 \u0644\u0643\u0634\u0641 \u0627\u0644\u062a\u0634\u0648\u0651\u0647\u0627\u062a.",
-      whatIs: "\u064a\u062d\u0633\u0628 \u0646\u0633\u0628\u0629 \u0625\u0646\u062c\u0627\u0632 \u0627\u0644\u0645\u0634\u0631\u0648\u0639 \u0628\u0623\u0631\u0628\u0639 \u0637\u0631\u0642 \u0648\u0632\u0646 \u0645\u062e\u062a\u0644\u0641\u0629 \u0641\u064a \u0646\u0641\u0633 \u0627\u0644\u0648\u0642\u062a\u060c \u0644\u0643\u0634\u0641 \u0627\u0644\u062a\u0646\u0627\u0642\u0636\u0627\u062a \u0628\u064a\u0646 \u0627\u0644\u062c\u062f\u0648\u0644 \u0648\u0627\u0644\u062a\u0642\u062f\u0651\u0645 \u0627\u0644\u0641\u0639\u0644\u064a.",
-      howWorks: "\u0643\u0644 \u0646\u0634\u0627\u0637 \u064a\u0633\u0627\u0647\u0645 \u0641\u064a \u0627\u0644\u0625\u062c\u0645\u0627\u0644\u064a \u0628\u0648\u0632\u0646:\n\u2022 \u062a\u0643\u0644\u0641\u0629: \u03a3(\u062a\u0643\u0644\u0641\u0629 \u0641\u0639\u0644\u064a\u0629) / \u03a3(BAC)\n\u2022 \u0648\u062d\u062f\u0627\u062a: \u03a3(\u0648\u062d\u062f\u0627\u062a \u0641\u0639\u0644\u064a\u0629) / \u03a3(\u0645\u062e\u0637\u0637\u0629)\n\u2022 \u0645\u062f\u0651\u0629: \u03a3(\u0623\u064a\u0627\u0645 \u0645\u0646\u0642\u0636\u064a\u0629) / \u03a3(\u0625\u062c\u0645\u0627\u0644\u064a)\n\u2022 \u0639\u062f\u062f: \u0623\u0646\u0634\u0637\u0629 \u0645\u0643\u062a\u0645\u0644\u0629 / \u0627\u0644\u0625\u062c\u0645\u0627\u0644\u064a",
-      howRead: "\u0627\u0644\u0641\u0631\u0642 \u0627\u0644\u0643\u0628\u064a\u0631 (>10%) \u064a\u062f\u0644 \u0639\u0644\u0649 \u0645\u062e\u0627\u0637\u0631:\n\u2022 \u0639\u062f\u062f > \u062a\u0643\u0644\u0641\u0629: \u0625\u0646\u062c\u0627\u0632 \u0623\u0639\u0645\u0627\u0644 \u0633\u0647\u0644\u0629 \u0623\u0648\u0644\u0627\u064b \u0648\u0627\u0644\u0628\u0627\u0642\u064a \u063a\u0627\u0644\u064a\n\u2022 \u062a\u0643\u0644\u0641\u0629 > \u0639\u062f\u062f: \u0635\u0631\u0641 \u0643\u0628\u064a\u0631 \u0639\u0644\u0649 \u0623\u0646\u0634\u0637\u0629 \u0642\u0644\u064a\u0644\u0629 (\u062a\u062c\u0627\u0648\u0632\u0627\u062a\u061f)\n\u2022 \u0645\u062f\u0651\u0629 > \u0648\u062d\u062f\u0627\u062a: \u0627\u0633\u062a\u0647\u0644\u0627\u0643 \u0648\u0642\u062a \u062f\u0648\u0646 \u0625\u0646\u062a\u0627\u062c \u0641\u0639\u0644\u064a\n\u2022 \u0627\u0644\u0623\u0631\u0628\u0639\u0629 \u0645\u062a\u0642\u0627\u0631\u0628\u0629: \u062c\u062f\u0648\u0644 \u0633\u0644\u064a\u0645",
-      whenUse: "\u2022 \u0645\u0634\u0627\u0631\u064a\u0639 \u0627\u0644\u0625\u0646\u0634\u0627\u0621\u0627\u062a (\u062a\u062d\u0642\u0651\u0642 \u0641\u064a\u0632\u064a\u0627\u0626\u064a/\u0645\u0627\u0644\u064a)\n\u2022 \u0639\u0642\u0648\u062f EPC (\u0643\u0634\u0641 \u0627\u0644\u0641\u0648\u062a\u0631\u0629 \u0627\u0644\u0645\u0628\u0643\u0631\u0629)\n\u2022 \u062a\u062d\u0642\u0651\u0642 \u0627\u0644\u0645\u0627\u0644\u0643/\u0627\u0644\u0627\u0633\u062a\u0634\u0627\u0631\u064a (\u0645\u0633\u062a\u0642\u0644 \u0639\u0646 \u0627\u0644\u0645\u0642\u0627\u0648\u0644)\n\u2022 \u0627\u0644\u0645\u0637\u0627\u0644\u0628\u0627\u062a \u0627\u0644\u0645\u062a\u0646\u0627\u0632\u0639 \u0639\u0644\u064a\u0647\u0627 \u0648\u0627\u0644\u062a\u062d\u0644\u064a\u0644 \u0627\u0644\u062c\u0646\u0627\u0626\u064a \u0644\u0644\u062c\u062f\u0627\u0648\u0644",
-      tip: "\u0625\u0630\u0627 \u0643\u0627\u0646 \u0627\u0644\u062a\u0642\u062f\u0651\u0645 \u0628\u0627\u0644\u062a\u0643\u0644\u0641\u0629 \u0623\u0639\u0644\u0649 \u0628\u0643\u062b\u064a\u0631 \u0645\u0646 \u0627\u0644\u062a\u0642\u062f\u0651\u0645 \u0628\u0627\u0644\u0639\u062f\u062f\u060c \u0631\u0628\u0651\u0645\u0627 \u064a\u0641\u0648\u062a\u0631 \u0627\u0644\u0645\u0642\u0627\u0648\u0644 \u0639\u0644\u0649 \u0645\u0648\u0627\u062f \u0645\u062e\u0632\u0651\u0646\u0629 \u0642\u0628\u0644 \u062a\u0631\u0643\u064a\u0628\u0647\u0627 \u2014 \u062a\u0623\u0643\u0651\u062f \u0641\u064a\u0632\u064a\u0627\u0626\u064a\u0627\u064b."
-    }
-  },
-  scurve: {
-    icon: "\u{1F4C8}",
-    en: {
-      title: "S-Curve",
-      brief: "Cumulative progress curve over time \u2014 the universal language of project status.",
-      whatIs: "A graphical representation of cumulative progress (Y-axis) over time (X-axis). Called 'S-Curve' because typical projects start slow, accelerate in the middle, and slow down at completion \u2014 forming an S shape.",
-      howWorks: "Plots three curves:\n\u2022 Planned (Baseline): cumulative planned progress at each date\n\u2022 Earned/Actual: cumulative earned/actual progress at each date\n\u2022 Forecast: projected completion based on current trend",
-      howRead: "\u2022 Actual ABOVE Planned: ahead of schedule (good)\n\u2022 Actual BELOW Planned: behind schedule (concerning)\n\u2022 Gap widening: deteriorating performance\n\u2022 Curves crossing: recovery achieved\n\u2022 Flat actual line: project stalled",
-      whenUse: "\u2022 Universal \u2014 every construction, EPC, IT, and engineering project\n\u2022 Owner reporting (monthly progress reports)\n\u2022 Cash flow forecasting\n\u2022 Performance trending and recovery analysis\n\u2022 Banking/finance for milestone payments",
-      tip: "An S-Curve that bends downward (concave) midway means resources are leaving the project. Investigate immediately."
-    },
-    ar: {
-      title: "\u0645\u0646\u062d\u0646\u0649 S",
-      brief: "\u0645\u0646\u062d\u0646\u0649 \u0627\u0644\u062a\u0642\u062f\u0651\u0645 \u0627\u0644\u062a\u0631\u0627\u0643\u0645\u064a \u0639\u0628\u0631 \u0627\u0644\u0632\u0645\u0646 \u2014 \u0627\u0644\u0644\u063a\u0629 \u0627\u0644\u0639\u0627\u0644\u0645\u064a\u0629 \u0644\u062d\u0627\u0644\u0629 \u0627\u0644\u0645\u0634\u0631\u0648\u0639.",
-      whatIs: "\u062a\u0645\u062b\u064a\u0644 \u0628\u064a\u0627\u0646\u064a \u0644\u0644\u062a\u0642\u062f\u0651\u0645 \u0627\u0644\u062a\u0631\u0627\u0643\u0645\u064a (\u0627\u0644\u0645\u062d\u0648\u0631 Y) \u0639\u0628\u0631 \u0627\u0644\u0632\u0645\u0646 (\u0627\u0644\u0645\u062d\u0648\u0631 X). \u0633\u064f\u0645\u0651\u064a 'S-Curve' \u0644\u0623\u0646 \u0627\u0644\u0645\u0634\u0627\u0631\u064a\u0639 \u0639\u0627\u062f\u0629\u064b \u062a\u0628\u062f\u0623 \u0628\u0628\u0637\u0621\u060c \u062b\u0645 \u062a\u062a\u0633\u0627\u0631\u0639\u060c \u062b\u0645 \u062a\u0628\u0637\u0626 \u0641\u064a \u0627\u0644\u0646\u0647\u0627\u064a\u0629 \u2014 \u0645\u0643\u0648\u0651\u0646\u0629 \u0634\u0643\u0644 S.",
-      howWorks: "\u064a\u0631\u0633\u0645 \u062b\u0644\u0627\u062b\u0629 \u0645\u0646\u062d\u0646\u064a\u0627\u062a:\n\u2022 \u0627\u0644\u0645\u062e\u0637\u0651\u0637 (Baseline): \u0627\u0644\u062a\u0642\u062f\u0651\u0645 \u0627\u0644\u062a\u0631\u0627\u0643\u0645\u064a \u0627\u0644\u0645\u062e\u0637\u0651\u0637\n\u2022 \u0627\u0644\u0645\u0643\u062a\u0633\u0628/\u0627\u0644\u0641\u0639\u0644\u064a: \u0627\u0644\u062a\u0642\u062f\u0651\u0645 \u0627\u0644\u062a\u0631\u0627\u0643\u0645\u064a \u0627\u0644\u0641\u0639\u0644\u064a\n\u2022 \u0627\u0644\u062a\u0648\u0642\u0651\u0639: \u0627\u0644\u0625\u0646\u062c\u0627\u0632 \u0627\u0644\u0645\u062a\u0648\u0642\u0651\u0639 \u0628\u0646\u0627\u0621\u064b \u0639\u0644\u0649 \u0627\u0644\u0623\u062f\u0627\u0621 \u0627\u0644\u062d\u0627\u0644\u064a",
-      howRead: "\u2022 \u0627\u0644\u0641\u0639\u0644\u064a \u0641\u0648\u0642 \u0627\u0644\u0645\u062e\u0637\u0651\u0637: \u0645\u062a\u0642\u062f\u0651\u0645 (\u062c\u064a\u062f)\n\u2022 \u0627\u0644\u0641\u0639\u0644\u064a \u062a\u062d\u062a \u0627\u0644\u0645\u062e\u0637\u0651\u0637: \u0645\u062a\u0623\u062e\u0631 (\u0645\u0642\u0644\u0642)\n\u2022 \u0627\u062a\u0633\u0627\u0639 \u0627\u0644\u0641\u062c\u0648\u0629: \u0623\u062f\u0627\u0621 \u0645\u062a\u062f\u0647\u0648\u0631\n\u2022 \u062a\u0642\u0627\u0637\u0639 \u0627\u0644\u0645\u0646\u062d\u0646\u064a\u0627\u062a: \u062a\u062d\u0642\u0651\u0642 \u0627\u0633\u062a\u0631\u062f\u0627\u062f\n\u2022 \u062e\u0637 \u0641\u0639\u0644\u064a \u0623\u0641\u0642\u064a: \u0627\u0644\u0645\u0634\u0631\u0648\u0639 \u0645\u062a\u0648\u0642\u0651\u0641",
-      whenUse: "\u2022 \u0639\u0627\u0644\u0645\u064a \u2014 \u0643\u0644 \u0645\u0634\u0627\u0631\u064a\u0639 \u0627\u0644\u0625\u0646\u0634\u0627\u0621\u0627\u062a\u060c EPC\u060c IT\u060c \u0627\u0644\u0647\u0646\u062f\u0633\u064a\u0629\n\u2022 \u062a\u0642\u0627\u0631\u064a\u0631 \u0627\u0644\u0645\u0627\u0644\u0643 (\u0627\u0644\u062a\u0642\u0627\u0631\u064a\u0631 \u0627\u0644\u0634\u0647\u0631\u064a\u0629)\n\u2022 \u062a\u0648\u0642\u0651\u0639\u0627\u062a \u0627\u0644\u062a\u062f\u0641\u0651\u0642 \u0627\u0644\u0646\u0642\u062f\u064a\n\u2022 \u062a\u062d\u0644\u064a\u0644 \u0627\u0644\u0623\u062f\u0627\u0621 \u0648\u0627\u0644\u0627\u0633\u062a\u0631\u062f\u0627\u062f\n\u2022 \u0627\u0644\u0628\u0646\u0648\u0643/\u0627\u0644\u062a\u0645\u0648\u064a\u0644 \u0644\u062f\u0641\u0639\u0627\u062a \u0627\u0644\u0645\u0631\u0627\u062d\u0644",
-      tip: "\u0645\u0646\u062d\u0646\u0649 S \u064a\u0646\u062d\u0646\u064a \u0644\u0644\u0623\u0633\u0641\u0644 \u0641\u064a \u0627\u0644\u0648\u0633\u0637 \u064a\u0639\u0646\u064a \u0623\u0646 \u0627\u0644\u0645\u0648\u0627\u0631\u062f \u062a\u063a\u0627\u062f\u0631 \u0627\u0644\u0645\u0634\u0631\u0648\u0639. \u062a\u062d\u0642\u0651\u0642 \u0641\u0648\u0631\u0627\u064b."
-    }

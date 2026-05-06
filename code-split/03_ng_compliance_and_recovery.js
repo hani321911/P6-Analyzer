@@ -1,13 +1,13 @@
 // ════════════════════════════════════════════════════════════════════
-// 03_ng_compliance_and_recovery.js — v29.0.11 (Phase 1 + 2 implemented)
-// Lines 3301 - 3500 of 19935 total
-// NG SA compliance + recovery trigger
+// 03_ng_compliance_and_recovery.js — v29.0.11.1 (R1+R2 fixes from ChatGPT Round 7)
+// Lines 3300 - 3500 (of 19957 total)
+// NG SA compliance rules
 // 
-// ⚠️ This file is a slice for code review purposes.
 // The source of truth is p6-analyzer.html.
 // Auto-generated on update of p6-analyzer.html.
 // ════════════════════════════════════════════════════════════════════
 
+      /\bmetering\s+(?:system|station)\b/i,
       /\bAMI\b/i,
       /\bsmart\s+meter\b/i,
       /\brevenue\s+meter\b/i

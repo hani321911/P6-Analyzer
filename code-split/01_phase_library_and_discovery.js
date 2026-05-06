@@ -1,9 +1,8 @@
 // ════════════════════════════════════════════════════════════════════
-// 01_phase_library_and_discovery.js — v29.0.11 (Phase 1 + 2 implemented)
-// Lines 2031 - 2796 of 19935 total
+// 01_phase_library_and_discovery.js — v29.0.11.1 (R1+R2 fixes from ChatGPT Round 7)
+// Lines 2031 - 2796 (of 19957 total)
 // PHASE_LIBRARY + discoverPhasesFromSchedule
 // 
-// ⚠️ This file is a slice for code review purposes.
 // The source of truth is p6-analyzer.html.
 // Auto-generated on update of p6-analyzer.html.
 // ════════════════════════════════════════════════════════════════════

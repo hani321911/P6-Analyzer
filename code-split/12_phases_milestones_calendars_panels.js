@@ -1,13 +1,34 @@
 // ════════════════════════════════════════════════════════════════════
-// 12_phases_milestones_calendars_panels.js — v29.0.11 (Phase 1 + 2 implemented)
-// Lines 14765 - 16500 of 19935 total
-// findCertByRegex + EHC/ECC + Layer 4 negative context (v29.0.10)
+// 12_phases_milestones_calendars_panels.js — v29.0.11.1 (R1+R2 fixes from ChatGPT Round 7)
+// Lines 14765 - 16450 (of 19957 total)
+// findCertByRegex (Phase 1.4 + EHC/ECC)
 // 
-// ⚠️ This file is a slice for code review purposes.
 // The source of truth is p6-analyzer.html.
 // Auto-generated on update of p6-analyzer.html.
 // ════════════════════════════════════════════════════════════════════
 
+
+// ═══════════════════════════════════════════════════════════════════════════
+// v29.0.9 — FILENAME VALIDATOR PANEL (per NG SA Section 8.1.1.9)
+// Pattern: ####-{V}{TYPE}{N} where TYPE = BPS/MP/WP/AB/TIA/RS
+// ═══════════════════════════════════════════════════════════════════════════
+function FilenameValidatorPanel({ validations, lang, t }) {
+  const isAr = lang === "ar";
+  if (!validations) return null;
+  const entries = [
+    { key: "baseline", label_en: "Baseline", label_ar: "\u062E\u0637 \u0627\u0644\u0623\u0633\u0627\u0633", v: validations.baseline },
+    { key: "progress", label_en: "Progress", label_ar: "\u0627\u0644\u062A\u062D\u062F\u064A\u062B", v: validations.progress },
+    { key: "revised", label_en: "Revised", label_ar: "\u0627\u0644\u0645\u0639\u062F\u0644", v: validations.revised }
+  ].filter((e) => e.v); // only show entries that have validation
+
+  if (entries.length === 0) return null;
+
+  const validCount = entries.filter((e) => e.v.valid).length;
+  const allValid = validCount === entries.length;
+
+  return /* @__PURE__ */ React.createElement("div", { style: {
+    background: "var(--bgCard)",
+    border: `1px solid ${allValid ? "rgba(34,197,94,0.3)" : "rgba(245,158,11,0.3)"}`,
     borderRadius: 14, padding: "14px 18px", marginBottom: 16
   } },
     /* @__PURE__ */ React.createElement("div", { style: {
@@ -1672,75 +1693,3 @@ function ExecutiveDashboard({ result, activeMethod, setActiveMethod, onAuditBase
       // ─── LAYER 4 (v29.0.10): NEGATIVE CONTEXT FILTER ───
       // Reject if the name contains words like "walkdown/meeting/test plan" UNLESS
       // it ALSO has an explicit cert keyword. This filters preparation/internal activities.
-      const hasNegative = negativeContext.test(name) || negativeContextAr.test(name);
-      if (hasNegative && !hasCertKeyword) continue;
-
-      // STRICT: Require milestone OR (reasonable length AND cert keyword)
-      // This filters out 137 internal "TCC test" activities while keeping real "TCC Unit 1" milestones
-      if (!isMilestone && !hasCertKeyword) continue;
-      if (!isReasonableLength) continue;
-
-      const date = row.plannedFinish || row.plannedStart || row.forecastFinish;
-      if (date) {
-        allMatches.push({
-          actId: row.actId,
-          name: row.name,
-          date: date,
-          dateMs: new Date(date).getTime(),
-          isMilestone: isMilestone,
-          hasCertKeyword: hasCertKeyword
-        });
-      }
-    }
-    if (allMatches.length === 0) return null;
-    // Sort by date ascending
-    allMatches.sort((a, b) => a.dateMs - b.dateMs);
-    // Pick LATEST match (last unit's certificate = full project completion)
-    const latest = allMatches[allMatches.length - 1];
-    return {
-      actId: latest.actId,
-      name: latest.name,
-      date: latest.date,
-      count: allMatches.length,
-      allMatches: allMatches
-    };
-  };
-  // Word-boundary regex avoids false positives like "fac" inside "Facility"
-  const certPAC = findCertByRegex([
-    /\bPAC\b/i,
-    /\bPreliminary\s+Acceptance/i,
-    /\bProvisional\s+Acceptance/i
-  ]);
-  const certTCC = findCertByRegex([
-    /\bTCC\b/i,
-    /\bTechnical\s+Completion/i,
-    /\bTests?\s+on\s+Completion/i,
-    /\bMechanical\s+Completion/i
-  ]);
-  const certFAC = findCertByRegex([
-    /\bFAC\b/i,
-    /\bFinal\s+Acceptance/i
-  ]);
-  // v28.11: RTR (Reliability Test Run)
-  const certRTR = findCertByRegex([
-    /\bRTR\b/i,
-    /\bReliability\s+Test\s+Run\b/i,
-    /\bReliability\s+Run\b/i,
-    /\bReliability\s+Test\b/i,
-    /\bPerformance\s+Test\s+Run\b/i,
-    /\u0627\u062e\u062a\u0628\u0627\u0631 \u0627\u0644\u0645\u0648\u062b\u0648\u0642\u064a\u0629/,
-    /\u062a\u0634\u063a\u064a\u0644 \u062a\u062c\u0631\u064a\u0628\u064a/
-  ]);
-  // v29.0.10: EHC — Energization & Holding Commissioning (mandatory NG SA cert)
-  const certEHC = findCertByRegex([
-    /\bEHC\b/i,
-    /\bEnergi[sz]ation\s*(?:&|and)?\s*Holding\s*Commissioning\b/i,
-    /\bHolding\s*Commissioning\s*(?:Certificate|Completion)?\b/i,
-    /\u0634\u0647\u0627\u062f\u0629\s+(?:\u0625\u062f\u062e\u0627\u0644\s+\u0627\u0644\u0637\u0627\u0642\u0629|\u0627\u0644\u0625\u062d\u0645\u0627\u0621|\u0627\u0644\u062a\u0634\u063a\u064a\u0644\s+\u0627\u0644\u062a\u062d\u0636\u064a\u0631\u064a)/,
-    /\u0634\u0647\u0627\u062f\u0629\s+\u0627\u0644\u0637\u0627\u0642\u0629\s+\u0648(?:\u0627\u0644)?\u062a\u0634\u063a\u064a\u0644\s+\u0627\u0644\u062a\u062d\u0636\u064a\u0631\u064a/
-  ]);
-  // v29.0.10: ECC — Equipment Commercial Commissioning (mandatory NG SA cert)
-  const certECC = findCertByRegex([
-    /\bECC\b/i,
-    /\bEquipment\s+Commercial\s+Commissioning\b/i,
-    /\bCommercial\s+Commissioning\s+(?:Certificate|Completion)\b/i,

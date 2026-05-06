@@ -1,9 +1,8 @@
 // ════════════════════════════════════════════════════════════════════
-// 05_audit_DCMA_PMI_GAO_AACE.js — v29.0.11 (Phase 1 + 2 implemented)
-// Lines 6131 - 6720 of 19935 total
-// DCMA + findLongestPathDuration + _calculateNetworkLongestPath (v29.0.10 network DP)
+// 05_audit_DCMA_PMI_GAO_AACE.js — v29.0.11.1 (R1+R2 fixes from ChatGPT Round 7)
+// Lines 6131 - 6710 (of 19957 total)
+// DCMA + Network DP (R2 fix)
 // 
-// ⚠️ This file is a slice for code review purposes.
 // The source of truth is p6-analyzer.html.
 // Auto-generated on update of p6-analyzer.html.
 // ════════════════════════════════════════════════════════════════════
@@ -150,50 +149,67 @@ function findLongestPathDuration(acts, rels, dataDate) {
 // Helper: Topological DP to find longest path through a subset of activities
 // Builds predecessor map from relationships, computes longestTo[id] = longest path ending at id
 // Returns the maximum value in longestTo (i.e., the longest single path through the network)
+//
+// v29.0.11.1 (R2 fix per ChatGPT Round 7): Activities may have multiple ID fields
+// (id, objectId, actId). Relationships may use any of these. We now build alias
+// map so all ID variants resolve to the same canonical activity.
 function _calculateNetworkLongestPath(activities, relationships) {
   if (!activities || activities.length === 0) return 0;
-  // Build map: actId → activity
+  // v29.0.11.1: Multi-key alias map — activity reachable by ANY of its IDs
   const actMap = {};
   activities.forEach(a => {
-    const id = a.actId || a.id;
-    if (id != null) actMap[id] = a;
+    // Collect all possible ID variants for this activity
+    const ids = [a.actId, a.id, a.objectId]
+      .filter(v => v !== null && v !== undefined && v !== "")
+      .map(String);
+    // Map each variant to the same activity (so relationships using any ID variant resolve correctly)
+    ids.forEach(id => { actMap[id] = a; });
   });
+  // Helper: get canonical key for an activity (prefer actId, fallback to id, then objectId)
+  const canonicalKey = (a) => String(a.actId || a.id || a.objectId);
   // Build predecessors map (only relationships within our subset)
+  // Normalize all IDs to canonical key to avoid key duplication
   const predecessors = {};
   if (relationships && relationships.length > 0) {
     relationships.forEach(r => {
-      if (!actMap[r.predId] || !actMap[r.succId]) return;
-      if (!predecessors[r.succId]) predecessors[r.succId] = [];
-      predecessors[r.succId].push(r.predId);
+      const predAct = actMap[String(r.predId)];
+      const succAct = actMap[String(r.succId)];
+      if (!predAct || !succAct) return;  // outside our subset
+      const predKey = canonicalKey(predAct);
+      const succKey = canonicalKey(succAct);
+      if (!predecessors[succKey]) predecessors[succKey] = [];
+      predecessors[succKey].push(predKey);
     });
   }
-  // DP with memoization
+  // DP with memoization (keyed by canonical IDs)
   const longestTo = {};
   const visiting = {};  // cycle detection
-  function compute(id) {
-    if (longestTo[id] !== undefined) return longestTo[id];
-    if (visiting[id]) return 0;  // cycle: bail out
-    visiting[id] = true;
-    const act = actMap[id];
-    if (!act) { visiting[id] = false; return 0; }
+  function compute(key) {
+    if (longestTo[key] !== undefined) return longestTo[key];
+    if (visiting[key]) return 0;  // cycle: bail out
+    visiting[key] = true;
+    const act = actMap[key];
+    if (!act) { visiting[key] = false; return 0; }
     const dur = Number(act.plannedDuration) || 0;
-    const preds = predecessors[id] || [];
+    const preds = predecessors[key] || [];
     if (preds.length === 0) {
-      longestTo[id] = dur;
+      longestTo[key] = dur;
     } else {
       let maxPred = 0;
       preds.forEach(pid => {
         const v = compute(pid);
         if (v > maxPred) maxPred = v;
       });
-      longestTo[id] = dur + maxPred;
+      longestTo[key] = dur + maxPred;
     }
-    visiting[id] = false;
-    return longestTo[id];
+    visiting[key] = false;
+    return longestTo[key];
   }
   let result = 0;
-  Object.keys(actMap).forEach(id => {
-    const v = compute(id);
+  // Iterate by canonical keys (deduped via Set to avoid double-counting aliased activities)
+  const uniqueKeys = new Set(activities.map(canonicalKey));
+  uniqueKeys.forEach(key => {
+    const v = compute(key);
     if (v > result) result = v;
   });
   return result;
@@ -570,31 +586,3 @@ function bqaExtractKeyDates(baseline) {
 // ═══════════════════════════════════════════════════════════════════
 function bqaDetectProjectInfo(baseline) {
   if (!baseline) return { projectName: "", projectType: null, keyMilestones: [] };
-
-  const acts = baseline.activities || [];
-  const wbsList = baseline.wbs || [];
-  const projectName = (baseline.project && (baseline.project.name || baseline.project.id)) || "";
-
-  // Build inputs for detectProjectType
-  const wbsNames = wbsList.map(w => w.name || w.code || "").filter(Boolean);
-  const topActivityNames = acts.slice(0, Math.min(50, acts.length))
-    .map(a => a.name || a.actName || "")
-    .filter(Boolean);
-
-  // Use existing detectProjectType
-  let projectType = null;
-  try {
-    const detected = detectProjectType(projectName, wbsNames, topActivityNames);
-    if (detected) {
-      projectType = {
-        key: detected.rule.key,
-        icon: detected.rule.icon,
-        name_en: detected.rule.name_en,
-        name_ar: detected.rule.name_ar,
-        palette: detected.rule.palette,
-        score: detected.score,
-        nameHit: detected.nameHit,
-        confidence: Math.min(100, Math.round(detected.score * 5))
-      };
-    }
-  } catch (e) {

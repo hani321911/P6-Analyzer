@@ -9,6 +9,34 @@
 
 ---
 
+## [29.0.11.1] — 2026-05-06 — Round 7 Hotfix (R1 + R2)
+
+### Fixed
+- 🔴 **R1**: `getActualPctRatio()` now falls back gracefully when pctType-specific field is missing
+  - Before: `{pctType: 'Physical', physicalPct: undefined, pctComplete: 0.45}` returned `0`
+  - After: returns `0.45` (preserves Manual+0 behavior + uses fallback chain)
+- 🔴 **R2**: `_calculateNetworkLongestPath()` now handles ObjectId-based relationships
+  - Before: activities with both `id`+`actId` keyed by `actId` only, dropping ObjectId-based rels
+  - After: multi-key alias map (`actId`, `id`, `objectId`) + canonicalKey + uniqueKeys deduplication
+
+### Improved
+- 🟡 **T1+T2**: Test files now extract REAL helpers from `p6-analyzer.html`
+  - Phase 1 tests: extracts `getActualPctRatio` from source (no parallel definition)
+  - Phase 2 tests: extracts `isLOEActivity`, `auditCalendarSAHolidays`, `buildExpectedSAHolidays` from source
+- 🟢 NEW: `tests/integration/test_e2e_analyze.cjs` — verifies analyze() output structure
+
+### Test Coverage
+- Phase 1: 36/36 (was 28, +8 R1+R2 verification)
+- Phase 2: 40/40 (was 32, +8 fix presence checks)
+- E2E:     28/28 (NEW)
+- **Total: 104/104** ⭐
+
+### Refs
+- ChatGPT Round 7 review (Issue #1 follow-up)
+- See `docs/reviews/round-7-chatgpt/`
+
+---
+
 ## [29.0.11] — 2026-05-06 — Phase 2 Major Fixes ⭐
 
 ### Added
