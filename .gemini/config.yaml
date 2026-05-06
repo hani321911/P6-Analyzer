@@ -1,0 +1,61 @@
+# Gemini Code Assist Configuration
+# P6 Analyzer — NG SA Power Transmission Schedule Analysis Tool
+
+review:
+  # Focus areas (high priority)
+  focus_areas:
+    - DCMA 14-point schedule assessment compliance
+    - PMI Practice Standard for EVM (EAC1/EAC2/EAC3, VAC, TCPI)
+    - GAO Schedule Assessment Guide (GAO-16-89G)
+    - AACE 38R-06 Schedule Risk Analysis
+    - NG SA Project Scheduling Manual (Feb 2016) compliance
+    - Saudi Hijri calendar accuracy (Umm al-Qura)
+    - 6 mandatory NG SA certificates (EHC, ECC, TCC, RTR, PAC, FAC)
+    - Critical Path vs Longest Path distinction
+    - LOE (Level of Effort) activity exclusion
+    - Cost loading coverage validation
+    - Network-based topological DP for longest path
+    - pctType handling (Physical/Duration/Units/Manual)
+    - Bilingual (Arabic/English) UI quality
+    - RTL (Right-to-Left) layout correctness
+    - Accessibility (WCAG 2.1 Level A minimum)
+    - Performance with large schedules (1000+ activities)
+
+  # Areas to ignore
+  ignore_areas:
+    - React vendor code (production.min.js)
+    - CDN-loaded libraries (jspdf, html2canvas)
+    - Auto-generated code-split/ files (source of truth: p6-analyzer.html)
+    - Test files in tests/ (separate review domain)
+    - Documentation in docs/handoffs/ (transient)
+
+  # Context files Gemini should read first
+  context_files:
+    - CLAUDE.md
+    - docs/architecture/NG_SA_CONTEXT.md
+    - docs/implementation/LESSONS_LEARNED.md
+    - docs/implementation/STATUS.md
+    - CHANGELOG.md
+    - docs/reviews/round-7-chatgpt/CLAUDE_RESPONSE.md
+    - docs/design-proposals/UI_UX_REVIEW_v29.0.11.1.md
+
+  # Severity levels
+  severity_thresholds:
+    critical: "calculation errors, claim-grade integrity issues, security"
+    major: "performance regressions, accessibility violations, NG SA non-compliance"
+    minor: "style, documentation, naming conventions"
+
+# Output preferences
+output:
+  language: "english_with_arabic_terms"
+  format: "markdown"
+  include_code_suggestions: true
+  include_line_numbers: true
+  preserve_existing_style: true
+
+# Review behavior
+behavior:
+  prefer_pmi_standards: true
+  respect_ng_sa_terminology: true
+  acknowledge_existing_protections: true  # Don't flag already-protected code as bugs
+  reference_lessons_learned: true  # Check against rejected suggestions
