@@ -9,6 +9,32 @@
 
 ---
 
+## [29.0.11.2] — 2026-05-06 — Round 8 Hotfix (Gemini G1+G2)
+
+### Fixed
+- 🔴 **G1**: NG SA Certificate Sequence Validation (was missing!)
+  - Now validates: RTR → EHC/ECC → TCC → PAC → FAC
+  - Detects: 12 possible sequence violations
+  - Severity: Critical (contractual compliance with SEC)
+
+- 🔴 **G2**: FAC ≤ PAC Cross-Validation (was insufficient!)
+  - Now explicitly flags: PAC > FAC as critical violation
+  - Same for: TCC > PAC, RTR > all others
+
+### Added
+- 📋 `validateCertificateSequence()` function in analyze() at L16868+
+- 🎨 New UI panel in KeyMilestonesPanel showing sequence violations
+  - Critical red border + alert icon
+  - Bilingual (Arabic/English)
+  - Shows specific violations with dates
+  - Lists required sequence
+
+### Refs
+- Gemini Round 8 review (Web App with GitHub Connector)
+- See `docs/reviews/round-8-gemini/REVIEW.md`
+
+---
+
 ## [29.0.11.1] — 2026-05-06 — Round 7 Hotfix (R1 + R2)
 
 ### Fixed
