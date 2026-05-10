@@ -1,0 +1,770 @@
+{
+  "actualResults": [
+    {
+      "id": "P-01",
+      "pctType": "Physical",
+      "physicalPct": 0.7,
+      "expected": 0.7,
+      "actual": 0.7,
+      "verdict": "PASS",
+      "note": "Physical field preferred"
+    },
+    {
+      "id": "P-02",
+      "pctType": "Physical",
+      "physicalPct": null,
+      "pctComplete": 0.45,
+      "expected": 0.45,
+      "actual": 0.45,
+      "verdict": "PASS",
+      "note": "Physical missing -> pctComplete fallback"
+    },
+    {
+      "id": "P-03",
+      "pctType": "Physical",
+      "durationPct": 0.6,
+      "expected": 0.6,
+      "actual": 0.6,
+      "verdict": "PASS",
+      "note": "Physical undefined -> duration fallback"
+    },
+    {
+      "id": "P-04",
+      "pctType": "Duration",
+      "durationPct": 0.5,
+      "expected": 0.5,
+      "actual": 0.5,
+      "verdict": "PASS",
+      "note": "Duration field preferred"
+    },
+    {
+      "id": "P-05",
+      "pctType": "Duration",
+      "durationPct": null,
+      "pctComplete": 0.3,
+      "expected": 0.3,
+      "actual": 0.3,
+      "verdict": "PASS",
+      "note": "Duration null -> pctComplete fallback"
+    },
+    {
+      "id": "P-06",
+      "pctType": "Units",
+      "unitsPct": 0.4,
+      "expected": 0.4,
+      "actual": 0.4,
+      "verdict": "PASS",
+      "note": "Units field preferred"
+    },
+    {
+      "id": "P-07",
+      "pctType": "Manual",
+      "physicalPct": 0.8,
+      "pctComplete": 0.5,
+      "expected": 0.5,
+      "actual": 0.5,
+      "verdict": "PASS",
+      "note": "Manual pctComplete wins"
+    },
+    {
+      "id": "P-08",
+      "pctType": "Manual",
+      "pctComplete": 0,
+      "expected": 0,
+      "actual": 0,
+      "verdict": "PASS",
+      "note": "Manual zero preserved"
+    },
+    {
+      "id": "P-09",
+      "pctType": "",
+      "physicalPct": 0.6,
+      "durationPct": 0.4,
+      "unitsPct": 0.5,
+      "pctComplete": 0.7,
+      "expected": 0.7,
+      "actual": 0.7,
+      "verdict": "PASS",
+      "note": "No type priority pctComplete > duration > physical > units"
+    },
+    {
+      "id": "P-10",
+      "pctType": "Physical",
+      "physicalPct": 1.5,
+      "expected": 0.015,
+      "actual": 0.015,
+      "verdict": "PASS",
+      "note": "Current heuristic treats 1.5 as 1.5%"
+    },
+    {
+      "id": "P-11",
+      "pctType": "Physical",
+      "physicalPct": -0.5,
+      "expected": 0,
+      "actual": 0,
+      "verdict": "PASS",
+      "note": "Negative clamps to 0"
+    },
+    {
+      "id": "P-12",
+      "pctType": "Physical",
+      "physicalPct": null,
+      "expected": 0,
+      "actual": 0,
+      "verdict": "PASS",
+      "note": "NaN ignored -> 0"
+    },
+    {
+      "id": "P-13",
+      "pctType": "Physical",
+      "physicalPct": "50%",
+      "expected": 0,
+      "actual": 0,
+      "verdict": "PASS",
+      "note": "Direct string with % is NaN; parser parseFloat would become 50"
+    },
+    {
+      "id": "P-14",
+      "pctType": "Physical",
+      "physicalPct": 50,
+      "expected": 0.5,
+      "actual": 0.5,
+      "verdict": "PASS",
+      "note": "Numeric 50 -> 50%"
+    },
+    {
+      "id": "P-15",
+      "pctType": "Duration",
+      "physicalPct": 50,
+      "durationPct": 30,
+      "unitsPct": 10,
+      "pctComplete": 90,
+      "expected": 0.3,
+      "actual": 0.3,
+      "verdict": "PASS",
+      "note": "Duration priority over pctComplete"
+    },
+    {
+      "id": "P-16",
+      "pctType": "Units",
+      "physicalPct": 50,
+      "durationPct": 30,
+      "unitsPct": 10,
+      "pctComplete": 90,
+      "expected": 0.1,
+      "actual": 0.1,
+      "verdict": "PASS",
+      "note": "Units priority over pctComplete"
+    },
+    {
+      "id": "P-17",
+      "pctType": "Physical",
+      "physicalPct": 0,
+      "pctComplete": 0.9,
+      "expected": 0,
+      "actual": 0,
+      "verdict": "PASS",
+      "note": "Physical explicit zero preserved"
+    },
+    {
+      "id": "P-18",
+      "pctType": "Duration",
+      "durationPct": 0,
+      "pctComplete": 0.9,
+      "expected": 0,
+      "actual": 0,
+      "verdict": "PASS",
+      "note": "Duration explicit zero preserved"
+    },
+    {
+      "id": "P-19",
+      "pctType": "Units",
+      "unitsPct": 0,
+      "pctComplete": 0.9,
+      "expected": 0,
+      "actual": 0,
+      "verdict": "PASS",
+      "note": "Units explicit zero preserved"
+    },
+    {
+      "id": "P-20",
+      "pctType": "Manual",
+      "physicalPct": 1,
+      "pctComplete": 1,
+      "expected": 1,
+      "actual": 1,
+      "verdict": "PASS",
+      "note": "Manual 1 -> 100%"
+    },
+    {
+      "id": "P-21",
+      "pctType": "Manual",
+      "physicalPct": 100,
+      "pctComplete": 100,
+      "expected": 1,
+      "actual": 1,
+      "verdict": "PASS",
+      "note": "Manual 100 -> 100%"
+    },
+    {
+      "id": "P-22",
+      "pctType": "Manual",
+      "pctComplete": 150,
+      "expected": 1,
+      "actual": 1,
+      "verdict": "PASS",
+      "note": "Manual 150 clamps to 100%"
+    },
+    {
+      "id": "P-23",
+      "pctType": "Physical",
+      "physicalPct": 150,
+      "expected": 1,
+      "actual": 1,
+      "verdict": "PASS",
+      "note": "Physical 150 clamps to 100%"
+    },
+    {
+      "id": "P-24",
+      "pctType": "Physical",
+      "physicalPct": 100,
+      "expected": 1,
+      "actual": 1,
+      "verdict": "PASS",
+      "note": "Physical 100 -> 100%"
+    },
+    {
+      "id": "P-25",
+      "pctType": "Physical",
+      "physicalPct": 1,
+      "expected": 1,
+      "actual": 1,
+      "verdict": "PASS",
+      "note": "Physical 1 -> 100%"
+    },
+    {
+      "id": "P-26",
+      "pctType": "Physical",
+      "physicalPct": "50",
+      "expected": 0.5,
+      "actual": 0.5,
+      "verdict": "PASS",
+      "note": "String number 50 -> 50%"
+    },
+    {
+      "id": "P-27",
+      "pctType": "Physical",
+      "physicalPct": "0.5",
+      "expected": 0.5,
+      "actual": 0.5,
+      "verdict": "PASS",
+      "note": "String decimal 0.5 -> 50% under current heuristic"
+    },
+    {
+      "id": "P-28",
+      "pctType": "Physical",
+      "physicalPct": "",
+      "expected": 0,
+      "actual": 0,
+      "verdict": "PASS",
+      "note": "Empty string direct -> 0; parser would null"
+    },
+    {
+      "id": "P-29",
+      "pctType": "Physical",
+      "physicalPct": "   ",
+      "expected": 0,
+      "actual": 0,
+      "verdict": "PASS",
+      "note": "Whitespace direct -> 0"
+    },
+    {
+      "id": "P-30",
+      "pctType": "Duration",
+      "durationPct": "75",
+      "expected": 0.75,
+      "actual": 0.75,
+      "verdict": "PASS",
+      "note": "String number in duration"
+    },
+    {
+      "id": "P-31",
+      "pctType": "Units",
+      "unitsPct": "60",
+      "expected": 0.6,
+      "actual": 0.6,
+      "verdict": "PASS",
+      "note": "String number in units"
+    },
+    {
+      "id": "P-32",
+      "pctType": "Manual",
+      "pctComplete": "0",
+      "expected": 0,
+      "actual": 0,
+      "verdict": "PASS",
+      "note": "Manual string zero preserved"
+    },
+    {
+      "id": "P-33",
+      "pctType": "Manual",
+      "physicalPct": 0.8,
+      "durationPct": 0.7,
+      "unitsPct": 0.6,
+      "expected": 0.8,
+      "actual": 0.8,
+      "verdict": "PASS",
+      "note": "Manual missing -> physical fallback first"
+    },
+    {
+      "id": "P-34",
+      "pctType": "Manual",
+      "durationPct": 0.7,
+      "unitsPct": 0.6,
+      "expected": 0.7,
+      "actual": 0.7,
+      "verdict": "PASS",
+      "note": "Manual missing -> duration fallback"
+    },
+    {
+      "id": "P-35",
+      "pctType": "Manual",
+      "unitsPct": 0.6,
+      "expected": 0.6,
+      "actual": 0.6,
+      "verdict": "PASS",
+      "note": "Manual missing -> units fallback"
+    },
+    {
+      "id": "P-36",
+      "pctType": "Physical",
+      "physicalPct": null,
+      "durationPct": 0,
+      "unitsPct": 0.8,
+      "pctComplete": 0.9,
+      "expected": 0.9,
+      "actual": 0.9,
+      "verdict": "PASS",
+      "note": "Physical null; pctComplete before duration; zero not reached"
+    },
+    {
+      "id": "P-37",
+      "pctType": "Physical",
+      "physicalPct": null,
+      "durationPct": 0,
+      "expected": 0,
+      "actual": 0,
+      "verdict": "PASS",
+      "note": "Physical null -> duration zero preserved"
+    },
+    {
+      "id": "P-38",
+      "pctType": "Duration",
+      "physicalPct": 0.8,
+      "durationPct": null,
+      "unitsPct": 0.6,
+      "expected": 0.8,
+      "actual": 0.8,
+      "verdict": "PASS",
+      "note": "Duration null; pctComplete missing -> physical fallback before units"
+    },
+    {
+      "id": "P-39",
+      "pctType": "Units",
+      "physicalPct": 0.8,
+      "durationPct": 0.7,
+      "unitsPct": null,
+      "expected": 0.8,
+      "actual": 0.8,
+      "verdict": "PASS",
+      "note": "Units null -> pctComplete missing -> physical fallback"
+    },
+    {
+      "id": "P-40",
+      "pctType": "",
+      "physicalPct": 0.6,
+      "durationPct": 0.4,
+      "unitsPct": 0.5,
+      "expected": 0.4,
+      "actual": 0.4,
+      "verdict": "PASS",
+      "note": "No type no pctComplete: duration before physical"
+    },
+    {
+      "id": "P-41",
+      "pctType": "Scope",
+      "physicalPct": 0.6,
+      "durationPct": 0.4,
+      "unitsPct": 0.5,
+      "pctComplete": 0.7,
+      "expected": 0.7,
+      "actual": 0.7,
+      "verdict": "PASS",
+      "note": "Scope unsupported -> default fallback"
+    },
+    {
+      "id": "P-42",
+      "pctType": "Physical",
+      "physicalPct": null,
+      "durationPct": null,
+      "unitsPct": null,
+      "pctComplete": null,
+      "expected": 0,
+      "actual": 0,
+      "verdict": "PASS",
+      "note": "All null -> 0"
+    },
+    {
+      "id": "P-43",
+      "pctType": "Physical",
+      "expected": 0,
+      "actual": 0,
+      "verdict": "PASS",
+      "note": "All undefined -> 0"
+    },
+    {
+      "id": "P-44",
+      "pctType": "Duration",
+      "physicalPct": null,
+      "durationPct": null,
+      "unitsPct": 0.4,
+      "pctComplete": null,
+      "expected": 0.4,
+      "actual": 0.4,
+      "verdict": "PASS",
+      "note": "NaN skipped until units"
+    },
+    {
+      "id": "P-45",
+      "pctType": "Manual",
+      "pctComplete": null,
+      "expected": 0,
+      "actual": 0,
+      "verdict": "PASS",
+      "note": "Manual NaN explicitly becomes 0, no fallback"
+    },
+    {
+      "id": "P-46",
+      "pctType": "physical",
+      "physicalPct": 0.25,
+      "expected": 0.25,
+      "actual": 0.25,
+      "verdict": "PASS",
+      "note": "Lowercase type accepted"
+    },
+    {
+      "id": "P-47",
+      "pctType": " Physical ",
+      "physicalPct": 0.25,
+      "expected": 0.25,
+      "actual": 0.25,
+      "verdict": "PASS",
+      "note": "Type not trimmed; default fallback still finds physicalPct"
+    },
+    {
+      "id": "P-48",
+      "pctType": "Duration",
+      "durationPct": 1.5,
+      "expected": 0.015,
+      "actual": 0.015,
+      "verdict": "PASS",
+      "note": "Duration 1.5 treated as 1.5%"
+    },
+    {
+      "id": "P-49",
+      "pctType": "Units",
+      "unitsPct": 1.5,
+      "expected": 0.015,
+      "actual": 0.015,
+      "verdict": "PASS",
+      "note": "Units 1.5 treated as 1.5%"
+    },
+    {
+      "id": "P-50",
+      "pctType": "",
+      "pctComplete": 1.5,
+      "expected": 0.015,
+      "actual": 0.015,
+      "verdict": "PASS",
+      "note": "Default pctComplete 1.5 treated as 1.5%"
+    },
+    {
+      "id": "P-51",
+      "pctType": "Physical",
+      "physicalPct": 0.005,
+      "expected": 0.005,
+      "actual": 0.005,
+      "verdict": "PASS",
+      "note": "Sub-1 value means 0.5% or 0.5 ratio? ambiguous"
+    },
+    {
+      "id": "P-52",
+      "pctType": "Physical",
+      "physicalPct": 99.999,
+      "expected": 0.99999,
+      "actual": 0.99999,
+      "verdict": "PASS",
+      "note": "99.999% supported"
+    }
+  ],
+  "plannedResults": [
+    {
+      "id": "PL-01",
+      "method": "Calendar linear 10 days",
+      "start": "2026-01-01",
+      "finish": "2026-01-11",
+      "today": "2026-01-06",
+      "expected": "50%",
+      "actual": "50%",
+      "verdict": "PASS",
+      "note": "Calendar elapsed half way"
+    },
+    {
+      "id": "PL-02",
+      "method": "Working days Mon-Fri expected 3/5",
+      "start": "2026-01-05",
+      "finish": "2026-01-12",
+      "today": "2026-01-07",
+      "expected": "60%",
+      "actual": "28.57%",
+      "verdict": "FAIL",
+      "note": "Code uses calendar elapsed, not working days"
+    },
+    {
+      "id": "PL-03",
+      "method": "Saudi Sun-Thu with one holiday expected 2/4",
+      "start": "2026-03-15",
+      "finish": "2026-03-22",
+      "today": "2026-03-18",
+      "expected": "50%",
+      "actual": "42.86%",
+      "verdict": "FAIL",
+      "note": "Code ignores calendar holidays/workweek"
+    },
+    {
+      "id": "PL-04",
+      "method": "Hours-based 100h activity 8h/day",
+      "start": "2026-01-01",
+      "finish": "2026-01-11",
+      "today": "2026-01-06",
+      "expected": "50%",
+      "actual": "50%",
+      "verdict": "PASS",
+      "note": "Only date span used; hours curve not used"
+    },
+    {
+      "id": "PL-05",
+      "method": "Already finished",
+      "start": "2026-01-01",
+      "finish": "2026-01-05",
+      "today": "2026-01-06",
+      "expected": "100%",
+      "actual": "100%",
+      "verdict": "PASS",
+      "note": "After finish -> 100%"
+    },
+    {
+      "id": "PL-06",
+      "method": "Not started",
+      "start": "2026-01-10",
+      "finish": "2026-01-20",
+      "today": "2026-01-09",
+      "expected": "0%",
+      "actual": "0%",
+      "verdict": "PASS",
+      "note": "Before start -> 0%"
+    },
+    {
+      "id": "PL-07",
+      "method": "Same-day milestone at data date",
+      "start": "2026-01-05",
+      "finish": "2026-01-05",
+      "today": "2026-01-05",
+      "expected": "100%",
+      "actual": "0%",
+      "verdict": "FAIL",
+      "note": "Expected milestone due today often 100%; code returns 0 due <= start check"
+    },
+    {
+      "id": "PL-08",
+      "method": "Zero duration past",
+      "start": "2026-01-05",
+      "finish": "2026-01-05",
+      "today": "2026-01-06",
+      "expected": "100%",
+      "actual": "100%",
+      "verdict": "PASS",
+      "note": "Past zero-duration -> 100%"
+    },
+    {
+      "id": "PL-09",
+      "method": "Negative duration data after both",
+      "start": "2026-01-10",
+      "finish": "2026-01-05",
+      "today": "2026-01-11",
+      "expected": "100%",
+      "actual": "100%",
+      "verdict": "PASS",
+      "note": "Bad data handled by >= finish -> 100% not issue flag"
+    },
+    {
+      "id": "PL-10",
+      "method": "Cost phased front loaded mid date",
+      "start": "2026-01-01",
+      "finish": "2026-05-01",
+      "today": "2026-03-02",
+      "expected": "80%",
+      "actual": "50%",
+      "verdict": "FAIL",
+      "note": "Expected from curve not linear"
+    },
+    {
+      "id": "PL-11",
+      "method": "Back loaded mid date",
+      "start": "2026-01-01",
+      "finish": "2026-05-01",
+      "today": "2026-03-02",
+      "expected": "20%",
+      "actual": "50%",
+      "verdict": "FAIL",
+      "note": "Expected from curve not linear"
+    },
+    {
+      "id": "PL-12",
+      "method": "Resource hour custom curve",
+      "start": "2026-01-01",
+      "finish": "2026-04-30",
+      "today": "2026-02-15",
+      "expected": "25%",
+      "actual": "37.82%",
+      "verdict": "FAIL",
+      "note": "Expected from resource plan not linear"
+    },
+    {
+      "id": "PL-13",
+      "method": "Physical units planned to date",
+      "start": "2026-01-01",
+      "finish": "2026-02-01",
+      "today": "2026-01-16",
+      "expected": "45%",
+      "actual": "48.39%",
+      "verdict": "FAIL",
+      "note": "Expected from planned units not linear"
+    },
+    {
+      "id": "PL-14",
+      "method": "Milestone weighted 2 of 4",
+      "start": "2026-01-01",
+      "finish": "2026-04-01",
+      "today": "2026-02-15",
+      "expected": "50%",
+      "actual": "50%",
+      "verdict": "PASS",
+      "note": "Expected from milestone weights not linear"
+    },
+    {
+      "id": "PL-15",
+      "method": "Equivalent units drawings",
+      "start": "2026-01-01",
+      "finish": "2026-04-01",
+      "today": "2026-02-15",
+      "expected": "40%",
+      "actual": "50%",
+      "verdict": "FAIL",
+      "note": "Expected from deliverable weights not linear"
+    },
+    {
+      "id": "PL-16",
+      "method": "LOE activity planned",
+      "start": "2026-01-01",
+      "finish": "2026-12-31",
+      "today": "2026-06-30",
+      "expected": "EXCLUDED",
+      "actual": "49.45%",
+      "verdict": "PASS",
+      "note": "LOE should be excluded from EVM, not planned % weighted"
+    },
+    {
+      "id": "PL-17",
+      "method": "DataDate equals finish",
+      "start": "2026-01-01",
+      "finish": "2026-01-10",
+      "today": "2026-01-10",
+      "expected": "100%",
+      "actual": "100%",
+      "verdict": "PASS",
+      "note": "At finish -> 100%"
+    },
+    {
+      "id": "PL-18",
+      "method": "DataDate equals start",
+      "start": "2026-01-01",
+      "finish": "2026-01-10",
+      "today": "2026-01-01",
+      "expected": "0%",
+      "actual": "0%",
+      "verdict": "PASS",
+      "note": "At start -> 0%"
+    }
+  ],
+  "scenarios": [
+    {
+      "id": "A",
+      "name": "NG SA Substation mixed calendars + LOE",
+      "verdict": "PARTIAL/FAIL",
+      "details": "Calendar parsing exists and LOE helper exists, but plannedPct is calendar-linear and summary totals do not use evmFiltered for TT_LOE."
+    },
+    {
+      "id": "B",
+      "name": "Transmission line mixed pctType",
+      "verdict": "PARTIAL",
+      "details": "pctType branch works for Physical/Duration/Units, but no quantity/units time-phased planned calculation and no milestone-weighted actual method."
+    },
+    {
+      "id": "C",
+      "name": "Schedule update scope change",
+      "verdict": "FAIL for totals",
+      "codeTotals": {
+        "totalBac": 6700,
+        "totalPV": 3350,
+        "totalEV": 2600,
+        "totalAC": 2200,
+        "count": 6
+      },
+      "patchedTotals": {
+        "totalBac": 3500,
+        "totalPV": 1750,
+        "totalEV": 1000,
+        "totalAC": 1400,
+        "count": 4
+      },
+      "details": "Rows union works; deleted retained. But code summary includes unbaselined N1 and TT_LOE in totals; patched baseline-only filtered totals are lower."
+    },
+    {
+      "id": "D",
+      "name": "Curve distortion test",
+      "verdict": "FAIL for S-Curve H-04",
+      "codeTotals": {
+        "totalBac": 3000,
+        "totalPV": 1500,
+        "totalEV": 1000,
+        "totalAC": 1000,
+        "count": 3
+      },
+      "patchedTotals": {
+        "totalBac": 3000,
+        "totalPV": 1500,
+        "totalEV": 1000,
+        "totalAC": 1000,
+        "count": 3
+      },
+      "details": "PV/EV row totals are directionally correct; current S-curve earned mirrors planned via earnedRatio rather than actual time-phased EV."
+    },
+    {
+      "id": "E",
+      "name": "Calendar edge cases",
+      "verdict": "PARTIAL/FAIL",
+      "details": "HoursPerDay is parsed for duration conversion, holidays are audited, but plannedPct does not consume workWeek/holidays/exception calendars."
+    }
+  ]
+}

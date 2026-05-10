@@ -146,10 +146,12 @@ test('R2 fix present: canonicalKey function', script.includes('canonicalKey'));
 test('R2 fix present: uniqueKeys Set', script.includes('uniqueKeys'));
 
 // v29.0.11.1 R1 fix in code  
-test('R1 fix present: physical with fallback chain',
-  script.includes('p.physicalPct ?? p.pctComplete ?? p.durationPct ?? p.unitsPct'));
-test('R1 fix present: duration with fallback chain',
-  script.includes('p.durationPct ?? p.pctComplete ?? p.physicalPct ?? p.unitsPct'));
+// v29.0.11.3 (Round 9.2 Patch 6): R1 fix evolved from ?? chain to firstNonNull() helper
+// Tests now verify the new firstNonNull pattern with correct argument order per pctType
+test('R1 fix present: physical uses firstNonNull order',
+  script.includes('firstNonNull(p.physicalPct, p.pctComplete, p.durationPct, p.unitsPct)'));
+test('R1 fix present: duration uses firstNonNull order',
+  script.includes('firstNonNull(p.durationPct, p.pctComplete, p.physicalPct, p.unitsPct)'));
 
 console.log('\n═══════════════════════════════════════════════════════════');
 console.log('  PHASE 2 RESULTS: ' + passed + '/' + (passed + failed) + ' tests passed');

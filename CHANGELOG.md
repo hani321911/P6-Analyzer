@@ -9,6 +9,69 @@
 
 ---
 
+## [29.0.11.3] — 2026-05-10 — Round 9.2 Deep EVM Audit (ChatGPT 95% accuracy)
+
+### Fixed (6 patches from ChatGPT Round 9.2 deep review)
+
+#### 🔴 Critical Fixes
+
+- **CR-01: Summary EVM uses unified eligibility set** (`evmFiltered`)
+  - **Before**: `evmAll = all.filter(!isMilestone)` — could include LOE + unbaselined
+  - **After**: `evmAll = evmFiltered` — excludes LOE/TT_LOE + unbaselined + milestones + summaries
+  - **Impact**: BAC/PV/EV/SPI/CPI now reflect baseline-controlled scope only
+  - **Reference**: PMI EVM, AACE 86R-14
+
+- **CR-02: Unbaselined activities excluded from official totals**
+  - **Added**: `!r.isUnbaselined` to `evmFiltered` filter
+  - **Impact**: Change-order activities don't inflate BAC/EV before baseline revision
+  - **Reference**: Round 9.2 Scenario C — totals went from 6700 → 3500 (correct baseline-only)
+
+#### 🟡 High Severity Fixes
+
+- **HI-02: S-Curve Earned redesigned (no more cumPlanned × earnedRatio)**
+  - **Before**: `earned = cumPlanned * earnedRatio` (mirrored planned shape)
+  - **After**: Earned built from actual dates per activity (completed/in-progress/no-actual)
+  - **Impact**: Chart now shows real lags/jumps/recovery patterns
+
+- **HI-03: WBS rollup uses baseline weights**
+  - **Before**: `for (const r of all.filter(!isMilestone))` + `totalCost(r._raw)` (progress-mutable)
+  - **After**: `for (const r of evmFiltered)` + `(r.bac || 0)` (baseline)
+  - **Impact**: WBS totals match summary EVM totals consistently
+
+- **ME-01: Calendar-aware planned percentage**
+  - **Added**: `_workingHoursBetween()` helper using workWeek + holidays + exceptions
+  - **Behavior**: Tries calendar-aware first, falls back to linear if calendar missing
+  - **Impact**: Saudi 5/6/7-day calendars + Eid holidays now reflected in planned%
+  - **Reference**: AACE 38R-06
+
+#### 🟢 Test Updates
+
+- **Patch 5: normalizePct(1.5) now means 1.5%** (per Oracle P6 docs)
+- **Patch 6: Phase 2 R1 string checks updated** to firstNonNull pattern
+
+### Test Coverage
+- Phase 1: 36/36 ✅
+- Phase 2: 40/40 ✅
+- E2E:     28/28 ✅
+- Round 9.2 regressions: 22/22 ✅
+- Scenario C: 13/13 ✅
+- **TOTAL: 139/139 tests passing (100%)** ⭐
+
+### Refs
+- ChatGPT Round 9.2 deep review (50-file package, 95% accuracy)
+- See `docs/reviews/round-9-2-chatgpt/` for full audit reports
+- Standards: PMI, AACE, GAO, DCMA, EIA-748, SEC, NG SA
+
+---
+
+## [29.0.11.2] — 2026-05-06 — Round 8 Hotfix (Gemini G1+G2)
+
+### Fixed
+- 🔴 **G1**: NG SA Certificate Sequence Validation (was missing!)
+- 🔴 **G2**: FAC ≤ PAC Cross-Validation (was insufficient!)
+
+---
+
 ## [29.0.11.1] — 2026-05-06 — Round 7 Hotfix (R1 + R2)
 
 ### Fixed

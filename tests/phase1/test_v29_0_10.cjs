@@ -53,7 +53,9 @@ test('Duration + 0.4 returns 0.4', global.getActualPctRatio({pctType: 'Duration'
 test('No pctType + 0.5 returns 0.5', global.getActualPctRatio({pctComplete: 0.5}) === 0.5);
 test('Empty input returns 0', global.getActualPctRatio({}) === 0);
 test('null input returns 0', getActualPctRatio(null) === 0);
-test('Out-of-range (1.5) clamped to 1', global.getActualPctRatio({pctType: 'Physical', physicalPct: 1.5}) === 1);
+// v29.0.11.3 (Round 9.2 Patch 5): Per Oracle P6 documentation, percent fields are 0-100
+// Therefore physicalPct=1.5 means 1.5%, not 150% to be clamped to 1.0
+test('P6 percent 1.5 means 1.5% (Round 9.2 policy)', Math.abs(global.getActualPctRatio({pctType: 'Physical', physicalPct: 1.5}) - 0.015) < 1e-9);
 test('Negative (-0.5) clamped to 0', global.getActualPctRatio({pctType: 'Physical', physicalPct: -0.5}) === 0);
 test('NaN returns 0', global.getActualPctRatio({pctType: 'Physical', physicalPct: NaN}) === 0);
 
