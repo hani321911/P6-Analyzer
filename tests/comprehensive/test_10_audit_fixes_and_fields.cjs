@@ -35,7 +35,7 @@ test('Final safety: actual guarded by Number.isFinite',
 
 console.log('\n▶ Fix F-02 + F-03: Inverted Dates Detection');
 test('integrityIssues initialized early in analyze()',
-  script.includes('// v29.0.11.7 Fix F-03: Initialize integrityIssues EARLY'));
+  script.includes('// v29.0.11.9 Fix F-03: Initialize integrityIssues EARLY') || script.includes('// v29.0.11.8 Fix F-03') || script.includes('// v29.0.11.7 Fix F-03: Initialize integrityIssues EARLY'));
 test('Inverted dates check in calcPct',
   script.includes('if (f < s)'));
 test('Inverted dates logged to integrityIssues',

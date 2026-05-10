@@ -32,9 +32,8 @@ test('AtCompletionExpenseCost read into activities',
 test('costMethodSignals object created',
   script.includes('costMethodSignals'));
 test('Detection logic with priority',
-  script.includes('detectedCostMethod = "standard"') &&
-  script.includes('detectedCostMethod = "expense_weightage"') &&
-  script.includes('detectedCostMethod = "at_completion"'));
+  script.includes('detectedCostMethod = candidates[0].key') &&
+  script.includes('candidates[0].score > 0'));
 test('Coverage threshold defined',
   script.includes('COVERAGE_THRESHOLD'));
 test('_derivedTotalCost field augments activities',
@@ -43,11 +42,11 @@ test('_derivedTotalCost field augments activities',
 // Smart totalCost
 console.log('\n▶ Smart totalCost() Function');
 test('totalCost respects _derivedTotalCost',
-  script.includes('a._derivedTotalCost === "number"'));
+  script.includes('hasOwnProperty.call(a, "_derivedTotalCost")'));
 test('totalCost preserves backward compatibility',
-  script.includes('// Standard fallback (backward-compatible behavior)'));
+  script.includes('// Standard fallback (only when detection engine never ran'));
 test('totalActualCost respects _derivedActualCost',
-  script.includes('a._derivedActualCost === "number"'));
+  script.includes('hasOwnProperty.call(a, "_derivedActualCost")'));
 
 // Return values
 console.log('\n▶ Parser Return Values');
