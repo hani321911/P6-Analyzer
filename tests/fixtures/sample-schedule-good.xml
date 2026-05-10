@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<APIBusinessObjects xmlns="http://xmlns.oracle.com/Primavera/P6/V19.12/API/BusinessObjects">
+  <Calendar ObjectId="1" Name="Standard">
+    <HoursPerDay>8.0</HoursPerDay>
+    <HoursPerWeek>40.0</HoursPerWeek>
+    <HolidayOrException>
+      <Date>2026-02-22</Date>
+      <Description>Founding Day</Description>
+    </HolidayOrException>
+  </Calendar>
+  <Project ObjectId="P-001" Name="Test Substation Project">
+    <PlannedStartDate>2026-01-01</PlannedStartDate>
+    <PlannedFinishDate>2026-12-31</PlannedFinishDate>
+  </Project>
+  <WBS ObjectId="W-001" Code="MAIN" Name="Main">
+    <ProjectObjectId>P-001</ProjectObjectId>
+  </WBS>
+  <Activity ObjectId="A001" Id="A001" Name="Project Start">
+    <Type>TT_Mile</Type>
+    <PlannedStartDate>2026-01-01</PlannedStartDate>
+    <PlannedFinishDate>2026-01-01</PlannedFinishDate>
+    <PlannedDuration>0</PlannedDuration>
+    <TotalFloat>0</TotalFloat>
+  </Activity>
+  <Activity ObjectId="A002" Id="A002" Name="Foundation Works">
+    <Type>TT_Task</Type>
+    <PlannedStartDate>2026-01-02</PlannedStartDate>
+    <PlannedFinishDate>2026-03-01</PlannedFinishDate>
+    <PlannedDuration>480</PlannedDuration>
+    <TotalFloat>0</TotalFloat>
+    <PercentComplete>0.5</PercentComplete>
+    <PercentCompleteType>Physical</PercentCompleteType>
+    <PhysicalPercentComplete>0.5</PhysicalPercentComplete>
+    <BudgetedTotalCost>1000000</BudgetedTotalCost>
+    <ActualTotalCost>520000</ActualTotalCost>
+  </Activity>
+  <Activity ObjectId="A003" Id="A003" Name="RTR - Ready to Run">
+    <Type>TT_Mile</Type>
+    <PlannedStartDate>2026-04-01</PlannedStartDate>
+    <PlannedFinishDate>2026-04-01</PlannedFinishDate>
+    <PlannedDuration>0</PlannedDuration>
+    <TotalFloat>0</TotalFloat>
+  </Activity>
+  <Activity ObjectId="A004" Id="A004" Name="EHC Achievement">
+    <Type>TT_Mile</Type>
+    <PlannedStartDate>2026-05-01</PlannedStartDate>
+    <PlannedFinishDate>2026-05-01</PlannedFinishDate>
+    <PlannedDuration>0</PlannedDuration>
+  </Activity>
+  <Activity ObjectId="A005" Id="A005" Name="ECC Achievement">
+    <Type>TT_Mile</Type>
+    <PlannedStartDate>2026-06-01</PlannedStartDate>
+    <PlannedFinishDate>2026-06-01</PlannedFinishDate>
+    <PlannedDuration>0</PlannedDuration>
+  </Activity>
+  <Activity ObjectId="A006" Id="A006" Name="TCC - Taking Over Certificate">
+    <Type>TT_Mile</Type>
+    <PlannedStartDate>2026-07-01</PlannedStartDate>
+    <PlannedFinishDate>2026-07-01</PlannedFinishDate>
+    <PlannedDuration>0</PlannedDuration>
+  </Activity>
+  <Activity ObjectId="A007" Id="A007" Name="PAC - Provisional Acceptance">
+    <Type>TT_Mile</Type>
+    <PlannedStartDate>2026-08-01</PlannedStartDate>
+    <PlannedFinishDate>2026-08-01</PlannedFinishDate>
+    <PlannedDuration>0</PlannedDuration>
+  </Activity>
+  <Activity ObjectId="A008" Id="A008" Name="FAC - Final Acceptance">
+    <Type>TT_Mile</Type>
+    <PlannedStartDate>2026-12-01</PlannedStartDate>
+    <PlannedFinishDate>2026-12-01</PlannedFinishDate>
+    <PlannedDuration>0</PlannedDuration>
+  </Activity>
+  <Relationship>
+    <PredecessorActivityObjectId>A001</PredecessorActivityObjectId>
+    <SuccessorActivityObjectId>A002</SuccessorActivityObjectId>
+    <Type>FS</Type>
+    <Lag>0</Lag>
+  </Relationship>
+  <Relationship>
+    <PredecessorActivityObjectId>A002</PredecessorActivityObjectId>
+    <SuccessorActivityObjectId>A003</SuccessorActivityObjectId>
+    <Type>FS</Type>
+    <Lag>0</Lag>
+  </Relationship>
+</APIBusinessObjects>
