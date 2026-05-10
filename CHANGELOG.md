@@ -9,6 +9,41 @@
 
 ---
 
+## [29.0.11.7] — 2026-05-10 — Fields Used Card in Progress Performance
+
+### 🎯 UI Improvement: Move Fields Used Card to Right Location
+
+User feedback: "لم يظهر Fields Used المفترض ان تكون بجانب او داخل Progress Performance Card"
+
+### Changes
+
+- **Added Fields Used Card to Progress Performance Card** (Briefing section)
+  - Position: Right after Method Selector dropdown
+  - Visible immediately when user opens the dashboard
+  - Updates instantly when user changes method via dropdown
+  - Adapts to detected cost method (expense_weightage / at_completion / standard)
+  
+- **Kept original Fields Used Card in Methods tab** (for detailed view)
+  - Now appears in BOTH locations for maximum transparency
+
+### What User Sees Now
+
+When opening any project schedule:
+1. **Progress Performance Card** displays at the top
+2. **Method Selector** dropdown lets user choose calculation method
+3. **NEW: Fields Used Card** appears immediately below selector showing:
+   - 📄 From Baseline (for Weights/BAC) — blue column
+   - 📊 From Progress (for Actual %) — green column
+   - 📐 Formula at top
+   - * marks for Critical fields (required for calculation)
+4. **Performance metrics cards** (Planned %, Actual %, Variance, etc.)
+
+### Test Coverage
+- All 181 existing tests still pass ✅
+- No regressions
+
+---
+
 ## [29.0.11.6] — 2026-05-10 — Audit Fixes + Fields Used Card
 
 ### 🚀 New Feature: Fields Used Card
