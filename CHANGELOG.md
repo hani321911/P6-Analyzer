@@ -9,6 +9,29 @@
 
 ---
 
+## [29.0.11.5] — 2026-05-10 — Typo Fix: "All rights reserved"
+
+### Fixed
+- ✏️ **Typo**: "All right recived" → **"All rights reserved"** (4 instances)
+  - Loading screen footer
+  - Loading screen copyright line
+  - Header right side (under email)
+  - Bottom footer
+- Both errors corrected:
+  - "right" → "rights" (proper plural)
+  - "recived" → "reserved" (correct spelling)
+
+### Locations Updated
+- HTML loading screen: 2 instances
+- React UI header: 1 instance
+- React UI footer: 1 instance
+
+### Backward Compatibility
+✅ Pure cosmetic change — no functional impact
+✅ All 158 tests still pass
+
+---
+
 ## [29.0.11.4] — 2026-05-10 — Smart Cost Detection Engine
 
 ### Critical Fix: Cost-Weight Method Support
