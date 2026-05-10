@@ -9,6 +9,96 @@
 
 ---
 
+## [29.0.11.4] — 2026-05-10 — Smart Cost Detection Engine
+
+### Critical Fix: Cost-Weight Method Support
+
+Real-world bug discovered with Hani's Fuel Conversion of Rabigh II TPP project:
+- **Symptom**: All cost-weighted progress calculations showed 0%
+- **Root cause**: P6 schedules can populate cost in 4 different ways, but the code only read 1 method
+- **Impact**: Schedules using ActivityExpense Weightages (Saudi/Aramco/SEC standard) gave totalCost = $0
+
+### What Changed
+
+#### 🧠 Smart Cost Detection Engine (NEW)
+
+The parser now intelligently detects which cost storage method each schedule uses:
+
+| Method | Signal | Where Cost is Stored |
+|--------|--------|---------------------|
+| **Standard** | PlannedNonLaborCost > 0 | Activity-level cost fields |
+| **Expense Weightage** | ActivityExpense.PlannedCost > 0 | Separate Expense elements |
+| **AtCompletion** | AtCompletionExpenseCost > 0 | Activity AtCompletion field |
+| **None** | All zero | No cost data available |
+
+The detection uses signal analysis with a 30% coverage threshold:
+1. Parse all `<ActivityExpense>` elements (regardless of project method)
+2. Read `AtCompletionExpenseCost` into activities
+3. Count activities with each cost type
+4. Pick method with highest coverage as "detected method"
+5. Augment activities with `_derivedTotalCost` field
+
+#### 🔧 Smart `totalCost()` Function
+
+```javascript
+// Now respects detected cost method:
+const totalCost = (a) => {
+  if (typeof a._derivedTotalCost === "number" && a._derivedTotalCost > 0) {
+    return a._derivedTotalCost;  // Smart path
+  }
+  // Backward-compatible fallback
+  return (a.plannedNonLaborCost || 0) + (a.plannedLaborCost || 0)
+       + (a.plannedMaterialCost || 0) + (a.plannedExpenseCost || 0);
+};
+```
+
+#### 🎨 UI Badge
+
+EVM tab now shows detected cost method:
+- 🟣 Purple badge: "ActivityExpense Weightage Method" (Saudi/Aramco standard)
+- 🟡 Yellow badge: "AtCompletionExpenseCost Method"
+- 🟢 Green badge: "Standard P6 (Activity Costs)"
+
+### Real-World Verification (Fuel Conversion Project)
+
+```
+Project: Fuel Conversion of Rabigh II TPP
+Total BAC: $2,888,888,889
+Activities: 516 (497 with Weightages expenses)
+
+Before fix:
+  totalCost() = $0 for ALL activities ❌
+  Cost-Weighted Progress = 0% ❌
+  
+After fix:
+  Detected method: expense_weightage ✅
+  totalCost() = correct cost per activity ✅
+  Cost-Weighted Progress = 41.50% ✅
+```
+
+### Backward Compatibility
+
+✅ Standard P6 schedules: NO change in behavior  
+✅ Existing tests: 139/139 still pass  
+✅ Schedules without expenses: fallback to standard logic  
+✅ Mixed schedules: detection picks best method automatically  
+
+### Test Coverage
+- Phase 1: 36/36 ✅
+- Phase 2: 40/40 ✅  
+- E2E: 28/28 ✅
+- Round 9.2: 22/22 ✅
+- Scenario C: 13/13 ✅
+- **Test 9 (Smart Cost Detection): 19/19 ✅** (NEW)
+- **TOTAL: 158/158 (100%)** ⭐
+
+### Refs
+- Real-world bug from Hani's Fuel Conversion project
+- Industry standard: Saudi/Aramco use "Weightages" method
+- Reference: P6 XML Schema V17.7 ActivityExpense element
+
+---
+
 ## [29.0.11.3] — 2026-05-10 — Round 9.2 Deep EVM Audit (ChatGPT 95% accuracy)
 
 ### Fixed (6 patches from ChatGPT Round 9.2 deep review)
