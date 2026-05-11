@@ -40,6 +40,8 @@ function extractGetActualPctRatio() {
 }
 
 const realHelperCode = extractGetActualPctRatio();
+// v29.0.11.10: Stub Rules of Credit (test doesn't use ROC features)
+global._applyRulesOfCredit = (p) => null;
 eval('global.getActualPctRatio = ' + realHelperCode.replace('const getActualPctRatio = ', '') + ';');
 
 // ── TEST 1: getActualPctRatio (using REAL helper) ──
