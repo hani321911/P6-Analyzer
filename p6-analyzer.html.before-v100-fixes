@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
-<title>P6 Analyzer · v29.0.11.11</title>
+<title>P6 Analyzer · v29.0.11.10</title>
 <link rel="icon" type="image/png" href="data:image/png;base64,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">
 <meta name="author" content="Hani Taysseer">
 <style>
@@ -61,7 +61,7 @@
   }
 
   /* ─────────────────────────────────────────────────────────────
-     v29.0.11.11: PRINT REPORT — Enhanced for clarity & professionalism
+     v29.0.11.10: PRINT REPORT — Enhanced for clarity & professionalism
      - Hides only UI chrome (no-print class only)
      - Forces dark text on light backgrounds for all elements
      - Better spacing between sections
@@ -268,7 +268,7 @@
 <div id="root">
   <div class="app-loading">
     <div class="app-spinner"></div>
-    <div class="app-loading-text">Loading P6 Analyzer v29.0.11.11...</div>
+    <div class="app-loading-text">Loading P6 Analyzer v29.0.11.10...</div>
     <div class="app-loading-text" style="font-size: 10px; color: #64748b;">
       2026 Hani Taysseer · Hani321911@Gmail.com
     </div>
@@ -383,7 +383,7 @@ const DICT = {
     tipRevisedBody: "Only needed for delayed projects that required a schedule revision. If not uploaded, analysis runs on the original Baseline.",
     tipProgress: "\u{1F4A1} Progress \u2014 Optional",
     tipProgressBody: "Not available at project start or immediately after a schedule re-baseline. If not uploaded, only planned percentages are shown.",
-    featTitle: "\u2728 v29.0.11.11 Features",
+    featTitle: "\u2728 v29.0.11.10 Features",
     featItems: [
       "\u{1F195} 9 Design House themes (Bloomberg, Apple, McKinsey, Pentagram, Stripe, Vercel, Carbon, Linear, Notion)",
       "\u{1F195} File picker dropdown with Data Date + Modified Date per slot",
@@ -1174,7 +1174,7 @@ const DICT = {
     tipRevisedBody: "\u0645\u0637\u0644\u0648\u0628 \u0641\u0642\u0637 \u0644\u0644\u0645\u0634\u0627\u0631\u064A\u0639 \u0627\u0644\u0645\u062A\u0623\u062E\u0631\u0629 \u0627\u0644\u062A\u064A \u0627\u062D\u062A\u0627\u062C\u062A \u0625\u0644\u0649 \u062A\u0639\u062F\u064A\u0644 \u0627\u0644\u062E\u0637\u0629. \u0625\u0630\u0627 \u0644\u0645 \u064A\u064F\u0631\u0641\u0639\u060C \u064A\u0639\u0645\u0644 \u0627\u0644\u062A\u062D\u0644\u064A\u0644 \u0639\u0644\u0649 \u0627\u0644\u0640 Baseline \u0627\u0644\u0623\u0635\u0644\u064A.",
     tipProgress: "\u{1F4A1} Progress \u2014 \u0627\u062E\u062A\u064A\u0627\u0631\u064A",
     tipProgressBody: "\u063A\u064A\u0631 \u0645\u062A\u0648\u0641\u0631 \u0641\u064A \u0628\u062F\u0627\u064A\u0629 \u0627\u0644\u0645\u0634\u0631\u0648\u0639 \u0623\u0648 \u0645\u0628\u0627\u0634\u0631\u0629 \u0628\u0639\u062F \u0625\u0639\u0627\u062F\u0629 \u0627\u0644\u062E\u0637\u0629. \u0625\u0630\u0627 \u0644\u0645 \u064A\u064F\u0631\u0641\u0639\u060C \u062A\u064F\u0639\u0631\u0636 \u0646\u0633\u0628 \u0627\u0644\u0625\u0646\u062C\u0627\u0632 \u0627\u0644\u0645\u062E\u0637\u0637\u0629 \u0641\u0642\u0637.",
-    featTitle: "\u2728 \u0645\u064A\u0632\u0627\u062A v29.0.11.11",
+    featTitle: "\u2728 \u0645\u064A\u0632\u0627\u062A v29.0.11.10",
     featItems: [
       "\u{1F195} 9 \u062B\u064A\u0645\u0627\u062A \u0628\u062A\u0635\u0627\u0645\u064A\u0645 \u0639\u0627\u0644\u0645\u064A\u0629 (Bloomberg, Apple, McKinsey, Pentagram, Stripe, Vercel, Carbon, Linear, Notion)",
       "\u{1F195} \u0642\u0627\u0626\u0645\u0629 \u0645\u0646\u0633\u062F\u0644\u0629 \u0644\u0627\u062E\u062A\u064A\u0627\u0631 \u0627\u0644\u0645\u0644\u0641 \u0645\u0639 Data Date \u0648\u062A\u0627\u0631\u064A\u062E \u0627\u0644\u062A\u0639\u062F\u064A\u0644",
@@ -2028,7 +2028,7 @@ const METHODS_I18N = {
 
 // ─────────────────────────────────────────────────────────────────────────
 // ═══════════════════════════════════════════════════════════════════════════
-// v29.0.11.11 — PHASE TEMPLATES LIBRARY
+// v29.0.11.10 — PHASE TEMPLATES LIBRARY
 // Defines the standard phase structures for different project domains.
 // Each template = ordered list of phases with weights summing to 100%.
 // Used by:
@@ -2732,7 +2732,7 @@ const NG_PHASE_PATTERNS = [
 
 // Smart phase classifier — returns phase key (with smart fallback)
 // Uses tiered matching: name → wbsName → fallback
-// FIX v29.0.11.11: fallback is now project-type-aware
+// FIX v29.0.11.10: fallback is now project-type-aware
 //   - For cyber: construction = 0%, fallback to "installation" (30%)
 //   - For purchase_order: construction = 0%, fallback to "equipment" (70%)
 //   - For others: fallback to "construction" (largest bucket in most types)
@@ -2796,7 +2796,7 @@ function getNGMatrixColumn(detectedKey) {
 }
 
 // ═══════════════════════════════════════════════════════════════════════════
-// v29.0.11.11 — MANDATORY MILESTONES (per NG SA Manual Section 8.1.2)
+// v29.0.11.10 — MANDATORY MILESTONES (per NG SA Manual Section 8.1.2)
 // ═══════════════════════════════════════════════════════════════════════════
 const NG_MANDATORY_MILESTONES = {
   // Universal — required for ALL NG projects
@@ -3191,7 +3191,7 @@ function auditCalendarSAHolidays(calendar, projectStart, projectFinish) {
 }
 
 // ═══════════════════════════════════════════════════════════════════════════
-// v29.0.11.11 — NG SCHEDULE QUALITY COMPLIANCE CHECKER
+// v29.0.11.10 — NG SCHEDULE QUALITY COMPLIANCE CHECKER
 // Per NG SA Manual Section 8.1.2.4
 // ═══════════════════════════════════════════════════════════════════════════
 const NG_COMPLIANCE_RULES = [
@@ -3344,7 +3344,7 @@ function runComplianceCheck(activities, relationships, wbsMap) {
 }
 
 // ═══════════════════════════════════════════════════════════════════════════
-// v29.0.11.11 — FILENAME CONVENTION VALIDATOR (per NG SA Section 8.1.1.9)
+// v29.0.11.10 — FILENAME CONVENTION VALIDATOR (per NG SA Section 8.1.1.9)
 // Pattern: ####-{V}{TYPE}{N}
 //   #### = project number, V = version, TYPE = BPS/MP/WP/AB/TIA/RS, N = sequence
 // ═══════════════════════════════════════════════════════════════════════════
@@ -3378,7 +3378,7 @@ function validateNGFilename(filename) {
 }
 
 // ═══════════════════════════════════════════════════════════════════════════
-// v29.0.11.11 — RECOVERY SCHEDULE TRIGGER (per NG SA Section 8.2.2.3)
+// v29.0.11.10 — RECOVERY SCHEDULE TRIGGER (per NG SA Section 8.2.2.3)
 // "If any activity is delayed >= 10% of contract duration → Recovery Required"
 // ═══════════════════════════════════════════════════════════════════════════
 function checkRecoveryTrigger(activities, contractDurationDays) {
@@ -3424,7 +3424,7 @@ function checkRecoveryTrigger(activities, contractDurationDays) {
 }
 
 // ═══════════════════════════════════════════════════════════════════════════
-// v29.0.11.11 — NG GLOSSARY (40+ terms with bilingual definitions)
+// v29.0.11.10 — NG GLOSSARY (40+ terms with bilingual definitions)
 // Used by tooltip system on hover
 // ═══════════════════════════════════════════════════════════════════════════
 // ═══════════════════════════════════════════════════════════════════════════
@@ -4579,201 +4579,131 @@ function runDCMAHealthCheck(activities, dataDate, relationships) {
     score: Math.round(passedCount / tests.length * 100)
   };
 }
-// v29.0.11.11 ENHANCEMENT #4: Persistent Audit Trail
+// v29.0.11.10 ENHANCEMENT #4: Persistent Audit Trail
 // Records every change between baseline and progress for compliance.
 // Categories: deleted, added, dates_modified, weight_modified, scope_modified
 // Output: structured array consumable by reports/exports
 function buildAuditTrail(baselineActs, progressActs) {
   const trail = {
     timestamp: new Date().toISOString(),
-    summary: { added: 0, deleted: 0, modified: 0, renamed: 0, unchanged: 0 },
+    summary: { added: 0, deleted: 0, modified: 0, unchanged: 0 },
     changes: []
   };
   if (!baselineActs || !progressActs) return trail;
 
-  // v29.0.11.11 FIX M-02 (per ChatGPT v100 audit):
-  // OLD: Mapped by actId only — renames appeared as delete + add (wrong).
-  // NEW: Two-pass matching:
-  //   Pass 1: Match by stable ObjectId (id field) — catches renames
-  //   Pass 2: Match remaining by actId fallback
-  const blByObjId = new Map();
-  const blByActId = new Map();
-  const prByObjId = new Map();
-  const prByActId = new Map();
+  const blMap = new Map();
+  const prMap = new Map();
+  baselineActs.forEach(a => { if (a.actId) blMap.set(a.actId, a); });
+  progressActs.forEach(a => { if (a.actId) prMap.set(a.actId, a); });
 
-  baselineActs.forEach(a => {
-    if (a.id) blByObjId.set(String(a.id), a);
-    if (a.actId) blByActId.set(a.actId, a);
-  });
-  progressActs.forEach(a => {
-    if (a.id) prByObjId.set(String(a.id), a);
-    if (a.actId) prByActId.set(a.actId, a);
-  });
+  const allIds = new Set([...blMap.keys(), ...prMap.keys()]);
 
-  // Track which activities have been paired
-  const pairedBlActIds = new Set();
-  const pairedPrActIds = new Set();
-  const pairs = [];
+  for (const actId of allIds) {
+    const bl = blMap.get(actId);
+    const pr = prMap.get(actId);
 
-  // Pass 1: Match by ObjectId (most reliable - survives renames)
-  for (const [objId, bl] of blByObjId) {
-    const pr = prByObjId.get(objId);
-    if (pr) {
-      pairs.push({ bl, pr, matchedBy: 'objectId' });
-      if (bl.actId) pairedBlActIds.add(bl.actId);
-      if (pr.actId) pairedPrActIds.add(pr.actId);
-    }
-  }
-
-  // Pass 2: Match unpaired baseline activities by actId
-  for (const [actId, bl] of blByActId) {
-    if (pairedBlActIds.has(actId)) continue;
-    const pr = prByActId.get(actId);
-    if (pr && !pairedPrActIds.has(actId)) {
-      pairs.push({ bl, pr, matchedBy: 'actId' });
-      pairedBlActIds.add(actId);
-      pairedPrActIds.add(actId);
-    }
-  }
-
-  // Process pairs (modified/renamed/unchanged)
-  for (const { bl, pr, matchedBy } of pairs) {
-    const fields = [];
-
-    // RENAMED: matched by ObjectId but actId differs
-    if (matchedBy === 'objectId' && bl.actId !== pr.actId) {
-      fields.push({
-        field: 'actId',
-        baseline: bl.actId,
-        progress: pr.actId,
-        note: 'Activity ID renamed'
-      });
-    }
-
-    // Date changes
-    if (bl.plannedStart !== pr.plannedStart) {
-      fields.push({ field: 'plannedStart', baseline: bl.plannedStart, progress: pr.plannedStart });
-    }
-    if (bl.plannedFinish !== pr.plannedFinish) {
-      const dayDiff = bl.plannedFinish && pr.plannedFinish
-        ? Math.round((new Date(pr.plannedFinish) - new Date(bl.plannedFinish)) / 86400000)
-        : null;
-      fields.push({
-        field: 'plannedFinish',
-        baseline: bl.plannedFinish,
-        progress: pr.plannedFinish,
-        delayDays: dayDiff
-      });
-    }
-
-    // Duration change
-    if ((bl.plannedDuration || 0) !== (pr.plannedDuration || 0)) {
-      fields.push({
-        field: 'plannedDuration',
-        baseline: bl.plannedDuration,
-        progress: pr.plannedDuration
-      });
-    }
-
-    // Cost change
-    const blCost = (bl.plannedNonLaborCost || 0) + (bl.plannedLaborCost || 0)
-                 + (bl.plannedMaterialCost || 0) + (bl.plannedExpenseCost || 0);
-    const prCost = (pr.plannedNonLaborCost || 0) + (pr.plannedLaborCost || 0)
-                 + (pr.plannedMaterialCost || 0) + (pr.plannedExpenseCost || 0);
-    if (Math.abs(blCost - prCost) > 0.01) {
-      fields.push({
-        field: 'plannedCost',
-        baseline: blCost,
-        progress: prCost,
-        deltaPct: blCost > 0 ? ((prCost - blCost) / blCost * 100).toFixed(2) : null
-      });
-    }
-
-    if (fields.length > 0) {
-      // Determine change type
-      let changeType = 'modified';
-      let severity = fields.length > 2 ? 'high' : 'medium';
-      let impact = `${fields.length} field(s) changed`;
-
-      if (fields.some(f => f.field === 'actId')) {
-        changeType = 'renamed';
-        impact = `Activity renamed (matched by ObjectId)`;
-        if (fields.length > 1) {
-          changeType = 'renamed_and_modified';
-          impact += `; ${fields.length - 1} other field(s) changed`;
-        }
-      }
-
+    // DELETED: in baseline but not in progress
+    if (bl && !pr) {
       trail.changes.push({
-        actId: pr.actId || bl.actId,
-        objectId: bl.id || pr.id,
-        changeType,
-        severity,
-        matchedBy,
-        fields,
-        impact
+        actId,
+        changeType: 'deleted',
+        severity: 'high',
+        baseline: {
+          name: bl.name,
+          plannedStart: bl.plannedStart,
+          plannedFinish: bl.plannedFinish,
+          plannedCost: (bl.plannedNonLaborCost || 0) + (bl.plannedLaborCost || 0)
+                     + (bl.plannedMaterialCost || 0) + (bl.plannedExpenseCost || 0),
+          duration: bl.plannedDuration
+        },
+        progress: null,
+        impact: 'Activity removed from current schedule. May indicate scope reduction.'
       });
-
-      if (changeType === 'renamed' || changeType === 'renamed_and_modified') {
-        trail.summary.renamed++;
-      } else {
-        trail.summary.modified++;
-      }
-    } else {
-      trail.summary.unchanged++;
+      trail.summary.deleted++;
+      continue;
     }
-  }
 
-  // Find truly DELETED: in baseline but no match in progress
-  for (const [actId, bl] of blByActId) {
-    if (pairedBlActIds.has(actId)) continue;
-    // Also check ObjectId
-    if (bl.id && prByObjId.has(String(bl.id))) continue;
-    trail.changes.push({
-      actId: bl.actId,
-      objectId: bl.id,
-      changeType: 'deleted',
-      severity: 'high',
-      baseline: {
-        name: bl.name,
-        plannedStart: bl.plannedStart,
-        plannedFinish: bl.plannedFinish,
-        plannedCost: (bl.plannedNonLaborCost || 0) + (bl.plannedLaborCost || 0)
-                   + (bl.plannedMaterialCost || 0) + (bl.plannedExpenseCost || 0),
-        duration: bl.plannedDuration
-      },
-      progress: null,
-      impact: 'Activity removed from current schedule. May indicate scope reduction.'
-    });
-    trail.summary.deleted++;
-  }
+    // ADDED: in progress but not in baseline
+    if (pr && !bl) {
+      trail.changes.push({
+        actId,
+        changeType: 'added',
+        severity: 'medium',
+        baseline: null,
+        progress: {
+          name: pr.name,
+          plannedStart: pr.plannedStart,
+          plannedFinish: pr.plannedFinish,
+          plannedCost: (pr.plannedNonLaborCost || 0) + (pr.plannedLaborCost || 0)
+                     + (pr.plannedMaterialCost || 0) + (pr.plannedExpenseCost || 0),
+          duration: pr.plannedDuration
+        },
+        impact: 'New activity added to current schedule. Not in original baseline scope.'
+      });
+      trail.summary.added++;
+      continue;
+    }
 
-  // Find truly ADDED: in progress but no match in baseline
-  for (const [actId, pr] of prByActId) {
-    if (pairedPrActIds.has(actId)) continue;
-    // Also check ObjectId
-    if (pr.id && blByObjId.has(String(pr.id))) continue;
-    trail.changes.push({
-      actId: pr.actId,
-      objectId: pr.id,
-      changeType: 'added',
-      severity: 'medium',
-      baseline: null,
-      progress: {
-        name: pr.name,
-        plannedStart: pr.plannedStart,
-        plannedFinish: pr.plannedFinish,
-        plannedCost: (pr.plannedNonLaborCost || 0) + (pr.plannedLaborCost || 0)
-                   + (pr.plannedMaterialCost || 0) + (pr.plannedExpenseCost || 0),
-        duration: pr.plannedDuration
-      },
-      impact: 'New activity added to current schedule. Not in original baseline scope.'
-    });
-    trail.summary.added++;
+    // MODIFIED: in both - check each field
+    if (bl && pr) {
+      const fields = [];
+
+      // Date changes
+      if (bl.plannedStart !== pr.plannedStart) {
+        fields.push({ field: 'plannedStart', baseline: bl.plannedStart, progress: pr.plannedStart });
+      }
+      if (bl.plannedFinish !== pr.plannedFinish) {
+        const dayDiff = bl.plannedFinish && pr.plannedFinish
+          ? Math.round((new Date(pr.plannedFinish) - new Date(bl.plannedFinish)) / 86400000)
+          : null;
+        fields.push({
+          field: 'plannedFinish',
+          baseline: bl.plannedFinish,
+          progress: pr.plannedFinish,
+          delayDays: dayDiff
+        });
+      }
+
+      // Duration change
+      if ((bl.plannedDuration || 0) !== (pr.plannedDuration || 0)) {
+        fields.push({
+          field: 'plannedDuration',
+          baseline: bl.plannedDuration,
+          progress: pr.plannedDuration
+        });
+      }
+
+      // Cost change
+      const blCost = (bl.plannedNonLaborCost || 0) + (bl.plannedLaborCost || 0)
+                   + (bl.plannedMaterialCost || 0) + (bl.plannedExpenseCost || 0);
+      const prCost = (pr.plannedNonLaborCost || 0) + (pr.plannedLaborCost || 0)
+                   + (pr.plannedMaterialCost || 0) + (pr.plannedExpenseCost || 0);
+      if (Math.abs(blCost - prCost) > 0.01) {
+        fields.push({
+          field: 'plannedCost',
+          baseline: blCost,
+          progress: prCost,
+          deltaPct: blCost > 0 ? ((prCost - blCost) / blCost * 100).toFixed(2) : null
+        });
+      }
+
+      if (fields.length > 0) {
+        trail.changes.push({
+          actId,
+          changeType: 'modified',
+          severity: fields.length > 2 ? 'high' : 'medium',
+          fields,
+          impact: `${fields.length} field(s) changed - may indicate re-baselining`
+        });
+        trail.summary.modified++;
+      } else {
+        trail.summary.unchanged++;
+      }
+    }
   }
 
   // Generate human-readable summary
-  trail.summaryText = `Total changes: ${trail.changes.length} (${trail.summary.added} added, ${trail.summary.deleted} deleted, ${trail.summary.modified} modified, ${trail.summary.renamed} renamed). Unchanged: ${trail.summary.unchanged}.`;
+  trail.summaryText = `Total changes: ${trail.changes.length} (${trail.summary.added} added, ${trail.summary.deleted} deleted, ${trail.summary.modified} modified). Unchanged: ${trail.summary.unchanged}.`;
 
   return trail;
 }
@@ -5934,7 +5864,7 @@ function parseP6XML(xmlText) {
     for (const c of el.children) if (c.localName === tag) return (_b = (_a = c.textContent) == null ? void 0 : _a.trim()) != null ? _b : "";
     return "";
   };
-  // v29.0.11.11 SAFE NUMBER PARSER (per ChatGPT audit X02/X03/X04/X07):
+  // v29.0.11.10 SAFE NUMBER PARSER (per ChatGPT audit X02/X03/X04/X07):
   // Old `parseFloat(v) || 0` had silent failures:
   //   - "1,000,000" → 1 (parseFloat stops at comma)
   //   - "$100000" → 0 (currency symbol)
@@ -5977,7 +5907,7 @@ function parseP6XML(xmlText) {
     const v = get(el, tag);
     return safeNumber(v, tag);
   };
-  // v29.0.11.11 (R9 H-02 fix per ChatGPT deep review):
+  // v29.0.11.10 (R9 H-02 fix per ChatGPT deep review):
   // Returns null for missing percent fields (so getActualPctRatio fallback works correctly)
   const numOpt = (el, tag) => {
     const v = get(el, tag);
@@ -5985,7 +5915,7 @@ function parseP6XML(xmlText) {
     const n = safeNumber(v, tag);
     return Number.isFinite(n) ? n : null;
   };
-  // v29.0.11.11 ENHANCEMENT #5: Performance Optimization
+  // v29.0.11.10 ENHANCEMENT #5: Performance Optimization
   // Old recursive findAll is slow on large XML trees (O(n²) in deep trees).
   // New: iterative DFS with stack + memoization per (root, tag) pair.
   const _findAllCache = new WeakMap();
@@ -6234,7 +6164,7 @@ function parseP6XML(xmlText) {
   });
 
   // ═══════════════════════════════════════════════════════════════
-  // v29.0.11.11 SMART COST DETECTION ENGINE
+  // v29.0.11.10 SMART COST DETECTION ENGINE
   // ═══════════════════════════════════════════════════════════════
   // Different P6 schedules populate cost fields differently:
   //   1. STANDARD: PlannedNonLaborCost + PlannedLaborCost in <Activity>
@@ -6263,7 +6193,7 @@ function parseP6XML(xmlText) {
   expenseElements.forEach((exp) => {
     const actObjId = get(exp, "ActivityObjectId");
     if (!actObjId) return;
-    // v29.0.11.11: Use safeNumber to prevent comma/currency/Infinity attacks
+    // v29.0.11.10: Use safeNumber to prevent comma/currency/Infinity attacks
     const planned = safeNumber(get(exp, "PlannedCost"), "ActivityExpense.PlannedCost");
     const actual = safeNumber(get(exp, "ActualCost"), "ActivityExpense.ActualCost");
     const remaining = safeNumber(get(exp, "RemainingCost"), "ActivityExpense.RemainingCost");
@@ -6278,7 +6208,7 @@ function parseP6XML(xmlText) {
   // We need to re-read from XML since current parser doesn't capture it
   activityElements.forEach((aEl) => {
     const objId = get(aEl, "ObjectId");
-    // v29.0.11.11: Use safeNumber
+    // v29.0.11.10: Use safeNumber
     const atc = safeNumber(get(aEl, "AtCompletionExpenseCost"), "AtCompletionExpenseCost");
     const target = activities.find(a => a.id === objId);
     if (target) {
@@ -6286,7 +6216,7 @@ function parseP6XML(xmlText) {
     }
   });
 
-  // Step 1c: v29.0.11.11 - Parse ResourceAssignment costs (per ChatGPT M16)
+  // Step 1c: v29.0.11.10 - Parse ResourceAssignment costs (per ChatGPT M16)
   // Resource-loaded schedules store cost in ResourceAssignment, not Activity
   const resourceAssignments = findAll(root, "ResourceAssignment");
   const resourceCostMap = {};
@@ -6303,7 +6233,7 @@ function parseP6XML(xmlText) {
     resourceRemainingCostMap[actObjId] = (resourceRemainingCostMap[actObjId] || 0) + remaining;
   });
 
-  // Step 1d: v29.0.11.11 - Read AtCompletionLaborCost/NonLaborCost/MaterialCost (per ChatGPT M17/M18)
+  // Step 1d: v29.0.11.10 - Read AtCompletionLaborCost/NonLaborCost/MaterialCost (per ChatGPT M17/M18)
   activityElements.forEach((aEl) => {
     const objId = get(aEl, "ObjectId");
     const target = activities.find(a => a.id === objId);
@@ -6313,7 +6243,7 @@ function parseP6XML(xmlText) {
     target.atCompletionMaterialCost = safeNumber(get(aEl, "AtCompletionMaterialCost"), "AtCompletionMaterialCost");
   });
 
-  // Step 1e: v29.0.11.11 - Detect duplicate Activity.ObjectId (per ChatGPT M12)
+  // Step 1e: v29.0.11.10 - Detect duplicate Activity.ObjectId (per ChatGPT M12)
   const _objIdCount = {};
   activityElements.forEach((aEl) => {
     const objId = get(aEl, "ObjectId");
@@ -6330,7 +6260,7 @@ function parseP6XML(xmlText) {
   }
 
   // Step 2: Augment activities with expense + resource derived costs
-  // v29.0.11.11: Avoid double-counting when duplicate Activity.ObjectId exists (per ChatGPT M12)
+  // v29.0.11.10: Avoid double-counting when duplicate Activity.ObjectId exists (per ChatGPT M12)
   // For duplicates, only the FIRST activity gets the expense; others get 0
   const _seenObjIdsForExpense = new Set();
   activities.forEach((a) => {
@@ -6343,7 +6273,7 @@ function parseP6XML(xmlText) {
     a._resourcePlannedCost = isFirstOccurrence ? (resourceCostMap[a.id] || 0) : 0;
     a._resourceActualCost = isFirstOccurrence ? (resourceActualCostMap[a.id] || 0) : 0;
     a._resourceRemainingCost = isFirstOccurrence ? (resourceRemainingCostMap[a.id] || 0) : 0;
-    // v29.0.11.11: at_completion total = sum of all at-completion fields
+    // v29.0.11.10: at_completion total = sum of all at-completion fields
     a._atCompletionTotal = (a.atCompletionExpenseCost || 0) +
                             (a.atCompletionLaborCost || 0) +
                             (a.atCompletionNonLaborCost || 0) +
@@ -6357,8 +6287,8 @@ function parseP6XML(xmlText) {
     activitiesWithStandardCost: 0,
     activitiesWithExpenseWeight: 0,
     activitiesWithAtCompExpense: 0,    // legacy: ExpenseCost only
-    activitiesWithAtCompTotal: 0,      // v29.0.11.11: includes Labor + NonLabor + Material
-    activitiesWithResourceCost: 0,     // v29.0.11.11: ResourceAssignment
+    activitiesWithAtCompTotal: 0,      // v29.0.11.10: includes Labor + NonLabor + Material
+    activitiesWithResourceCost: 0,     // v29.0.11.10: ResourceAssignment
     totalActivities: activities.length,
     sumStandardCost: 0,
     sumExpenseWeight: 0,
@@ -6372,7 +6302,7 @@ function parseP6XML(xmlText) {
     conflicts: [],
   };
 
-  // v29.0.11.11: Track standard cost values for placeholder detection (per ChatGPT M05/M06)
+  // v29.0.11.10: Track standard cost values for placeholder detection (per ChatGPT M05/M06)
   const _standardCostValues = [];
   activities.forEach((a) => {
     const std = (a.plannedNonLaborCost || 0) + (a.plannedLaborCost || 0)
@@ -6400,7 +6330,7 @@ function parseP6XML(xmlText) {
     }
   });
 
-  // v29.0.11.11: Placeholder detection (per ChatGPT M05/M06)
+  // v29.0.11.10: Placeholder detection (per ChatGPT M05/M06)
   // Standard costs are "placeholders" if:
   //   - All values are identical (e.g., $1, $1, $1, ...)
   //   - All values are very small (≤ $10) AND uniform
@@ -6422,7 +6352,7 @@ function parseP6XML(xmlText) {
   costMethodSignals.standardIsPlaceholder = _placeholderInfo.isPlaceholder;
   costMethodSignals.standardPlaceholderReason = _placeholderInfo.reason;
 
-  // Step 4: v29.0.11.11 - SCORE-BASED method detection (per ChatGPT CRITICAL-01)
+  // Step 4: v29.0.11.10 - SCORE-BASED method detection (per ChatGPT CRITICAL-01)
   // Old logic: coverage-only → choose standard if std cov >= other covs (BUG: tiny standard wins over large expense!)
   // New logic: weighted score combining coverage + monetary dominance + placeholder penalty
   const totalActs = costMethodSignals.totalActivities || 1;
@@ -6453,7 +6383,7 @@ function parseP6XML(xmlText) {
 
   // Detect conflicts: multiple methods with significant signals
   const COVERAGE_THRESHOLD = 0.30;
-  // v29.0.11.11: Lower threshold for non-placeholder methods when standard is placeholder
+  // v29.0.11.10: Lower threshold for non-placeholder methods when standard is placeholder
   // (per ChatGPT M06: 31% standard placeholder + 29% real expense should still detect expense)
   const RELAXED_THRESHOLD = _placeholderInfo.isPlaceholder ? 0.20 : COVERAGE_THRESHOLD;
   const significantMethods = [];
@@ -6482,7 +6412,7 @@ function parseP6XML(xmlText) {
   let detectedCostMethodLabelAr = "لا توجد بيانات تكلفة";
 
   // Find best method by score (only consider those above coverage threshold)
-  // v29.0.11.11: Use relaxed threshold for non-standard methods when standard is placeholder
+  // v29.0.11.10: Use relaxed threshold for non-standard methods when standard is placeholder
   const candidates = [
     { key: "standard", score: scores.standard, coverage: stdCoverage, threshold: COVERAGE_THRESHOLD, label: "Standard P6 (Activity Costs)", labelAr: "تكاليف نشاط P6 القياسية" },
     { key: "expense_weightage", score: scores.expense_weightage, coverage: expCoverage, threshold: RELAXED_THRESHOLD, label: "ActivityExpense Weightage Method", labelAr: "طريقة الأوزان عبر ActivityExpense" },
@@ -6514,7 +6444,7 @@ function parseP6XML(xmlText) {
   };
 
   // Step 5: Augment activities with the chosen cost based on detected method
-  // v29.0.11.11: Always set _derivedTotalCost so totalCost() can respect "none" decision (per ChatGPT CRITICAL-02)
+  // v29.0.11.10: Always set _derivedTotalCost so totalCost() can respect "none" decision (per ChatGPT CRITICAL-02)
   activities.forEach((a) => {
     if (detectedCostMethod === "standard") {
       a._derivedTotalCost = (a.plannedNonLaborCost || 0) + (a.plannedLaborCost || 0)
@@ -6534,7 +6464,7 @@ function parseP6XML(xmlText) {
   });
 
   // ═══════════════════════════════════════════════════════════════════════
-  // v29.0.11.11 ANTI-MANIPULATION WARNINGS (per ChatGPT recommendation #9)
+  // v29.0.11.10 ANTI-MANIPULATION WARNINGS (per ChatGPT recommendation #9)
   // Detects suspicious cost patterns that may indicate contractor manipulation
   // ═══════════════════════════════════════════════════════════════════════
   costMethodSignals.antiManipulationWarnings = [];
@@ -6744,7 +6674,7 @@ function parseP6XML(xmlText) {
     // Health metadata for Quick File Scan
     multiProject: allProjects.length > 1,
     projectCount: allProjects.length,
-    // v29.0.11.11 Smart Cost Detection
+    // v29.0.11.10 Smart Cost Detection
     costMethodSignals: costMethodSignals,
     detectedCostMethod: detectedCostMethod,
     expenseCostMap: expenseCostMap
@@ -6851,7 +6781,7 @@ function pickLatest(files, type) {
     return (b.file.lastModified || 0) - (a.file.lastModified || 0);
   })[0];
 }
-// v29.0.11.11 Smart Cost Detection:
+// v29.0.11.10 Smart Cost Detection:
 // totalCost() now respects the detected cost method via _derivedTotalCost
 // This makes it work transparently for:
 //   - Standard P6 schedules (plannedNonLaborCost/plannedLaborCost)
@@ -6861,7 +6791,7 @@ function pickLatest(files, type) {
 // Otherwise fall back to the standard sum (backward compatibility).
 const totalCost = (a) => {
   if (!a) return 0;
-  // v29.0.11.11 (per ChatGPT CRITICAL-02): Respect _derivedTotalCost even when 0
+  // v29.0.11.10 (per ChatGPT CRITICAL-02): Respect _derivedTotalCost even when 0
   // (means detection = "none"; fallback to standard would silently include lump-sum tricks)
   if (Object.prototype.hasOwnProperty.call(a, "_derivedTotalCost")) {
     return Number.isFinite(a._derivedTotalCost) ? a._derivedTotalCost : 0;
@@ -6872,7 +6802,7 @@ const totalCost = (a) => {
   return Number.isFinite(sum) ? sum : 0;
 };
 const totalUnits = (a) => (a.plannedNonLaborUnits || 0) + (a.plannedLaborUnits || 0) + (a.plannedMaterialUnits || 0);
-// v29.0.11.11 Smart Actual Cost: same fix as totalCost (respect derived even at 0)
+// v29.0.11.10 Smart Actual Cost: same fix as totalCost (respect derived even at 0)
 const totalActualCost = (a) => {
   if (!a) return 0;
   if (Object.prototype.hasOwnProperty.call(a, "_derivedActualCost")) {
@@ -7294,12 +7224,12 @@ function findLongestPathDuration(acts, rels, dataDate) {
 // Builds predecessor map from relationships, computes longestTo[id] = longest path ending at id
 // Returns the maximum value in longestTo (i.e., the longest single path through the network)
 //
-// v29.0.11.11 (R2 fix per ChatGPT Round 7): Activities may have multiple ID fields
+// v29.0.11.10 (R2 fix per ChatGPT Round 7): Activities may have multiple ID fields
 // (id, objectId, actId). Relationships may use any of these. We now build alias
 // map so all ID variants resolve to the same canonical activity.
 function _calculateNetworkLongestPath(activities, relationships) {
   if (!activities || activities.length === 0) return 0;
-  // v29.0.11.11: Multi-key alias map — activity reachable by ANY of its IDs
+  // v29.0.11.10: Multi-key alias map — activity reachable by ANY of its IDs
   const actMap = {};
   activities.forEach(a => {
     // Collect all possible ID variants for this activity
@@ -7954,7 +7884,7 @@ function analyze(baseline, progress = null, revisedBL = null) {
   const bMap = Object.fromEntries(refBL.activities.map((a) => [a.actId, a]));
   const origMap = revisedBL ? Object.fromEntries(baseline.activities.map((a) => [a.actId, a])) : {};
   const dataDate = (progress == null ? void 0 : progress.project.dataDate) ? new Date(progress.project.dataDate) : refBL.project.dataDate ? new Date(refBL.project.dataDate) : /* @__PURE__ */ new Date();
-  // v29.0.11.11 (Round 9.2 Patch 3): Calendar-aware planned percentage
+  // v29.0.11.10 (Round 9.2 Patch 3): Calendar-aware planned percentage
   // Uses activity calendar workWeek + holidays + exceptions when available
   // Falls back to linear calendar-day method if calendar data is missing
   // Reference: PMI EVM, AACE 38R-06, Saudi 5/6/7-day calendars
@@ -7981,11 +7911,11 @@ function analyze(baseline, progress = null, revisedBL = null) {
   };
   const _calendarsForPlanned = ((progress && progress.calendars) || refBL.calendars || {});
 
-  // v29.0.11.11 Fix F-03: Initialize integrityIssues EARLY so calcPct can log to it
+  // v29.0.11.10 Fix F-03: Initialize integrityIssues EARLY so calcPct can log to it
   // (Original was initialized at line ~7979 which is after calcPct usage)
   const integrityIssues = [];
 
-  // v29.0.11.11 ENHANCEMENT #1: Cost-Loaded Curve Support (per AACE 27R-03)
+  // v29.0.11.10 ENHANCEMENT #1: Cost-Loaded Curve Support (per AACE 27R-03)
   // When activity has time-phased cost data or explicit curve type,
   // distribute Planned Value (PV) according to the cost-loading curve
   // instead of linear time-elapsed. This is required for front-loaded
@@ -8007,21 +7937,15 @@ function analyze(baseline, progress = null, revisedBL = null) {
       case "front-loaded":
       case "front_loaded":
       case "frontloaded": {
-        // v29.0.11.11 FIX C-01 (per ChatGPT v100 audit):
-        // Old formula `1 - Math.pow(1-fraction, 0.3)` gave only 18.77% at midpoint
-        // (mathematically REVERSED from intent of "80% by mid-duration").
-        // New formula: Math.pow(fraction, log(0.8)/log(0.5)) = Math.pow(fraction, 0.3219)
-        // Verification: pow(0.5, 0.3219) = 0.8000 ✓ (exactly 80% at midpoint)
-        return Math.max(0, Math.min(1, Math.pow(fraction, 0.3219)));
+        // 80% of cost in first 50% of time
+        // formula: y = 1 - (1-x)^0.3 for fast front-loading
+        return Math.max(0, Math.min(1, 1 - Math.pow(1 - fraction, 0.3)));
       }
       case "back-loaded":
       case "back_loaded":
       case "backloaded": {
-        // v29.0.11.11 FIX C-01b (per ChatGPT v100 audit):
-        // Old formula `Math.pow(fraction, 3)` gave 12.5% at midpoint (intent: ~20%).
-        // New formula: 1 - Math.pow(1-fraction, 0.3219)
-        // Verification: 1 - pow(0.5, 0.3219) = 0.2000 ✓ (exactly 20% at midpoint, 80% in last half)
-        return Math.max(0, Math.min(1, 1 - Math.pow(1 - fraction, 0.3219)));
+        // 80% of cost in last 50% of time
+        return Math.max(0, Math.min(1, Math.pow(fraction, 3)));
       }
       case "bell":
       case "normal": {
@@ -8075,7 +7999,7 @@ function analyze(baseline, progress = null, revisedBL = null) {
     if (!(act == null ? void 0 : act.plannedStart) || !(act == null ? void 0 : act.plannedFinish)) return 0;
     const s = new Date(act.plannedStart), f = new Date(act.plannedFinish);
 
-    // v29.0.11.11 Fix F-02 + F-03 (MEDIUM): Inverted dates check
+    // v29.0.11.10 Fix F-02 + F-03 (MEDIUM): Inverted dates check
     // Per GAO Best Practice #5: "The schedule should be free of date inconsistencies"
     if (f < s) {
       integrityIssues.push({
@@ -8109,7 +8033,7 @@ function analyze(baseline, progress = null, revisedBL = null) {
       timeFraction = span > 0 ? (dataDate - s) / span : 1;
     }
 
-    // v29.0.11.11: Apply cost-loaded curve (per AACE 27R-03)
+    // v29.0.11.10: Apply cost-loaded curve (per AACE 27R-03)
     // For non-linear curves, distribute PV per the curve instead of linear time
     const curveType = _detectCurveType(act);
     if (curveType && curveType !== "linear") {
@@ -8119,7 +8043,7 @@ function analyze(baseline, progress = null, revisedBL = null) {
     return timeFraction;
   };
 
-  // v29.0.11.11 ENHANCEMENT #3: Rules of Credit Processor (per AACE 49R-06)
+  // v29.0.11.10 ENHANCEMENT #3: Rules of Credit Processor (per AACE 49R-06)
   // Configurable rule sets for milestone-based progress measurement.
   // Common rules:
   //   - 0/100: 0% until completed, then 100% (binary)
@@ -8137,20 +8061,8 @@ function analyze(baseline, progress = null, revisedBL = null) {
     // No rule specified - use standard
     if (!rule || rule === "standard" || rule === "default") return null;
 
-    // v29.0.11.11 FIX M-01 (per ChatGPT v100 audit):
-    // Old check `p.status === "Completed"` was case-sensitive.
-    // Some P6/MSP imports use lowercase or mixed case.
-    // Also check ALL pct fields for "started" detection (was only pctComplete).
-    const statusLower = String(p.status || "").toLowerCase().trim();
-    const isFinished = !!p.actualFinish || statusLower === "completed";
-    const isStarted = !!p.actualStart ||
-                      (p.pctComplete || 0) > 0 ||
-                      (p.physicalPct || 0) > 0 ||
-                      (p.durationPct || 0) > 0 ||
-                      (p.unitsPct || 0) > 0 ||
-                      statusLower === "in progress" ||
-                      statusLower === "in_progress" ||
-                      statusLower === "active";
+    const isStarted = !!p.actualStart || (p.pctComplete || 0) > 0;
+    const isFinished = !!p.actualFinish || (p.status === "Completed");
 
     // 0/100 rule: binary
     if (rule === "0/100" || rule === "0-100" || rule === "binary") {
@@ -8186,42 +8098,9 @@ function analyze(baseline, progress = null, revisedBL = null) {
     }
 
     // Custom X/Y rule (e.g., "40/60")
-    // v29.0.11.11 FIX H-01 (per ChatGPT v100 audit):
-    // Old code accepted invalid rules like "90/90" without validation.
-    // New: validate X+Y=100, X in [0,100], Y in [0,100], X<100 (otherwise it's binary 0/100)
     const m = rule.match(/^(\d+)[/\-_](\d+)$/);
     if (m) {
-      const x = parseInt(m[1], 10);
-      const y = parseInt(m[2], 10);
-      // Validation: must be valid percentages and sum to 100
-      if (!Number.isFinite(x) || !Number.isFinite(y)) return null;
-      if (x < 0 || x > 100 || y < 0 || y > 100) {
-        // Invalid range — log integrity warning and reject
-        if (typeof integrityIssues !== 'undefined' && Array.isArray(integrityIssues)) {
-          integrityIssues.push({
-            severity: 'medium',
-            category: 'data_quality',
-            type: 'invalid_rules_of_credit',
-            actId: p.actId || p.id,
-            message: `Invalid ROC "${rule}": values must be in [0,100], got X=${x}, Y=${y}`
-          });
-        }
-        return null;
-      }
-      if (x + y !== 100) {
-        // Invalid sum — log integrity warning and reject
-        if (typeof integrityIssues !== 'undefined' && Array.isArray(integrityIssues)) {
-          integrityIssues.push({
-            severity: 'medium',
-            category: 'data_quality',
-            type: 'invalid_rules_of_credit',
-            actId: p.actId || p.id,
-            message: `Invalid ROC "${rule}": X+Y must equal 100, got ${x}+${y}=${x+y}`
-          });
-        }
-        return null;
-      }
-      const startCredit = x / 100;
+      const startCredit = parseInt(m[1], 10) / 100;
       if (isFinished) return 1;
       if (isStarted) return startCredit;
       return 0;
@@ -8238,15 +8117,15 @@ function analyze(baseline, progress = null, revisedBL = null) {
   // v29.0.10 (Phase 2.2): Detect Level of Effort (LOE) activities
   const getActualPctRatio = (p) => {
     if (!p) return 0;
-    // v29.0.11.11 ENHANCEMENT #3: Try Rules of Credit first (if specified)
+    // v29.0.11.10 ENHANCEMENT #3: Try Rules of Credit first (if specified)
     const rocPct = _applyRulesOfCredit(p);
     if (rocPct !== null) return rocPct;
 
     const type = (p.pctType || "").toLowerCase();
     let raw;
-    // v29.0.11.11 (R1 fix per ChatGPT Round 7): Each pctType branch falls back
+    // v29.0.11.10 (R1 fix per ChatGPT Round 7): Each pctType branch falls back
     // to other available fields if the primary field is null/undefined.
-    // v29.0.11.11 (R9 H-02): Added normalizePct to support 0-1 and 0-100 formats.
+    // v29.0.11.10 (R9 H-02): Added normalizePct to support 0-1 and 0-100 formats.
     // Previously, if pctType="Physical" but physicalPct=undefined, returned 0.
     // Now: prefers primary, but falls back gracefully.
     const normalizePct = (v) => {
@@ -8299,13 +8178,13 @@ function analyze(baseline, progress = null, revisedBL = null) {
            type.includes("level_of_effort");
   };
   const projectInfo = bqaDetectProjectInfo(refBL);
-  // FIX v29.0.11.11: bqaDetectProjectInfo returns {projectName, projectType, keyMilestones}
+  // FIX v29.0.11.10: bqaDetectProjectInfo returns {projectName, projectType, keyMilestones}
   // The detected key is INSIDE projectType.key, NOT projectInfo.key directly
   const detectedTypeKey = (projectInfo && projectInfo.projectType && projectInfo.projectType.key) || null;
   const ngMatrixColumn = getNGMatrixColumn(detectedTypeKey);
   const isNG = isNGProjectType(detectedTypeKey);
-  // FIX v29.0.11.11: get wbsMap early so we can pass wbsName to getNGMatrixWeight
-  // v29.0.11.11 (R9 H-05 fix per ChatGPT deep review): parser stores WBS as 'wbs', not 'wbsId'
+  // FIX v29.0.11.10: get wbsMap early so we can pass wbsName to getNGMatrixWeight
+  // v29.0.11.10 (R9 H-05 fix per ChatGPT deep review): parser stores WBS as 'wbs', not 'wbsId'
   // Previously: a.wbsId only → WBS lookup always returned null → NG matrix never used WBS
   const _wbsMapForNG = (refBL.wbsMap) || {};
   const _getWbsName = (a) => {
@@ -8316,7 +8195,7 @@ function analyze(baseline, progress = null, revisedBL = null) {
     const w = _wbsMapForNG[id];
     return w ? (w.name || w.code || null) : null;
   };
-  // v29.0.11.11 ENHANCEMENT #2: Quantity-Based Weight Method (per AACE 49R-06)
+  // v29.0.11.10 ENHANCEMENT #2: Quantity-Based Weight Method (per AACE 49R-06)
   // For BOQ-driven projects (civil, mechanical), allow weighting by:
   // - User-defined quantity field (UDF) if present
   // - Resource units (combined labor + non-labor + material)
@@ -8341,10 +8220,10 @@ function analyze(baseline, progress = null, revisedBL = null) {
     units: totalUnits,
     duration: (a) => a.plannedDuration || 0,
     count: () => 1,
-    quantity: _quantityWeight,  // v29.0.11.11 ENHANCEMENT #2
+    quantity: _quantityWeight,  // v29.0.11.10 ENHANCEMENT #2
     ng_matrix: (a) => getNGMatrixWeight((a && (a.name || a.actName)) || "", ngMatrixColumn || "ss_lines", _getWbsName(a))
   };
-  // v29.0.11.11 (R9 C-01 + C-02 fix per ChatGPT deep review):
+  // v29.0.11.10 (R9 C-01 + C-02 fix per ChatGPT deep review):
   // Build rows from UNION of baseline + progress IDs (not progress only).
   // Use Baseline as authoritative budget basis (BAC/PV/EV), Progress for Actual % + Actual Cost.
   // This fixes:
@@ -8386,7 +8265,7 @@ function analyze(baseline, progress = null, revisedBL = null) {
     } else if (p.status === "Completed") {
       actualPct = 100;
     } else if (p.actualFinish && new Date(p.actualFinish) <= dataDate) {
-      // v29.0.11.11 Fix F-04 (MEDIUM): ActualFinish indicates completion in P6
+      // v29.0.11.10 Fix F-04 (MEDIUM): ActualFinish indicates completion in P6
       // even if status field hasn't been updated to "Completed"
       actualPct = 100;
       if (p.status !== "Completed") {
@@ -8402,7 +8281,7 @@ function analyze(baseline, progress = null, revisedBL = null) {
       actualPct = 0;
     } else {
       actualPct = getActualPctRatio(p) * 100;
-      // v29.0.11.11 Fix F-05 (LOW): physicalPct=100 without actualFinish is inconsistent
+      // v29.0.11.10 Fix F-05 (LOW): physicalPct=100 without actualFinish is inconsistent
       if (actualPct === 100 && !p.actualFinish) {
         integrityIssues.push({
           severity: 'low',
@@ -8464,9 +8343,9 @@ function analyze(baseline, progress = null, revisedBL = null) {
     };
   }).filter(Boolean);
   // v29.0.10 (Phase 2.2): Exclude LOE activities from progress/EVM
-  // v29.0.11.11 (R9 H-03): Also exclude LOE from summary EVM totals
+  // v29.0.11.10 (R9 H-03): Also exclude LOE from summary EVM totals
   // Previously: only excluded milestones and summaries → LOE inflated duration-weighted progress
-  // v29.0.11.11 (Round 9.2 Patch 1): Official EVM eligibility set
+  // v29.0.11.10 (Round 9.2 Patch 1): Official EVM eligibility set
   // Excludes: milestones, summaries, LOE/TT_LOE, AND unbaselined progress-only activities
   // This ensures BAC/PV/EV/AC totals reflect baseline-controlled scope only
   // Reference: PMI EVM, AACE 86R-14, GAO Schedule Assessment Guide
@@ -8478,7 +8357,7 @@ function analyze(baseline, progress = null, revisedBL = null) {
   );
   const methodResults = {};
   for (const [key, wfn] of Object.entries(weightFns)) {
-    // v29.0.11.11 Fix F-01 (HIGH): Defensive NaN guard
+    // v29.0.11.10 Fix F-01 (HIGH): Defensive NaN guard
     // Previously: filter only checked `wfn(r._raw) > 0` which catches NaN weights
     // (since NaN > 0 is false), but plannedPct/actualPct could still be NaN.
     // Now: ensure all three values used in multiplication are finite numbers.
@@ -8500,7 +8379,7 @@ function analyze(baseline, progress = null, revisedBL = null) {
         const tvo = vo.reduce((s, r) => s + wfn(r._raw), 0);
         if (tvo > 0) origPl = vo.reduce((s, r) => s + wfn(r._raw) * r.originalPlannedPct, 0) / tvo;
       }
-      // v29.0.11.11 Fix F-01: Final safety - ensure no NaN leaks into result
+      // v29.0.11.10 Fix F-01: Final safety - ensure no NaN leaks into result
       methodResults[key] = {
         planned: Number.isFinite(planned) ? +planned.toFixed(2) : 0,
         actual: Number.isFinite(actual) ? +actual.toFixed(2) : 0,
@@ -8522,7 +8401,7 @@ function analyze(baseline, progress = null, revisedBL = null) {
   else if (methodResults.units.available && methodResults.units.totalWeight > 0) recommended = "units";
   else if (methodResults.duration.available) recommended = "duration";
   const all = rows.filter((r) => !r.isSummary);
-  // v29.0.11.11 (Round 9.2 Patch 1): Official EVM totals use evmFiltered
+  // v29.0.11.10 (Round 9.2 Patch 1): Official EVM totals use evmFiltered
   // Previously: evmAll = all.filter(!milestone) → could include LOE + unbaselined
   // Now: evmAll = evmFiltered → consistent baseline-scoped denominator
   const evmAll = evmFiltered;
@@ -8600,7 +8479,7 @@ function analyze(baseline, progress = null, revisedBL = null) {
     return chain[idx];
   };
   const wbsGroups = {};
-  // v29.0.11.11 (Round 9.2 Patch 2): WBS EVM rollup must use baseline-controlled rows
+  // v29.0.11.10 (Round 9.2 Patch 2): WBS EVM rollup must use baseline-controlled rows
   // Previously: all.filter(!milestone) → could include LOE + unbaselined + non-EVM rows
   // Now: evmFiltered → consistent with summary EVM denominator
   // Weight uses r.bac first (baseline budget), then units/dur fallback
@@ -8622,7 +8501,7 @@ function analyze(baseline, progress = null, revisedBL = null) {
       };
     }
     wbsGroups[key].rows.push(r);
-    // v29.0.11.11 Patch 2: Use baseline-controlled weight (r.bac) instead of progress-mutable totalCost(r._raw)
+    // v29.0.11.10 Patch 2: Use baseline-controlled weight (r.bac) instead of progress-mutable totalCost(r._raw)
     const w = (r.bac || 0) || (r.units || 0) || (r.dur || 0);
     wbsGroups[key].totalWeight += w;
     wbsGroups[key].sumPV += w * r.plannedPct;
@@ -8686,13 +8565,13 @@ function analyze(baseline, progress = null, revisedBL = null) {
     if (!aSpecial && bSpecial) return -1;
     return a.variance - b.variance;
   }).slice(0, 30);
-  // v29.0.11.11 (Round 9.2 Patch 4): S-Curve uses evmFiltered (consistent with totals)
+  // v29.0.11.10 (Round 9.2 Patch 4): S-Curve uses evmFiltered (consistent with totals)
   // Previously: all.filter(!milestone) → could include LOE + unbaselined
   const evmAllForCurve = evmFiltered.filter((r) => r.bac > 0 && r.plannedStart && r.plannedFinish);
   const monthBuckets = {};
   const earnedBuckets = {};
   const curveActs = evmAllForCurve.length > 1e4 ? evmAllForCurve.slice(0, 1e4) : evmAllForCurve;
-  // v29.0.11.11 (Round 9.2 Patch 4): Helper to add value to monthly bucket based on date span
+  // v29.0.11.10 (Round 9.2 Patch 4): Helper to add value to monthly bucket based on date span
   const _addMonthValue = (bucket, startDate, finishDate, value) => {
     if (!startDate || !finishDate || value <= 0) return;
     const s = new Date(startDate);
@@ -8724,7 +8603,7 @@ function analyze(baseline, progress = null, revisedBL = null) {
   for (const r of curveActs) {
     // Planned curve: spread BAC over baseline planned dates
     _addMonthValue(monthBuckets, r.plannedStart, r.plannedFinish, r.bac);
-    // v29.0.11.11 Patch 4: Earned curve from actual timing, NOT from cumPlanned * ratio
+    // v29.0.11.10 Patch 4: Earned curve from actual timing, NOT from cumPlanned * ratio
     if ((r.ev || 0) > 0) {
       if (r.actualStart && r.actualFinish) {
         // Completed: spread EV over actual dates
@@ -8743,7 +8622,7 @@ function analyze(baseline, progress = null, revisedBL = null) {
   let cumPlanned = 0;
   let cumEarned = 0;
   const dataDateStr = dataDate.toISOString().slice(0, 7);
-  // v29.0.11.11 Patch 4: Earned NO LONGER uses cumPlanned * earnedRatio (which mirrored planned shape)
+  // v29.0.11.10 Patch 4: Earned NO LONGER uses cumPlanned * earnedRatio (which mirrored planned shape)
   // Now earned reflects actual progress timing, showing real lags/jumps/recovery patterns
   const sCurve = months.map((ym) => {
     cumPlanned += (monthBuckets[ym] || 0);
@@ -8756,7 +8635,7 @@ function analyze(baseline, progress = null, revisedBL = null) {
       earned: ym <= dataDateStr ? +cumEarned.toFixed(0) : null
     };
   });
-  // v29.0.11.11: integrityIssues already initialized at top of analyze() (Fix F-03)
+  // v29.0.11.10: integrityIssues already initialized at top of analyze() (Fix F-03)
   if (progress) {
     const refMap = bMap;
     const progMap = Object.fromEntries(progress.activities.map((a) => [a.actId, a]));
@@ -9010,7 +8889,7 @@ function analyze(baseline, progress = null, revisedBL = null) {
     sCurve,
     integrityIssues,
     integrityScore,
-    // v29.0.11.11 ENHANCEMENT #4: Persistent Audit Trail
+    // v29.0.11.10 ENHANCEMENT #4: Persistent Audit Trail
     auditTrail: buildAuditTrail(
       (baseline && baseline.activities) || [],
       (progress && progress.activities) || []
@@ -9033,7 +8912,7 @@ function analyze(baseline, progress = null, revisedBL = null) {
       drpc_svc:       { en: "DRPC / SVC",        ar: "DRPC / SVC" },
       purchase_order: { en: "Purchase Order",    ar: "\u0623\u0645\u0631 \u0634\u0631\u0627\u0621" }
     }[ngMatrixColumn] || null) : null,
-    // ───────────── v29.0.11.11 NEW FEATURES ─────────────
+    // ───────────── v29.0.11.10 NEW FEATURES ─────────────
     // Phase Discovery — for projects NOT in NG manual (now method-aware)
     phaseDiscovery: discoverPhasesFromSchedule(rows, _wbsMapForNG, ngMatrixColumn),
     // Mandatory Milestones Tracker
@@ -9060,7 +8939,7 @@ function analyze(baseline, progress = null, revisedBL = null) {
     ),
     // v29.0.9: Pre-Commissioning Check Compliance (Substation projects only)
     preCommCompliance: checkPreCommissioningCompliance(rows),
-    // ───────────── End v29.0.11.11 features ─────────────
+    // ───────────── End v29.0.11.10 features ─────────────
     timeline: {
       slipBLvsOrig: orF && blF ? Math.round((blF - orF) / 864e5) : null,
       slipPRvsBL: blF && prF ? Math.round((prF - blF) / 864e5) : null,
@@ -9130,7 +9009,7 @@ function analyze(baseline, progress = null, revisedBL = null) {
         evmCoverageStatus: _evmCoverageStatus,
         evmActivitiesTotal: _evmActivities,
         evmActivitiesWithCost: _activitiesWithCost,
-        // v29.0.11.11 Smart Cost Detection: surface detected method to UI
+        // v29.0.11.10 Smart Cost Detection: surface detected method to UI
         costMethodDetected: refBL.detectedCostMethod || "none",
         costMethodLabel: refBL.costMethodSignals ? refBL.costMethodSignals.detectedLabel : "Unknown",
         costMethodLabelAr: refBL.costMethodSignals ? refBL.costMethodSignals.detectedLabelAr : "غير معروف",
@@ -11323,7 +11202,7 @@ function MethodExplanation({ methodKey }) {
   return /* @__PURE__ */ React.createElement("div", { style: { background: `linear-gradient(135deg,${md.color}11,transparent)`, border: `1px solid ${md.color}44`, borderRadius: 10, padding: 12, marginBottom: 14 } }, /* @__PURE__ */ React.createElement("div", { style: { display: "flex", alignItems: "center", gap: 8, marginBottom: 7 } }, /* @__PURE__ */ React.createElement("span", { style: { fontSize: 16 } }, md.icon), /* @__PURE__ */ React.createElement("span", { style: { color: md.color, fontWeight: 700, fontSize: 12 } }, md.label), /* @__PURE__ */ React.createElement("span", { style: { color: "var(--textDim)", fontSize: 10, fontFamily: "'JetBrains Mono',monospace" } }, "\xB7 ", md.short)), /* @__PURE__ */ React.createElement("div", { style: { background: "var(--bgPanel)", borderRadius: 5, padding: "5px 10px", fontSize: 10, fontFamily: "'JetBrains Mono',monospace", color: "#a78bfa", marginBottom: 8, display: "inline-block" } }, "\u{1F4D0} ", md.formula), /* @__PURE__ */ React.createElement("div", { style: { color: "var(--textSecondary)", fontSize: 11, marginBottom: 6, lineHeight: 1.5 } }, /* @__PURE__ */ React.createElement("span", { style: { color: "#38bdf8", fontWeight: 600 } }, t.methodInfoTitle[methodKey], " "), md.explanation), /* @__PURE__ */ React.createElement("div", { style: { color: "var(--textMuted)", fontSize: 11, lineHeight: 1.5 } }, /* @__PURE__ */ React.createElement("span", { style: { color: md.color, fontWeight: 600 } }, t.methodWhenTitle, " "), md.when));
 }
 
-// v29.0.11.11 NEW FEATURE: Fields Used Card
+// v29.0.11.10 NEW FEATURE: Fields Used Card
 // Shows which XML fields are read from Baseline + Progress for the active method
 // Updates dynamically when user switches between methods (cost/units/duration/count/ng_matrix)
 function FieldsUsedCard({ methodKey, costMethodDetected, lang }) {
@@ -17085,7 +16964,7 @@ function CalendarsPanel({ calendars, calendarTypeCounts, saHolidayAudit, lang, t
 }
 
 // ═══════════════════════════════════════════════════════════════════════════
-// v29.0.11.11 — PHASE TIMELINE COMPONENT
+// v29.0.11.10 — PHASE TIMELINE COMPONENT
 // Visual horizontal timeline showing project phases with progress
 // ═══════════════════════════════════════════════════════════════════════════
 function PhaseTimeline({ phases, methodResults, activeMethod, lang, t }) {
@@ -17252,7 +17131,7 @@ function PhaseTimeline({ phases, methodResults, activeMethod, lang, t }) {
 }
 
 // ═══════════════════════════════════════════════════════════════════════════
-// v29.0.11.11 — PHASE TEMPLATE SELECTOR (dropdown for choosing phase structure)
+// v29.0.11.10 — PHASE TEMPLATE SELECTOR (dropdown for choosing phase structure)
 // ═══════════════════════════════════════════════════════════════════════════
 function PhaseTemplateSelector({ currentTemplate, onChange, discoveryResult, lang, t }) {
   const isAr = lang === "ar";
@@ -17316,7 +17195,7 @@ function PhaseTemplateSelector({ currentTemplate, onChange, discoveryResult, lan
 }
 
 // ═══════════════════════════════════════════════════════════════════════════
-// v29.0.11.11 — MILESTONE COMPLIANCE PANEL
+// v29.0.11.10 — MILESTONE COMPLIANCE PANEL
 // ═══════════════════════════════════════════════════════════════════════════
 // v29.0.9: helper to compute status colors/labels for an instance
 function _milestoneInstanceVisuals(instance, isAr) {
@@ -17638,7 +17517,7 @@ function MilestoneCompliancePanel({ compliance, lang, t }) {
 }
 
 // ═══════════════════════════════════════════════════════════════════════════
-// v29.0.11.11 — NG COMPLIANCE PANEL
+// v29.0.11.10 — NG COMPLIANCE PANEL
 // ═══════════════════════════════════════════════════════════════════════════
 function NGCompliancePanel({ compliance, lang, t }) {
   const isAr = lang === "ar";
@@ -17703,7 +17582,7 @@ function NGCompliancePanel({ compliance, lang, t }) {
 }
 
 // ═══════════════════════════════════════════════════════════════════════════
-// v29.0.11.11 — RECOVERY ALERT PANEL
+// v29.0.11.10 — RECOVERY ALERT PANEL
 // ═══════════════════════════════════════════════════════════════════════════
 function RecoveryAlertPanel({ recovery, lang, t }) {
   const isAr = lang === "ar";
@@ -17758,8 +17637,8 @@ function RecoveryAlertPanel({ recovery, lang, t }) {
   );
 }
 
-// v29.0.11.11: Standalone ProjectTypeBanner — shown directly under project name
-// FIX v29.0.11.11: overrideType lifted to parent (ExecutiveDashboard) so changes 
+// v29.0.11.10: Standalone ProjectTypeBanner — shown directly under project name
+// FIX v29.0.11.10: overrideType lifted to parent (ExecutiveDashboard) so changes 
 // propagate to KeyMilestonesPanel AND trigger ng_matrix recommendation refresh
 function ProjectTypeBanner({ projectType: detectedProjectType, lang, t, overrideType, setOverrideType }) {
   var _a, _b, _c, _d;
@@ -18045,22 +17924,22 @@ function ExecutiveDashboard({ result, activeMethod, setActiveMethod, onAuditBase
   const { t, m, lang } = useLang();
   const [pdfLoading, setPdfLoading] = useState(false);
   const [pdfError, setPdfError] = useState(null);
-  // FIX v29.0.11.11: Lifted overrideType state from ProjectTypeBanner & KeyMilestonesPanel
+  // FIX v29.0.11.10: Lifted overrideType state from ProjectTypeBanner & KeyMilestonesPanel
   // so changes propagate to BOTH components AND can affect ng_matrix recommendation
   const [overrideType, setOverrideType] = useState(null);
-  // v29.0.11.11: Phase template selector — defaults to "discover" (auto-detect from schedule)
+  // v29.0.11.10: Phase template selector — defaults to "discover" (auto-detect from schedule)
   const [phaseTemplate, setPhaseTemplate] = useState("discover");
   const { rows: _rawRows = [], summary: s = {}, blProj = {}, prProj = {}, origProj, methodResults: _baseMethodResults, timeline = {}, milestoneRows = [], wbsBreakdown = [], wbsMeta = {}, integrityIssues = [], integrityScore = 100, projectType: detectedProjectType = null, keyMilestones = [], isNGProject: _baseIsNG, ngMatrixColumn: _baseNGCol, ngTypeName: _baseNGTypeName, recommended: _baseRecommended,
-    // v29.0.11.11 NEW
+    // v29.0.11.10 NEW
     phaseDiscovery = null, milestoneCompliance = [], ngCompliance = null, recoveryTrigger = null, filenameValidation = null, filenameValidations = null, preCommCompliance = []
   } = result;
-  // v29.0.11.11: Resolve final phase template (discover → use detection result)
+  // v29.0.11.10: Resolve final phase template (discover → use detection result)
   const resolvedPhases = resolvePhaseTemplate(phaseTemplate, phaseDiscovery);
   // Effective project type considering user override
   const projectType = overrideType !== undefined && overrideType !== null
     ? (overrideType === "auto" ? detectedProjectType : overrideType)
     : detectedProjectType;
-  // FIX v29.0.11.11: Recompute ng_matrix locally when user overrides project type
+  // FIX v29.0.11.10: Recompute ng_matrix locally when user overrides project type
   // (The original analyze() result is fixed - we need fresh ng_matrix for the new type)
   const userOverrideActive = overrideType && overrideType !== "auto" && overrideType !== detectedProjectType;
   const effectiveNGCol = userOverrideActive ? getNGMatrixColumn(projectType && projectType.key) : _baseNGCol;
@@ -18227,7 +18106,7 @@ function ExecutiveDashboard({ result, activeMethod, setActiveMethod, onAuditBase
     /\u0634\u0647\u0627\u062f\u0629\s+\u0627\u0644\u062a\u0634\u063a\u064a\u0644\s+\u0627\u0644\u062a\u062c\u0627\u0631\u064a(?:\s+\u0644\u0644\u0645\u0639\u062f\u0627\u062a)?/,
     /\u0634\u0647\u0627\u062f\u0629\s+\u0627\u0644\u0627\u0633\u062a\u0644\u0627\u0645\s+\u0627\u0644\u062a\u062c\u0627\u0631\u064a/
   ]);
-  // v29.0.11.11 (Gemini Round 8 — G1+G2 fix): NG SA Certificate Sequence Validation
+  // v29.0.11.10 (Gemini Round 8 — G1+G2 fix): NG SA Certificate Sequence Validation
   // Validates that certificates appear in correct chronological order:
   //   RTR -> EHC/ECC -> TCC -> PAC -> FAC
   // Critical for SEC contract compliance — out-of-order dates are major red flags
@@ -18354,7 +18233,7 @@ function ExecutiveDashboard({ result, activeMethod, setActiveMethod, onAuditBase
   };
   const status = r.variance >= -1 ? r.variance > 1 ? { txt: t.execStatus.ahead, c: "#22c55e", bg: "linear-gradient(135deg,#022c22,#064e3b)" } : { txt: t.execStatus.ontrack, c: "#22c55e", bg: "linear-gradient(135deg,#022c22,#064e3b)" } : r.variance >= -10 ? { txt: t.execStatus.behind, c: "#fb923c", bg: "linear-gradient(135deg,#1c1917,#7c2d12)" } : { txt: t.execStatus.critical, c: "#f43f5e", bg: "linear-gradient(135deg,#1a0505,#450a0a)" };
   const md = m[activeMethod];
-  // FIX v29.0.11.11: Build candidates list from ALL XER sources (Original/Baseline/Progress)
+  // FIX v29.0.11.10: Build candidates list from ALL XER sources (Original/Baseline/Progress)
   // If multiple distinct names exist → render as dropdown so user can pick which one to display
   const _nameCandidates = [];
   const _seen = new Set();
@@ -18382,7 +18261,7 @@ function ExecutiveDashboard({ result, activeMethod, setActiveMethod, onAuditBase
   const hasMultipleNames = _nameCandidates.length > 1;
 
   // ═══════════════════════════════════════════════════════════════════
-  // v29.0.11.11: BRIEFING CARD + ACTION BUTTONS — extracted unit
+  // v29.0.11.10: BRIEFING CARD + ACTION BUTTONS — extracted unit
   // Contains: Progress Performance + Project Schedule Timeline + buttons
   // Moved to render BEFORE PROJECT PHASES per user request
   // ═══════════════════════════════════════════════════════════════════
@@ -18422,7 +18301,7 @@ function ExecutiveDashboard({ result, activeMethod, setActiveMethod, onAuditBase
           }
         }, lang === "ar" ? "\u0623\u062f\u0627\u0621 \u0627\u0644\u062a\u0642\u062f\u0651\u0645" : "Progress Performance")
       ),
-      // v29.0.11.11: ── METHOD SELECTOR (Calculation Method) ──
+      // v29.0.11.10: ── METHOD SELECTOR (Calculation Method) ──
       /* @__PURE__ */ React.createElement("div", {
         style: {
           display: "flex",
@@ -18497,7 +18376,7 @@ function ExecutiveDashboard({ result, activeMethod, setActiveMethod, onAuditBase
           }
         }, m[activeMethod].formula)
       ),
-      // v29.0.11.11: Fields Used Card - shows which P6 XML fields are used
+      // v29.0.11.10: Fields Used Card - shows which P6 XML fields are used
       // Adapts dynamically when user switches calculation method
       // Uses 's' (summary) which is destructured from result at component start
       /* @__PURE__ */ React.createElement(FieldsUsedCard, {
@@ -18515,7 +18394,7 @@ function ExecutiveDashboard({ result, activeMethod, setActiveMethod, onAuditBase
           flexWrap: "wrap"
         }
       },
-        // v29.0.11.11: ── ORIGINAL PLANNED CARD (only if revised baseline exists) ──
+        // v29.0.11.10: ── ORIGINAL PLANNED CARD (only if revised baseline exists) ──
         r.originalPlanned !== null && /* @__PURE__ */ React.createElement("div", {
           style: {
             background: "linear-gradient(145deg, rgba(251,146,60,0.18), rgba(234,88,12,0.06))",
@@ -19504,7 +19383,7 @@ function ExecutiveDashboard({ result, activeMethod, setActiveMethod, onAuditBase
   // 7. SCHEDULE INTEGRITY CHECK
   _card_Integrity,
   // ───────────────────────────────────────────────────────────────────────
-  // v29.0.11.11: NG SA Mandatory Milestones Compliance
+  // v29.0.11.10: NG SA Mandatory Milestones Compliance
   milestoneCompliance && milestoneCompliance.length > 0 && /* @__PURE__ */ React.createElement(MilestoneCompliancePanel, {
     compliance: milestoneCompliance, lang, t
   }),
@@ -19515,11 +19394,11 @@ function ExecutiveDashboard({ result, activeMethod, setActiveMethod, onAuditBase
     saHolidayAudit: result.saHolidayAudit,
     lang, t
   }),
-  // v29.0.11.11: NG Schedule Quality Compliance Score
+  // v29.0.11.10: NG Schedule Quality Compliance Score
   ngCompliance && /* @__PURE__ */ React.createElement(NGCompliancePanel, {
     compliance: ngCompliance, lang, t
   }),
-  // v29.0.11.11: Recovery Schedule Alert (only shown if triggered)
+  // v29.0.11.10: Recovery Schedule Alert (only shown if triggered)
   recoveryTrigger && recoveryTrigger.triggered && /* @__PURE__ */ React.createElement(RecoveryAlertPanel, {
     recovery: recoveryTrigger, lang, t
   }),
@@ -20521,7 +20400,7 @@ function App() {
   const [search, setSearch] = useState("");
   const [fm, setFm] = useState("all");
   const [activeMethod, setActiveMethod] = useState("cost");
-  // v29.0.11.11: Auto-switch to recommended method (especially NG Matrix for NG projects)
+  // v29.0.11.10: Auto-switch to recommended method (especially NG Matrix for NG projects)
   useEffect(() => {
     if (result && result.recommended && result.methodResults && result.methodResults[result.recommended] && result.methodResults[result.recommended].available) {
       setActiveMethod(result.recommended);
@@ -21116,7 +20995,7 @@ function App() {
             display: "block"
           }
         }), /* @__PURE__ */ React.createElement("div", { style: { flex: 1 } },
-          ["bloomberg","apple","mckinsey","pentagram","stripe","vercel","carbon","linear","notion"].includes(themeName) && /* @__PURE__ */ React.createElement("span", { style: { fontSize: 9, fontFamily: "'JetBrains Mono',monospace", fontWeight: 800, letterSpacing: "0.1em", padding: "3px 7px", background: theme.gradient, color: themeName === "vercel" || themeName === "carbon" || themeName === "linear" ? "#fff" : "#000", borderRadius: 4 } }, "v29.0.11.11")
+          ["bloomberg","apple","mckinsey","pentagram","stripe","vercel","carbon","linear","notion"].includes(themeName) && /* @__PURE__ */ React.createElement("span", { style: { fontSize: 9, fontFamily: "'JetBrains Mono',monospace", fontWeight: 800, letterSpacing: "0.1em", padding: "3px 7px", background: theme.gradient, color: themeName === "vercel" || themeName === "carbon" || themeName === "linear" ? "#fff" : "#000", borderRadius: 4 } }, "v29.0.11.10")
         ), /* @__PURE__ */ React.createElement(ThemeToggle, { themeName, setThemeName }), /* @__PURE__ */ React.createElement(LangToggle, { lang, setLang }), (result || trendData || auditResult) && /* @__PURE__ */ React.createElement("button", {
           onClick: () => window.print(),
           title: t.printScreenSub,
@@ -21693,7 +21572,7 @@ function App() {
     fontSize: 12,
     fontWeight: 700,
     fontFamily: "'JetBrains Mono',monospace"
-  } }, "P6 Analyzer \xB7 v29.0.11.11"), /* @__PURE__ */ React.createElement("div", { style: { color: "var(--textFaint)", fontSize: 10 } }, lang === "en" ? "Executive Edition \xB7 Bilingual EN / AR" : "\u0627\u0644\u0646\u0633\u062E\u0629 \u0627\u0644\u062A\u0646\u0641\u064A\u0630\u064A\u0629 \xB7 \u062B\u0646\u0627\u0626\u064A \u0627\u0644\u0644\u063A\u0629 EN / AR"))), /* @__PURE__ */ React.createElement("div", { style: { textAlign: lang === "ar" ? "left" : "right" } }, /* @__PURE__ */ React.createElement("div", { style: { color: "var(--textDim)", fontSize: 10, fontFamily: "'JetBrains Mono',monospace", lineHeight: 1.8 } }, /* @__PURE__ */ React.createElement("div", { style: { color: "var(--textMuted)", fontWeight: 700, fontSize: 11 } }, "Hani Taysseer"), /* @__PURE__ */ React.createElement("a", { href: "mailto:Hani321911@Gmail.com", style: { color: "#38bdf8", textDecoration: "none" } }, "Hani321911@Gmail.com"), /* @__PURE__ */ React.createElement("div", null, "All rights reserved")))), /* @__PURE__ */ React.createElement("div", { style: {
+  } }, "P6 Analyzer \xB7 v29.0.11.10"), /* @__PURE__ */ React.createElement("div", { style: { color: "var(--textFaint)", fontSize: 10 } }, lang === "en" ? "Executive Edition \xB7 Bilingual EN / AR" : "\u0627\u0644\u0646\u0633\u062E\u0629 \u0627\u0644\u062A\u0646\u0641\u064A\u0630\u064A\u0629 \xB7 \u062B\u0646\u0627\u0626\u064A \u0627\u0644\u0644\u063A\u0629 EN / AR"))), /* @__PURE__ */ React.createElement("div", { style: { textAlign: lang === "ar" ? "left" : "right" } }, /* @__PURE__ */ React.createElement("div", { style: { color: "var(--textDim)", fontSize: 10, fontFamily: "'JetBrains Mono',monospace", lineHeight: 1.8 } }, /* @__PURE__ */ React.createElement("div", { style: { color: "var(--textMuted)", fontWeight: 700, fontSize: 11 } }, "Hani Taysseer"), /* @__PURE__ */ React.createElement("a", { href: "mailto:Hani321911@Gmail.com", style: { color: "#38bdf8", textDecoration: "none" } }, "Hani321911@Gmail.com"), /* @__PURE__ */ React.createElement("div", null, "All rights reserved")))), /* @__PURE__ */ React.createElement("div", { style: {
     marginTop: 10,
     textAlign: "center",
     color: "var(--borderStrong)",

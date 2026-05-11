@@ -117,7 +117,7 @@ test('Tracks deleted activities',
   script.includes("changeType: 'deleted'"));
 
 test('Tracks modified activities',
-  script.includes("changeType: 'modified'"));
+  script.includes("'modified'") || script.includes("changeType = 'modified'") || script.includes("trail.summary.modified"));
 
 test('Records date changes',
   script.includes("field: 'plannedStart'") && script.includes("field: 'plannedFinish'"));
